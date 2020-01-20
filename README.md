@@ -3,11 +3,15 @@
 **Team members: Hannaneh Hojaiji, Mark Chen, Riyya Iyer**
 
 In this project, we propose the "same-body" authentication for a set of sensor networks. 
+
+![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
+
 Here, through daily and one-time authentication of the sensor network and the mobile device trough NFC key, we pair the devices for a single user. 
+! [established communication setup with smartwatch] https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png
 Then, throughout the day, periodic authentication for localized connection is needed. 
 This was an IP address of the shared WiFi connection and a secret key is sent over short distance communication, which ensures that the sensor network is locally activated on the same individual user.
 The data communication will be encrypted to ensure security of the pins shared between the sensor network and the smartphone. 
-
+! [established communication with the watch] https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png
 
 
 ## References
