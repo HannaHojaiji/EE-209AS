@@ -8,7 +8,8 @@ Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 
 ## Project proposal
 
-In this project, we propose the "same-body" authentication for a set of sensor networks. Utilizing the loacal and wireless (NFC, WiFi and Bluetooth) data communication, we examine the conenctivity and locality of a sensor network for the desired user.  
+In this project, we propose the "same-body" authentication for a set of sensor networks (e.g. earables, wearables). 
+This authenication process will comprise a initial-pairing phase and a periodic-verifying phase. By utilizing the loacality (sensors in user's possession or attached to user's body) and wireless (NFC, WiFi and Bluetooth) data communication, we will ensure reliable conenctivity and locality across the desired user's mobile phone and set of sensor networks.  
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
