@@ -13,8 +13,12 @@ This authenication process will comprise a initial-pairing phase and a periodic-
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
-Here, through daily and one-time authentication of the sensor network and the mobile device trough NFC key, we pair the devices for a single user. 
+
+The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
+
 ![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
+
+
 Then, throughout the day, periodic authentication for localized connection is needed. 
 This was an IP address of the shared WiFi connection and a secret key is sent over short distance communication, which ensures that the sensor network is locally activated on the same individual user.
 The data communication will be encrypted to ensure security of the pins shared between the sensor network and the smartphone. 
