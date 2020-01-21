@@ -1,6 +1,12 @@
-# EE-209AS 
-## ****Project proposal for Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things****
-**Team members: Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer**
+# ECE 209AS Project Repository 
+UCLA ECE 209AS "Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things" Project, Winter 2020
+
+
+## Team members
+Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
+
+
+## Project proposal
 
 In this project, we propose the "same-body" authentication for a set of sensor networks. Utilizing the loacal and wireless (NFC, WiFi and Bluetooth) data communication, we examine the conenctivity and locality of a sensor network for the desired user.  
 
@@ -18,7 +24,8 @@ To verify whether the set of sensor networks is indeed located on a target indiv
 
 ## Materials needed
 1) For the first stage: two Android phones or an android phone and a smartwatch (one as a receiver and master device, the other as a passive sensor array with NFC connection)
-2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier. 
+2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier.
+3) If a simple sensor system is needed, we can build one by using arduino, sensor module, and wifi module. 
 
 ## Timeline for the project
 Week 3-4: Develop the android application to generate the NFC code and authentication. Program phone/watch to colelct sensor data and establish connection. 
