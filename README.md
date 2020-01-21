@@ -13,21 +13,17 @@ This authenication process will comprise a initial-pairing phase and a periodic-
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
-
 The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
 
 The data collection will begin after the inital-pairing is done.
 
 ![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
 
+Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During an periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receive the event(s), the mobile phone app analyze the captured user response pattern to see if the sensor network is indeed in user's possession or is attached to user's body. 
 
-Then, throughout the day, periodic authentication for reliable localized connection is needed.
-We will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receive the event(s), the mobile phone app analyze the user response signature to see if the sensor network is indeed in user's possession or is attached to user's body. 
+The data communication between the sensor network and the mobile phone will be disabled if the captured user response pattern is not consistent with the previous collected user response signature. A reauthentication via initial-pairing is needed to reenable the data communication if the user desire to continue sensor data collection. 
 
-The data communication between the sensor network and the mobile phone
 ![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
-
-To verify whether the set of sensor networks is indeed located on a target indiviual's body, we will explore and utilize tools and methods that create additonal shared information (e.g., vibration patterns, sound patterns, etc.) and test the existence of these shared information among the mobile device and the set of sensor networks. 
 
 
 ## Materials needed
