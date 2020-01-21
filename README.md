@@ -2,7 +2,7 @@
 ## ****Project proposal for Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things****
 **Team members: Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer**
 
-In this project, we propose the "same-body" authentication for a set of sensor networks. 
+In this project, we propose the "same-body" authentication for a set of sensor networks. Utilizing the loacal and wireless (NFC, WiFi and Bluetooth) data communication, we examine the conenctivity and locality of a sensor network for the desired user.  
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
