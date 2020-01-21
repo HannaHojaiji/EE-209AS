@@ -1,6 +1,6 @@
 # EE-209AS 
 ## ****Project proposal for Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things****
-**Team members: Hannaneh Hojaiji, Mark Chen, Riyya Hari Iyer**
+**Team members: Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer**
 
 In this project, we propose the "same-body" authentication for a set of sensor networks. 
 
