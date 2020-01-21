@@ -13,7 +13,7 @@ This authenication process will comprise a initial-pairing phase and a periodic-
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
-The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
+The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. This may be done by close-proximity authenication technique such as NFC. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
 
 The data collection will begin after the inital-pairing is done.
 
@@ -27,8 +27,11 @@ The data communication between the sensor network and the mobile phone will be d
 
 
 ## Materials needed
-1) For the first stage: two Android phones or an android phone and a smartwatch (one as a receiver and master device, the other as a passive sensor array with NFC connection)
+1) For the first stage: Collect an Android phone and a collection of sensors that includes a smartwatch and a earable. We will then set up stable wireless connection betweeen the Android phone and these sensors so that authenication and data communication can be achieved.
+
 2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier.
+
+
 3) If a simple sensor system is needed, we can build one by using arduino, sensor module, and wifi module. 
 
 ## Timeline for the project
