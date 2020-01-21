@@ -8,10 +8,14 @@ Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 
 ## Project proposal
 
+The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphone. This kind of situation can lead to unwanted sensor data collection by unauthorized personnel. 
+
+![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
+
+
 In this project, we propose the "same-body" authentication for a set of sensor networks (e.g. earables, wearables). 
 This authenication process will comprise a initial-pairing phase and a periodic-verifying phase. By utilizing the loacality (sensors in user's possession or attached to user's body) and wireless (NFC, WiFi and Bluetooth) data communication, we will ensure reliable conenctivity and locality across the desired user's mobile phone and set of sensor networks.  
 
-![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
 
 The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. This may be done by close-proximity authenication technique such as NFC. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
 
