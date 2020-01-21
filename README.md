@@ -16,12 +16,15 @@ This authenication process will comprise a initial-pairing phase and a periodic-
 
 The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. Once the mobile phone recognized a targeted sensor, we will use mobile app to record the participants and the timestamp of this initial-pairing instance.
 
+The data collection will begin after the inital-pairing is done.
+
 ![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
 
 
-Then, throughout the day, periodic authentication for localized connection is needed. 
-This was an IP address of the shared WiFi connection and a secret key is sent over short distance communication, which ensures that the sensor network is locally activated on the same individual user.
-The data communication will be encrypted to ensure security of the pins shared between the sensor network and the smartphone. 
+Then, throughout the day, periodic authentication for reliable localized connection is needed.
+We will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receive the event(s), the mobile phone app analyze the user response signature to see if the sensor network is indeed in user's possession or is attached to user's body. 
+
+The data communication between the sensor network and the mobile phone
 ![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
 
 To verify whether the set of sensor networks is indeed located on a target indiviual's body, we will explore and utilize tools and methods that create additonal shared information (e.g., vibration patterns, sound patterns, etc.) and test the existence of these shared information among the mobile device and the set of sensor networks. 
