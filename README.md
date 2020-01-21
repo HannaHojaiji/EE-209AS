@@ -16,12 +16,12 @@ The data communication will be encrypted to ensure security of the pins shared b
 
 ## Materials needed
 1) For the first stage: two Android phones or an android phone and a smartwatch (one as a receiver and master device, the other as a passive sensor array with NFC connection)
-2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier 
+2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier. 
 
 ## Timeline for the project
 Week 3-4: Develop the android application to generate the NFC code and authentication. Program phone/watch to colelct sensor data and establish connection. 
 
-Week 5-6: Develop periodic local key and wifi (IP address) sharing to keep aquiring the data. Present the midterm results.
+Week 5-6: Develop periodic local key and wifi (IP address) sharing to keep aquiring the data. Present the midterm results. Check the power efficiency profile and improve the results.
 
 Week 7-8: Implement the key encryption for the data communication and physical checks. Modify and amplify the security checks between the devices. 
 
