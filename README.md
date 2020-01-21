@@ -14,6 +14,19 @@ The data communication will be encrypted to ensure security of the pins shared b
 ![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
 
 
+## Materials needed
+1) For the first stage: two Android phones or an android phone and a smartwatch (one as a receiver and master device, the other as a passive sensor array with NFC connection)
+2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier 
+
+## Timeline for the project
+Week 3-4: Develop the android application to generate the NFC code and authentication. Program phone/watch to colelct sensor data and establish connection. 
+
+Week 5-6: Develop periodic local key and wifi (IP address) sharing to keep aquiring the data. Present the midterm results.
+
+Week 7-8: Implement the key encryption for the data communication and physical checks. Modify and amplify the security checks between the devices. 
+
+Week 9: Finalize reliability tests. Create report, and integrate website. Take demos. 
+
 ## References
 ###### [1] Zhang, Jiansong, et al. "Proximity based IoT device authentication." IEEE INFOCOM 2017-IEEE Conference on Computer Communications. IEEE, 2017.
 ###### [2] Cornelius, Cory T., and David F. Kotz. "Recognizing whether sensors are on the same body." Pervasive and Mobile Computing 8.6 (2012): 822-836.
