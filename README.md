@@ -21,7 +21,7 @@ The data collection will begin after the inital-pairing is done.
 
 Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During an periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receive the event(s), the mobile phone app analyze the captured user response pattern to see if the sensor network is indeed in user's possession or is attached to user's body. 
 
-The data communication between the sensor network and the mobile phone will be disabled if the captured user response pattern is not consistent with the previous collected user response signature. A reauthentication via initial-pairing is needed to reenable the data communication if the user desire to continue sensor data collection. 
+The data communication between the sensor network and the mobile phone will be disabled if the captured user response pattern is not consistent with the previous collected user response signature. A re-authentication via initial-pairing is needed to re-enable the data communication if the user desire to continue sensor data collection. 
 
 ![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
 
@@ -29,10 +29,14 @@ The data communication between the sensor network and the mobile phone will be d
 ## Materials needed
 1) For the first stage: Collect an Android phone and a collection of sensors that includes a smartwatch and a earable. We will then set up stable wireless connection betweeen the Android phone and these sensors so that authenication and data communication can be achieved.
 
-2) After setting up this connection, we can utilize a passive NFC tag as a local (and physical) key identifier.
+2) After setting up this connectioon, we will implement inital-pairing process with an Android app. For example, we can utilize a passive NFC tag as a local (and physical) key identifier and an Andorid app that help establish NFC authenication and WiFi/bluetooth connection.
+
+3) For the periodic-verifying process, we will leverage the acuators inside the smartwatch and the earable to create 
+human-recognizable event(s). Then, the android app will be updated to analyze user response pattern.
+
+4) Optional: If a custom sensor module is needed, we can build one by using arduino, sensor chips, and wifi chips. 
 
 
-3) If a simple sensor system is needed, we can build one by using arduino, sensor module, and wifi module. 
 
 ## Timeline for the project
 Week 3-4: Develop the android application to generate the NFC code and authentication. Program phone/watch to colelct sensor data and establish connection. 
