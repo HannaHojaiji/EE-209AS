@@ -13,6 +13,8 @@ This was an IP address of the shared WiFi connection and a secret key is sent ov
 The data communication will be encrypted to ensure security of the pins shared between the sensor network and the smartphone. 
 ![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
 
+To verify whether the set of sensor networks is indeed located on a target indiviual's body, we will explore and utilize tools and methods that create additonal shared information (e.g., vibration patterns, sound patterns, etc.) and test the existence of these shared information among the mobile device and the set of sensor networks. 
+
 
 ## Materials needed
 1) For the first stage: two Android phones or an android phone and a smartwatch (one as a receiver and master device, the other as a passive sensor array with NFC connection)
