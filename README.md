@@ -62,6 +62,10 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [4] Anand, S. Abhishek, and Nitesh Saxena. "Noisy Vibrational Pairing of IoT Devices." IEEE Transactions on Dependable and Secure Computing 16.3 (2018): 530-545.
 
 
+###### HH: Implement the ADB debugging over BT on watch (1) https://developer.android.com/studio/releases/platform-tools.html
+###### (2) https://www.youtube.com/watch?v=v6_mtCAOops
+###### (3) https://developer.android.com/training/wearables/apps/debugging
+
 
 
 
