@@ -66,6 +66,8 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### (2) https://www.youtube.com/watch?v=v6_mtCAOops
 ###### (3) https://developer.android.com/training/wearables/apps/debugging
 
+To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
+
 
 
 
