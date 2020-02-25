@@ -82,8 +82,8 @@ Get the latest versions of the gradele and plugins to be able to run this code.
 If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
-
-
+The gradle run issues for runproguard:
+https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runproguard
 
 
 
