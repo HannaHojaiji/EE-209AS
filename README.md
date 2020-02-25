@@ -10,6 +10,18 @@ Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 
 Problem statement: autonomous/automatic authentication of a sensor array for same-body sensor applications
 
+Assumptions: The watch is already paired with the phone and the phone is always in user's possession
+
+## Adversary model (adverserial attack)
+Impersonation attack: adversary eavesdrops a wireless node
+Solution: Authenticate based on shared context
+          Use time series to implicitly authenticate/communicate a secure channel 
+          Or use anonymous key agreement like Diffie-Hellman
+
+1. First pairing for initiation "same-body" sensor network
+2. Periodic time series sensor data to detect one node loosing contact with the body (i.e. being stolen, left behind, or simply fall of the body)
+
+## Introduction
 The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphones. This kind of situation can lead to unwanted sensor data collection by unauthorized users and faulty personal data collection. 
 
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
@@ -79,11 +91,22 @@ Get the latest versions of the gradele and plugins to be able to run this code.
 ###### HH: Implement the ADB debugging over BT on watch (1) https://developer.android.com/studio/releases/platform-tools.html
 ###### (2) https://www.youtube.com/watch?v=v6_mtCAOops
 ###### (3) https://developer.android.com/training/wearables/apps/debugging
-If you are not able toconnect to watch trough the server try the following:
+
+Debugging:
+1.If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
-The gradle run issues for runproguard:
+2. The gradle run issues for runproguard:
 https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runproguard
+
+3. “Default activity not found”: https://stackoverflow.com/questions/27970210/default-activity-not-found-for-a-wearable-app-created-with-android-studio-temp
+
+4.Error: resource android:attr/fontVariationSettings not found: compileSdkVersion 28
+
+5. After upgrade android version getting “Duplicate class android.support.v4.app.INotificationSideChannel”: Put these flags in your gradle.properties
+    android.enableJetifier=true
+    android.useAndroidX=true
+    https://stackoverflow.com/questions/55810694/after-upgrade-android-version-getting-duplicate-class-android-support-v4-app-in
 
 
 
