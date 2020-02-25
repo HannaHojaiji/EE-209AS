@@ -81,8 +81,8 @@ To program the watch on CMD go to the platform-tools where you have the adb debu
 To get the wear app started, you need to set the following dependencies:
 dependencies {
   implementation 'androidx.wear:wear:1.0.0'
-  implementation 'com.google.android.support:wearable:2.5.0'
-  compileOnly 'com.google.android.wearable:wearable:2.5.0'
+  ~~implementation 'com.google.android.support:wearable:2.5.0'~~
+  ~~compileOnly 'com.google.android.wearable:wearable:2.5.0'~~
 }
 Make sure your sdk version is 28 for any font variations, 
 In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
