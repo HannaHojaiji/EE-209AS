@@ -62,10 +62,24 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [4] Anand, S. Abhishek, and Nitesh Saxena. "Noisy Vibrational Pairing of IoT Devices." IEEE Transactions on Dependable and Secure Computing 16.3 (2018): 530-545.
 
 
+## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
+To program the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
+To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
+
+To get the wear app started, you need to set the following dependencies:
+dependencies {
+  implementation 'androidx.wear:wear:1.0.0'
+  implementation 'com.google.android.support:wearable:2.5.0'
+  compileOnly 'com.google.android.wearable:wearable:2.5.0'
+}
+Make sure your sdk version is 28 for any font variations, 
+In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
+In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
+Get the latest versions of the gradele and plugins to be able to run this code. 
 ###### HH: Implement the ADB debugging over BT on watch (1) https://developer.android.com/studio/releases/platform-tools.html
 ###### (2) https://www.youtube.com/watch?v=v6_mtCAOops
 ###### (3) https://developer.android.com/training/wearables/apps/debugging
-
+If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
 
