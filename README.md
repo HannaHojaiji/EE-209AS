@@ -81,6 +81,7 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [7].3 IMU data from the earable: https://github.com/nesl/eSenseTester
 ###### [8] Receiving user input: https://javapapers.com/android/get-user-input-in-android/ 
 ###### [9] Receiving user input: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
+###### [10] Pedometer for phone: https://github.com/singhrahuldps/Pedometer
 
 
 ## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
