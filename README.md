@@ -107,6 +107,11 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
     android.enableJetifier=true
     android.useAndroidX=true
     https://stackoverflow.com/questions/55810694/after-upgrade-android-version-getting-duplicate-class-android-support-v4-app-in
+    
+    
+For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
+![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
+[https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
 
 
