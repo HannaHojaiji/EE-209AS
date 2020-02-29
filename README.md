@@ -81,6 +81,13 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [7].3 IMU data received from the IMU sensor of the earable: https://github.com/nesl/eSenseTester
 ###### [8] Receiving input from the user which is the random pin for first time authentication: https://javapapers.com/android/get-user-input-in-android/ 
 ###### [9] Receiving input from the user which is the random pin for first time authentication: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
+###### [10] eSense Earables - https://www.esense.io/earcomp/EarComp-PreACM.pdf
+###### [11] eSense Earables - https://www.esense.io/
+###### [12] eSense Earables - https://www.esense.io/share/eSense-User-Documentation.pdf
+###### [12] eSense Earables - https://www.esense.io/share/eSense-BLE-Specification.pdf
+###### [12] eSense Earables - https://www.esense.io/share/eSense-Android-Library.pdf
+ 
+
 
 
 ## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
