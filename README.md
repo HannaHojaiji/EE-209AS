@@ -122,6 +122,12 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
+Making watch face circular: https://developer.android.com/training/articles/wear-permissions
+
+
+
+
+
 
 
 
