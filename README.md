@@ -84,9 +84,10 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [10] eSense Earables - https://www.esense.io/earcomp/EarComp-PreACM.pdf
 ###### [11] eSense Earables - https://www.esense.io/
 ###### [12] eSense Earables - https://www.esense.io/share/eSense-User-Documentation.pdf
-###### [12] eSense Earables - https://www.esense.io/share/eSense-BLE-Specification.pdf
-###### [12] eSense Earables - https://www.esense.io/share/eSense-Android-Library.pdf
- 
+###### [13] eSense Earables - https://www.esense.io/share/eSense-BLE-Specification.pdf
+###### [14] eSense Earables - https://www.esense.io/share/eSense-Android-Library.pdf
+###### [15] senslog (logging sensor data to phone as txt) - https://github.com/tyrex-team/senslogs
+###### [16] pedometer (Step Counter App for Android) - https://github.com/singhrahuldps/Pedometer
 
 
 
