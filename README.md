@@ -76,6 +76,11 @@ Week 9: Finalize reliability tests. Create a report, and integrate a website. Ta
 ###### [2] Cornelius, Cory T., and David F. Kotz. "Recognizing whether sensors are on the same body." Pervasive and Mobile Computing 8.6 (2012): 822-836.
 ###### [3] Han, Jun, et al. "Do you feel what I hear? Enabling autonomous IoT device pairing using different sensor types." 2018 IEEE Symposium on Security and Privacy (SP). IEEE, 2018.
 ###### [4] Anand, S. Abhishek, and Nitesh Saxena. "Noisy Vibrational Pairing of IoT Devices." IEEE Transactions on Dependable and Secure Computing 16.3 (2018): 530-545.
+###### [5] Random Number Generator: https://www.youtube.com/watch?v=ID4YJHoXbEw
+###### [6] Saving data as a Text File: https://www.youtube.com/watch?v=BnYruBLqdmM
+###### [7].3 IMU data from the earable: https://github.com/nesl/eSenseTester
+###### [8] Receiving user input: https://javapapers.com/android/get-user-input-in-android/ 
+###### [9] Receiving user input: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
 
 
 ## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
@@ -117,13 +122,8 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
-REFERENCES
 
-1. Random Number Generator: https://www.youtube.com/watch?v=ID4YJHoXbEw
-2. Saving data as a Text File: https://www.youtube.com/watch?v=BnYruBLqdmM
-3. IMU data from the earable: https://github.com/nesl/eSenseTester
-4. Receiving user input: https://javapapers.com/android/get-user-input-in-android/ 
-5. Receiving user input: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
+
 
 
 
