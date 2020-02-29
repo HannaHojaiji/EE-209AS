@@ -129,7 +129,14 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
+6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
+
+7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
+
+######Misc for week 9 trials (Hanna Hojaiji): 
 Making watch face circular: https://developer.android.com/training/articles/wear-permissions
+Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
+
 
 
 
