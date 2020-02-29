@@ -38,6 +38,10 @@ The initial-pairing phase can be done through daily-based first-time authenticat
 
 In other words, the data collection follows the same-body authentication protocol and will perform data collection only upon approval from the main protocol.
 
+The initial authentication is done as follows:
+
+Upon request, a pin would be generated which would be a 4-digit random number but it would not be visible. It would be "spoken out" by the app on the earable. Upon hearing the pin, the user must type that out and verify. If the two pins are same then authentication would be successfull. This would be possible only when the earable and phone are with the same person.
+
 ![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
 
 Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During a periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receives the event(s), the mobile phone app analyzes the captured user response pattern to see if the sensor network is indeed in the user's possession or is attached to the user's body. 
@@ -112,6 +116,14 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
 For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
+
+REFERENCES
+
+1. Random Number Generator: https://www.youtube.com/watch?v=ID4YJHoXbEw
+2. Saving data as a Text File: https://www.youtube.com/watch?v=BnYruBLqdmM
+3. IMU data from the earable: https://github.com/nesl/eSenseTester
+4. Receiving user input: https://javapapers.com/android/get-user-input-in-android/ 
+5. Receiving user input: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
 
 
 
