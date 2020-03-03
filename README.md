@@ -21,6 +21,10 @@ Solution: Authenticate based on shared context
 1. First pairing for initiation "same-body" sensor network
 2. Periodic time series sensor data to detect one node loosing contact with the body (i.e. being stolen, left behind, or simply fall of the body)
 
+The initial pairing happens through the random pin spelling through the earables and it activates and establishes connection with the weaarable only if the user has input the same pin on the watch. 
+
+The continues device accessability and data collection happens through the following. Use an array of sensors like acceleromtere, heart rate, background noise analysis, velocity tracking to detect detachment or forgetting one of the wearable pieces from the body senros set. 
+
 ## Introduction
 The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphones. This kind of situation can lead to unwanted sensor data collection by unauthorized users and faulty personal data collection. 
 
@@ -70,6 +74,14 @@ Week 5-6: Develop periodic local key and inertial sensor checkups to keep acquir
 Week 7-8: Implement the key encryption for data communication and physical checks. Modify and amplify the security checks between the devices. 
 
 Week 9: Finalize reliability tests. Create a report, and integrate a website. Take demos. 
+
+## Developed application and sensor set
+The watch has a friendly interface for a circular keypad that matched the face of the watch
+The velocity analysis, accelerometer and gyro data were collected from the wearables. 
+The PPG data was associated with pairing state of the watch and the phone app. 
+The earable provide the text to speech conversion for the random pins generated on the application. 
+The phone acts like a hub to collect and analyze the data and configure if one of the pieces is lost. 
+
 
 ## References
 ###### [1] Zhang, Jiansong, et al. "Proximity-based IoT device authentication." IEEE INFOCOM 2017-IEEE Conference on Computer Communications. IEEE, 2017.
