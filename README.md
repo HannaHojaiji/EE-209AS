@@ -146,6 +146,21 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
 6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
+After updating to 3.3 and Maven repositories. change the following codes in 
+wear dependencies build.gradle
+    compile 'com.google.android.support:wearable:2.5.0'
+    compile 'com.google.android.gms:play-services-wearable:17.0.0'
+shared dependencies build.gradle    
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.google.android.gms:play-services-wearable:17.0.0'
+    compile 'com.google.android.support:wearable:2.5.0'
+mobile dependencies build.gradle        
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    wearApp project(':wear')
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.google.android.gms:play-services:12.0.1'
+    compile project(':shared')
 
 7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
 
