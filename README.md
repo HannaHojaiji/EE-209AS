@@ -46,6 +46,8 @@ The initial authentication is done as follows:
 
 Upon request, a pin would be generated which would be a 4-digit random number but it would not be visible. It would be "spoken out" by the app on the earable. Upon hearing the pin, the user must type that out and verify. If the two pins are same then authentication would be successfull. This would be possible only when the earable and phone are with the same person.
 
+After this authentication is successful, a new activity is generated which would ask for the name of the earables. Once the correct name is typed out and the device (earable) is found, the app displays the values of the accelerometer and gyroscope of the IMU sensor of the earable. These values are also recorded as text files in the phone. Text files are separate for accelerometer as well as gyroscope values.
+
 ![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
 
 Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During a periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receives the event(s), the mobile phone app analyzes the captured user response pattern to see if the sensor network is indeed in the user's possession or is attached to the user's body. 
