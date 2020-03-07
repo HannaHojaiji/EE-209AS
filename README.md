@@ -152,7 +152,7 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 ######Misc for week 9 trials (Hanna Hojaiji): 
 Making watch face circular: https://developer.android.com/training/articles/wear-permissions
 Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
-
+**Note for this project please install the 3.4.1 version of Android from this version as the new beta Android Studio version updates deprecate the previous gradle versions https://developer.android.com/studio/archive
 
 
 
