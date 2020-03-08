@@ -179,6 +179,14 @@ After upgrade android version Put these flags in your gradle.properties
                   versionName "1.0"
               }
     Import @ nullable (inputstreamconnection.java) and comment out the android version of Nullable and keep the AndroidX version
+    * Data collector app
+    Then 4 above make sure the plugin (in buildgradle version) and gradle version in properties match the table
+    Then 2
+    change buildToolsVersion '25.0.0'
+    android.useAndroidX=true
+    android.enableJetifier=true
+    Then change the imports as you install
+    if there's no watch face: https://codelabs.developers.google.com/codelabs/watchface/index.html#0
 7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
 
 ######Misc for week 9 trials (Hanna Hojaiji): 
