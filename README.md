@@ -145,7 +145,7 @@ For gradle version compatibility in your own set up, make sure you adjust the pa
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
 [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
-***Working version for the Android Data Collector App
+***Working version for the Android Sensor Grabber App
 6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
 After updating to 3.3 and Maven repositories. change the following codes in 
 wear dependencies build.gradle
@@ -165,6 +165,20 @@ mobile dependencies build.gradle
 After upgrade android version Put these flags in your gradle.properties
     android.enableJetifier=true
     android.useAndroidX=true
+    
+    After that update the commands (android x, etc.)
+    Update the mimSDK to 14 from 9 by pasting this whole thing
+              android {
+              compileSdkVersion 28
+              buildToolsVersion '28.0.3'
+
+              defaultConfig {
+                  minSdkVersion 21
+                  targetSdkVersion 28
+                  versionCode 1
+                  versionName "1.0"
+              }
+    Import @ nullable (inputstreamconnection.java) and comment out the android version of Nullable and keep the AndroidX version
 7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
 
 ######Misc for week 9 trials (Hanna Hojaiji): 
