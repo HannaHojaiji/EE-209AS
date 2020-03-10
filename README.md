@@ -195,7 +195,7 @@ Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-o
 **Note for this project please install the 3.4.1 version of Android from this version as the new beta Android Studio version updates deprecate the previous gradle versions https://developer.android.com/studio/archive
 
 Keyboard for integration: https://github.com/idoideas/Wear-Keyboard
-
+Procedure to integrate communication of the watch and the phone: https://forum.xda-developers.com/android/software/android-data-transferring-tutorial-t3182153
 
 
 
