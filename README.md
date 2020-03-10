@@ -103,6 +103,7 @@ The phone acts like a hub to collect and analyze the data and configure if one o
 ###### [15] senslog (logging sensor data to phone as txt) - https://github.com/tyrex-team/senslogs
 ###### [16] pedometer (Step Counter App for Android) - https://github.com/singhrahuldps/Pedometern
 ###### [17] Go to new activity - https://www.youtube.com/watch?v=bgIUdb-7Rqo
+###### [18] Phone Gyroscope data - https://www.youtube.com/watch?v=n6cMao3vVRE
 
 
 
