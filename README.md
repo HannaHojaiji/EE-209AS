@@ -190,6 +190,8 @@ After upgrade android version Put these flags in your gradle.properties
     if there's no watch face: https://codelabs.developers.google.com/codelabs/watchface/index.html#0
 7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
 
+8. Small update for wearable depedencies of the gradle of android wear: https://github.com/android/wear-os-samples/blob/master/WearDrawers/Wearable/build.gradle
+
 ######Misc for week 9 trials (Hanna Hojaiji): 
 Making watch face circular: https://developer.android.com/training/articles/wear-permissions
 Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
