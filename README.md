@@ -192,6 +192,9 @@ After upgrade android version Put these flags in your gradle.properties
 
 8. Small update for wearable depedencies of the gradle of android wear: https://github.com/android/wear-os-samples/blob/master/WearDrawers/Wearable/build.gradle
 
+
+9. Migrate Wear apps to GoogleApi: https://developer.android.com/training/wearables/data-layer/migrate-to-googleapi
+
 ######Misc for week 9 trials (Hanna Hojaiji): 
 Making watch face circular: https://developer.android.com/training/articles/wear-permissions
 Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
