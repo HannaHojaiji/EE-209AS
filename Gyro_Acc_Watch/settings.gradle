@@ -1,3 +1,3 @@
 rootProject.name='Combined App'
-include ':app'
-include ':mainactivity_wear'
+include ':mobile'
+include ':wear'

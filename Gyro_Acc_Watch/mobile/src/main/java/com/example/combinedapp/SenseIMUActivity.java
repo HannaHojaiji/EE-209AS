@@ -1,6 +1,5 @@
 package com.example.combinedapp;
 
-import com.example.combinedapp.esenselib.*;
 import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -147,7 +146,7 @@ public class SenseIMUActivity extends AppCompatActivity implements ESenseSensorL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sense_i_m_u);
+        setContentView(R.layout.activity_sense_imu);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
         {
