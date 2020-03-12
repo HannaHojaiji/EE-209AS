@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity_wear"
+    android:id="@+id/Relative"
+    android:verticalScrollbarPosition="left"
+    tools:deviceIds="wear_square">
+
+    <!--
+    <Button
+        android:id="@+id/backspace"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="79dp"
+        android:text="D" />
+    -->
+    <EditText
+        android:id="@+id/textedit"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:background="@android:color/white"
+        android:ellipsize="end"
+        android:hint="write text"
+        android:textColor="@android:color/black"
+        android:textColorHint="#55000000" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="46dp"
+        android:layout_height="59dp"
+        android:layout_alignTop="@id/textedit"
+
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="-8dp"
+        android:layout_marginTop="-16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@id/textedit"
+        android:text="ok" />
+
+    <!--
+    <Button
+        android:id="@+id/space"
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="77dp"
+        android:layout_toRightOf="@id/backspace"
+        android:text="_" />
+
+    <Button
+        android:id="@+id/numbers"
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="76dp"
+        android:layout_toRightOf="@id/space"
+        android:text="123"
+        android:textSize="7sp" />
+
+    <Button
+        android:id="@+id/capital"
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="76dp"
+        android:layout_toRightOf="@id/numbers"
+        android:text="^" />
+    -->
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="128dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/textedit"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="56dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+        <RelativeLayout
+            android:id="@+id/scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
