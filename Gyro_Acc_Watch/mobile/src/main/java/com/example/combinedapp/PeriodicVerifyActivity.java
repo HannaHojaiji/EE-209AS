@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -38,8 +37,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -58,29 +60,39 @@ import com.example.combinedapp.pedometer.StepListener;
 
 /* --- Class --- */
 public class PeriodicVerifyActivity extends AppCompatActivity
-        implements ESenseSensorListener,ESenseConnectionListener, ESenseEventListener,
+        implements ESenseSensorListener, ESenseConnectionListener, ESenseEventListener,
         SensorEventListener, StepListener {
 
     /* --- Fields --- */
     // --- XML Elements ---
-    Button submitDeviceName;
-    EditText deviceNameBox; //OnClick registered to beginTracking
-    TextView statusBox;
-    TextView acc_table;
-    TextView gyro_table;
-    TextView xGyroValue, yGyroValue, zGyroValue, xAccValue, yAccValue, zAccValue;
+    /** Start of eSense Items **/
+    private Button submitDeviceName;
+    private EditText deviceNameBox; //OnClick registered to beginTracking
+    private TextView statusBox;
+    private TextView acc_table;
+    private TextView gyro_table;
+    /** End of eSense Items **/
 
-    private TextView stepsview,seekbartext;
-    private Button register,unregister,reset;
-
+    /** Start of Pedometer Items **/
+    private Button register, unregister, pedometer_ResetStep;
+    private SeekBar pedometer_SensitivitySeekBar;
+    private TextView phone_Acceleration_Table;
+    private TextView phone_Gyroscope_Table;
+    private TextView pedometer_StepValue;
+    private TextView pedometer_SensitivityValue;
+    /** End of Pedometer Items **/
 
     // --- Activity Objects ---
     //LOG ID
-    final private String TAG = "DBG-MainActivity";
+    private static final String TAG_eSENSE = "eSense Earable";
+    private static final String TAG_PHONE = "Phone";
 
     //Location permissions
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 999;
 
+
+
+    /** Start of eSense Items **/
     //Bluetooth manager
     private BluetoothManager mBluetoothManager = null;
     private BluetoothAdapter mBtAdapter = null;
@@ -105,8 +117,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     int delay_milliseconds = 2000;
 
     //Message to write to file
-    String messageToWrite = "";
-    String messageToWrite_gyro = "";
+    private String messageToWrite = "";
+    private String messageToWrite_gyro = "";
 
     //Data Exporter
     DataExportActivity dex;
@@ -124,33 +136,32 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     double mean = 0.0;
     double std_dev = 0.0;
     long total_recording_time = 5; //seconds for outputting the mean and std dev
-
-
-    // Pedometer Items
-    private StepDetector simpleStepDetector;
-    private SensorManager sensorManager;
-    private Sensor accel;
-    private int numSteps=0;
-
-    private SeekBar seekBar;
-
-    //Gyroscope Values
-    private static final String TAG1 = "SenseIMUActivity";
-
-    private Sensor mGyro;
+    /** End of eSense Items **/
 
 
 
+    /** Start of Pedometer Items **/
+    private SensorManager phone_SensorManager;
+    private Sensor phone_Accelerometer;
+    private Sensor phone_Gyroscope;
 
-    /* ---------- New Stuffs 03-12-2020 ---------- */
+    private StepDetector pedometer_StepDetector;
+    private int numSteps = 0;
+    /** End of Pedometer Items **/
+
+    /** ---------- New Stuffs 03-12-2020 ---------- **/
     private static final int ACCELERATION_BUFFER_SIZE = 50;
-    private float[] buffer_accelerationX = new float[ACCELERATION_BUFFER_SIZE];
-    private float[] buffer_accelerationY = new float[ACCELERATION_BUFFER_SIZE];
-    private float[] buffer_accelerationZ = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] eSense_buffer_acc_x = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] eSense_buffer_acc_y = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] eSense_buffer_acc_z = new float[ACCELERATION_BUFFER_SIZE];
+
+    private float[] phone_buffer_acc_x = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] phone_buffer_acc_y = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] phone_buffer_acc_z = new float[ACCELERATION_BUFFER_SIZE];
 
 
-
-
+    private int eSense_buffer_acc_counter = 0;
+    private int phone_buffer_acc_counter = 0;
 
 
     /* --- Methods --- */
@@ -160,120 +171,38 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         setContentView(R.layout.activity_periodic_verify);
 
         // --- Request Permissions ---
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        {
+        // Request location permissions for Bluetooth
+        requestLocationPermissions();
+        // Request external write permissions for saving sensor data
+        requestExternalWriteAccess();
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
         }
 
 
-
+        /** Start of eSense Items **/
         // --- Get XML Elements ---
         submitDeviceName = (Button)findViewById(R.id.button);
         deviceNameBox   = (EditText)findViewById(R.id.deviceNameBox); //OnClick registered to beginTracking
         statusBox = (TextView)findViewById(R.id.statusBox);
-        acc_table = (TextView) findViewById(R.id.acc_table);
-        gyro_table = (TextView) findViewById(R.id.gyro_table);
-
-        //Save Text File
-        //String filename = et_name;
-        //String content = content_one;
-
-        // Gyroscope variables initialized
-        xGyroValue = (TextView) findViewById(R.id.xValue);
-        yGyroValue = (TextView) findViewById(R.id.yValue);
-        zGyroValue = (TextView) findViewById(R.id.zValue);
-
-        // Accelerometer variables initialized
-        xAccValue = (TextView) findViewById(R.id.xAccValue);
-        yAccValue = (TextView) findViewById(R.id.yAccValue);
-        zAccValue = (TextView) findViewById(R.id.zAccValue);
-
-        //For gyroscope
-        Log.d(TAG1, "onCreate: Initializing Sensor Services");
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-        mGyro = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
-        if (mGyro != null) {
-            sensorManager.registerListener((SensorEventListener) PeriodicVerifyActivity.this, mGyro, SensorManager.SENSOR_DELAY_NORMAL);
-            Log.d(TAG, "onCreate: Registered gyroscope listener");
-        } else {
-            xGyroValue.setText("Gyroscope not supported");
-            yGyroValue.setText("Gyroscope not supported");
-            zGyroValue.setText("Gyroscope not supported");
-        }
+        acc_table = (TextView) findViewById(R.id.eSense_acc_table);
+        gyro_table = (TextView) findViewById(R.id.eSense_gyro_table);
 
 
-        // *** Pedometer Items
-        stepsview = (TextView)findViewById(R.id.stepstextview);
-        register = (Button)findViewById(R.id.pedometer_register);
-        unregister = (Button)findViewById(R.id.pedometer_unregister);
-        reset = (Button)findViewById(R.id.pedometer_reset);
-
-        sensorManager = (SensorManager)
-                getSystemService(Context.SENSOR_SERVICE);
-        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        simpleStepDetector = new StepDetector();
-        simpleStepDetector.STEP_THRESHOLD = 12;
-        simpleStepDetector.registerListener(this);
-
-        seekBar=(SeekBar)findViewById(R.id.seekBar);
-        seekbartext=(TextView)findViewById(R.id.seekbar_text);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                simpleStepDetector.STEP_THRESHOLD=seekBar.getProgress();
-                seekbartext.setText(String.valueOf(simpleStepDetector.STEP_THRESHOLD));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-            }
-        });
-        unregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                unregister();
-            }
-        });
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reset();
-            }
-        });
-        // *** End of Pedometer Items
-
-
-
-        //Request location permissions for BLE use
-        requestLocationPermissions();
-        //Request write permissions
-        requestExternalWriteAccess();
-
+        // --- Initialize Objects and Event Handlers ---
         //Initialize Bluetooth manager
         if (mBluetoothManager == null) {
             mBluetoothManager = (BluetoothManager) getSystemService(this.BLUETOOTH_SERVICE);
             if (mBluetoothManager == null) {
-                Log.d(TAG, "ERROR! Unable to initialize BluetoothManager.");
+                Log.d(TAG_eSENSE, "ERROR! Unable to initialize BluetoothManager.");
             }
         }
         //Get bluetooth adapter
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBtAdapter == null) {
-            Log.d(TAG, "Device does not have Bluetooth capability!");
+            Log.d(TAG_eSENSE, "Device does not have Bluetooth capability!");
         }
 
         //Create data exporter
@@ -294,7 +223,82 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             }
         });
         writeThread.start();
+        /** End of eSense Items **/
 
+
+
+        /** Start of Pedometer Items **/
+        // --- Get XML Elements ---
+        phone_Acceleration_Table = (TextView) findViewById(R.id.phone_acc_table);
+        phone_Gyroscope_Table = (TextView) findViewById(R.id.phone_gyro_table);
+
+        pedometer_StepValue = (TextView) findViewById(R.id.pedometer_stepValue);
+        pedometer_SensitivityValue = (TextView) findViewById(R.id.pedometer_sensitivityValue);
+
+        //register = (Button)findViewById(R.id.pedometer_register);
+        //unregister = (Button)findViewById(R.id.pedometer_unregister);
+        pedometer_ResetStep = (Button)findViewById(R.id.pedometer_reset);
+
+        pedometer_SensitivitySeekBar = (SeekBar) findViewById(R.id.pedometer_sensitivityBar);
+
+
+        // --- Initialize Objects and Event Handlers ---
+        phone_SensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        phone_Accelerometer = phone_SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (phone_Accelerometer != null)
+            phone_SensorManager.registerListener(PeriodicVerifyActivity.this, phone_Accelerometer,
+                    10); // Sampling rate: 100 Hz
+
+        phone_Gyroscope = phone_SensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
+        if (phone_Gyroscope != null)
+            phone_SensorManager.registerListener(PeriodicVerifyActivity.this, phone_Gyroscope,
+                    10); // Sampling rate: 100 Hz
+
+        pedometer_StepDetector = new StepDetector();
+        pedometer_StepDetector.PHONE_STEP_THRESHOLD = 12;
+        pedometer_StepDetector.registerListener(this);
+
+        pedometer_SensitivitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                pedometer_StepDetector.PHONE_STEP_THRESHOLD = seekBar.getProgress();
+                pedometer_SensitivityValue.setText(String.valueOf(StepDetector.PHONE_STEP_THRESHOLD));
+            }
+        });
+
+        /*
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register();
+            }
+        });
+
+        unregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                unregister();
+            }
+        });
+         */
+
+        pedometer_ResetStep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+            }
+        });
+
+        /** End of Pedometer Items **/
     }
 
     //Function to save Text File
@@ -326,18 +330,22 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     }
 
 
+    // --- requestExternalWriteAccess ---
+    // Function to request External Write Permission from the phone
     public void requestExternalWriteAccess() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    100);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
         }
     }
 
 
+
+    // --- requestLocationPermissions ---
+    // Function to request Location Permission from the phone
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void requestLocationPermissions() {
-
         //Check to see if this app can get location access
         if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -385,7 +393,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             String deviceAddr = device.getAddress();
 
             if (deviceName != null && deviceName.contains("eSense")) {
-                Log.d(TAG, "Device Name: .." + deviceName + ".. Device Addr: " + deviceAddr);
+                Log.d(TAG_eSENSE, "Device Name: .." + deviceName + ".. Device Addr: " + deviceAddr);
             }
 
 
@@ -406,7 +414,10 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         }
 
         else {
-            String devicename = deviceNameBox.getText().toString();
+            //String devicename = deviceNameBox.getText().toString();
+
+            String devicename = "eSense-0831";
+
             String deviceAddr = "00:04:79:00:0E:D6";
             if(devicename.equals("")) {
                 //devicename = "eSense-1171";  // Sometimes if one doesn't work, try the other earbud
@@ -415,7 +426,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
             }
 
-            Log.d(TAG, "Begin Tracking Device " + devicename);
+            Log.d(TAG_eSENSE, "Begin Tracking Device " + devicename);
 
             manager = new ESenseManager(devicename,
                     PeriodicVerifyActivity.this.getApplicationContext(), this);
@@ -440,7 +451,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             if(System.currentTimeMillis() > last_written_time + 1000) {
 
                 last_written_time = System.currentTimeMillis();
-                Log.d(TAG, "Current Queue Size: " + Long.toString(writeQueue.size()));
+                Log.d(TAG_eSENSE, "Current Queue Size: " + Long.toString(writeQueue.size()));
             }
 
             //Get the first object in the writeQueue
@@ -457,7 +468,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             if(System.currentTimeMillis() > last_written_time + 1000) {
 
                 last_written_time = System.currentTimeMillis();
-                Log.d(TAG, "Current Queue Size: " + Long.toString(writeQueue_gyro.size()));
+                Log.d(TAG_eSENSE, "Current Queue Size: " + Long.toString(writeQueue_gyro.size()));
             }
 
             //Get the first object in the writeQueue
@@ -472,7 +483,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
     //Write the rest of the writeQueue to file - this is called before this service is destroyed
     private void completeWriting() {
-        Log.d(TAG, " Completing Writes to file!");
+        Log.d(TAG_eSENSE, " Completing Writes to file!");
         synchronized (writeQueue) {
             Iterator i = writeQueue.iterator(); // Must be in synchronized block
             while (i.hasNext()) {
@@ -481,9 +492,9 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             }
             writeQueue.clear();
         }
-        Log.d(TAG, " Completed all Writes!");
+        Log.d(TAG_eSENSE, " Completed all Writes!");
 
-        Log.d(TAG, " Completing Writes to file!");
+        Log.d(TAG_eSENSE, " Completing Writes to file!");
         synchronized (writeQueue_gyro) {
             Iterator i = writeQueue_gyro.iterator(); // Must be in synchronized block
             while (i.hasNext()) {
@@ -492,7 +503,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             }
             writeQueue_gyro.clear();
         }
-        Log.d(TAG, " Completed all Writes!");
+        Log.d(TAG_eSENSE, " Completed all Writes!");
 
     }
 
@@ -563,14 +574,14 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     @Override
     public void onDeviceFound(ESenseManager eSenseManager) {
 
-        Log.d(TAG, "Found Device During Scan! ");
+        Log.d(TAG_eSENSE, "Found Device During Scan! ");
         displayStatus("Found Device!");
     }
 
     @Override
     public void onDeviceNotFound(ESenseManager eSenseManager) {
 
-        Log.d(TAG, "Did not find device during scan!");
+        Log.d(TAG_eSENSE, "Did not find device during scan!");
         displayStatus("Did not find Device!");
 
     }
@@ -582,7 +593,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
             // Get Sensor configuration
             boolean sensor_configs = manager.getSensorConfig();
-            Log.d(TAG, "Received Sensor Configuration! " + sensor_configs);
+            Log.d(TAG_eSENSE, "Received Sensor Configuration! " + sensor_configs);
             return sensor_configs;
         }
     });
@@ -590,19 +601,19 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     @Override
     public void onConnected(ESenseManager eSenseManager) {
 
-        Log.d(TAG, "Connected to Device!");
+        Log.d(TAG_eSENSE, "Connected to Device!");
         displayStatus("Connected to Device!");
 
         //Begin Sensor Transmissions
         manager.registerSensorListener(this, sampling_rate);
-        Log.d(TAG, "Register Listener for Sensors!");
+        Log.d(TAG_eSENSE, "Register Listener for Sensors!");
 
         //TODO: Something is wrong with the event listener - it doesn't seem to be able to
         // retrieve the sensor configurations from the bluetoothGATT
 
         //Register Event listener
         boolean correctly_registered = manager.registerEventListener(this);
-        Log.d(TAG, "Registered Event Listener! " + correctly_registered);
+        Log.d(TAG_eSENSE, "Registered Event Listener! " + correctly_registered);
 
 
         new Thread()
@@ -626,7 +637,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     @Override
     public void onDisconnected(ESenseManager eSenseManager) {
 
-        Log.d(TAG, "Disconnected from Device!");
+        Log.d(TAG_eSENSE, "Disconnected from Device!");
         displayStatus("Disconnected from Device!");
 
         completeWriting();
@@ -647,26 +658,53 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             //short[] gyro = evt.getGyro(); //Rotation values
             double[] acc = evt.convertAccToG(esg);  //Acceleration in g
             double[] gyro = evt.convertGyroToDegPerSecond(esg); // Rotation in degrees/sec
-
-
-
-
-
             long timestamp = evt.getTimestamp();  //Get timestamp in system milliseconds.
 
             num_acc_samples += 1;
             num_gyro_samples += 1;
 
+            /*
+            messageToWrite += "\n" + Long.toString(timestamp) + "," + Short.toString(acc[0]) + "," + Short.toString(acc[1]) +
+                    "," + Short.toString(acc[2]) + "," + Short.toString(gyro[0]) + "," + Short.toString(gyro[1]) + "," +
+                    Short.toString(gyro[2]);
+            */
 
-//            messageToWrite += "\n" + Long.toString(timestamp) + "," + Short.toString(acc[0]) + "," + Short.toString(acc[1]) +
-//                    "," + Short.toString(acc[2]) + "," + Short.toString(gyro[0]) + "," + Short.toString(gyro[1]) + "," +
-//                    Short.toString(gyro[2]);
-
+            /*
             messageToWrite += "\n" + Long.toString(timestamp) + "," + Double.toString(acc[0]) + "," + Double.toString(acc[1]) +
                     "," + Double.toString(acc[2]);
 
             messageToWrite_gyro += "\n" + Long.toString(timestamp) + "," + Double.toString(gyro[0]) + "," + Double.toString(gyro[1]) + "," +
                     Double.toString(gyro[2]);
+            */
+
+
+            String timeDate_acc = "[" + getDateString() + " " + getTimeString() + "]";
+
+            String messageToWrite_1 = Double.toString(acc[0]) + "," + Double.toString(acc[1]) +
+                    "," + Double.toString(acc[2]);
+
+            messageToWrite += "\n" + timeDate_acc + messageToWrite_1;
+
+
+            String timeDate_gyro = "[" + getDateString() + " " + getTimeString() + "]";
+
+            String messageToWrite_gyro_1 = Double.toString(gyro[0]) + "," + Double.toString(gyro[1]) + "," +
+                    Double.toString(gyro[2]);
+
+            messageToWrite_gyro += "\n" + timeDate_gyro + messageToWrite_gyro_1;
+
+
+            /*
+            String eSense_AccelerationTableText = "eSense accelerations:\n" + "[" +
+                    "x = " + Double.toString(acc[0]) + ", " +
+                    "y = " + Double.toString(acc[1)+ ", " +
+                    "z = " + Double.toString(acc[2])+ "]";
+
+            String eSense_GyroscopeTableText = "eSense angular velocities:\n" + "[" +
+                    "x = " + Double.toString(gyro[0]) + ", " +
+                    "y = " + Double.toString(gyro[1]) + ", " +
+                    "z = " + Double.toString(gyro[2]) + "]";
+            */
 
             long current_time = System.currentTimeMillis();
 
@@ -677,8 +715,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
                 mean = mean / total_recording_time;
 
-                Log.d(TAG, "Number of ACC samples/sec: " + Long.toString(num_acc_samples));
-                Log.d(TAG, "Mean: " + Double.toString(mean) + " Std Dev: " + Double.toString(std_dev));
+                Log.d(TAG_eSENSE, "Number of ACC samples/sec: " + Long.toString(num_acc_samples));
+                Log.d(TAG_eSENSE, "Mean: " + Double.toString(mean) + " Std Dev: " + Double.toString(std_dev));
 
                 mean = 0.0;
                 std_dev = 0.0;
@@ -688,8 +726,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             if (last_sampled_time + 1000 < current_time) {
                 last_sampled_time = current_time;
 
-                Log.d(TAG, "Number of ACC samples/sec: " + Long.toString(num_acc_samples));
-                Log.d(TAG, "Number of GYRO samples/sec: " + Long.toString(num_gyro_samples));
+                Log.d(TAG_eSENSE, "Number of ACC samples/sec: " + Long.toString(num_acc_samples));
+                Log.d(TAG_eSENSE, "Number of GYRO samples/sec: " + Long.toString(num_gyro_samples));
 
                 // Format for output is similar to "ACC values: [] Sampling Rate: 0"
                 displayACCData("ACC values: " + java.util.Arrays.toString(acc) + " Sampling Rate: " + Long.toString(num_acc_samples));
@@ -702,14 +740,14 @@ public class PeriodicVerifyActivity extends AppCompatActivity
                 num_gyro_samples = 0;
 
                 //Write the message to file
-                Log.d(TAG, "Writing Message of length to Queue" + Long.toString(messageToWrite.length()));
+                Log.d(TAG_eSENSE, "Writing Message of length to Queue" + Long.toString(messageToWrite.length()));
                 writeQueue.add(messageToWrite);
                 //dex.directWriteToFile(messageToWrite);
                 //Reset the message to nothing.
                 messageToWrite = "";
 
                 //Write the message to file for GYRO
-                Log.d(TAG, "Writing Message of length to Queue" + Long.toString(messageToWrite_gyro.length()));
+                Log.d(TAG_eSENSE, "Writing Message of length to Queue" + Long.toString(messageToWrite_gyro.length()));
                 writeQueue_gyro.add(messageToWrite_gyro);
                 //dex.directWriteToFile(messageToWrite);
                 //Reset the message to nothing.
@@ -736,14 +774,14 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
     @Override
     public void onDeviceNameRead(String s) {
-        Log.d(TAG, "READ NAME: " + s);
+        Log.d(TAG_eSENSE, "READ NAME: " + s);
     }
 
     @Override
     public void onSensorConfigRead(ESenseConfig eSenseConfig) {
         esg = eSenseConfig;
         received_configs = true;
-        Log.d(TAG, "Found Sensor Configurations!");
+        Log.d(TAG_eSENSE, "Found Sensor Configurations!");
     }
 
     @Override
@@ -753,92 +791,158 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
 
 
-
-
-
+    /** Start of Pedometer Items **/
+    // --- onSensorChanged ---
+    // Function to handle sensor value changes from the phone
+    // From SensorListener
     @Override
     public void onSensorChanged(SensorEvent event) {
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            Log.d(TAG, "onSensorChanged: accX: " + event.values[0] + "accY: " + event.values[1] + "accZ: " + event.values[2]);
+            Log.d(TAG_PHONE, "onSensorChanged: accX: " + event.values[0] + " accY: " +
+                    event.values[1] + " accZ: " + event.values[2]);
 
-            float[] currentAcc = new float[3];
-            currentAcc[0] = event.values[0];
-            currentAcc[1] = event.values[1];
-            currentAcc[2] = event.values[2];
+            // Get smartphone's current acceleration values
+            float[] phone_CurrentAcc = new float[3];
+            phone_CurrentAcc[0] = event.values[0];
+            phone_CurrentAcc[1] = event.values[1];
+            phone_CurrentAcc[2] = event.values[2];
 
-            simpleStepDetector.updateAccel(
-                    event.timestamp, currentAcc[0], currentAcc[1], currentAcc[2]);
-
-            xAccValue.setText(Float.toString(currentAcc[0]));
-            yAccValue.setText(Float.toString(currentAcc[1]));
-            zAccValue.setText(Float.toString(currentAcc[2]));
+            pedometer_StepDetector.updateAcceleration(
+                    event.timestamp, phone_CurrentAcc[0], phone_CurrentAcc[1], phone_CurrentAcc[2]);
 
 
-            String accData = " " + Float.toString(currentAcc[0]) + ", " +
-                    Float.toString(event.values[1]) + ", " + Float.toString(currentAcc[2]);
+            // Update smartphone's current acceleration values to XML element
+            //String phone_CurrentAcc_X = String.format(Locale.US,"%.4f", phone_CurrentAcc[0]);
+            //String phone_CurrentAcc_Y = String.format(Locale.US,"%.4f", phone_CurrentAcc[1]);
+            //String phone_CurrentAcc_Z = String.format(Locale.US,"%.4f", phone_CurrentAcc[2]);
 
+            String phone_CurrentAcc_X = Float.toString(phone_CurrentAcc[0]);
+            String phone_CurrentAcc_Y = Float.toString(phone_CurrentAcc[1]);
+            String phone_CurrentAcc_Z = Float.toString(phone_CurrentAcc[2]);
+
+            String phone_AccelerationTableText = "Phone accelerations:" + "\n" + "[" +
+                    "x = " + phone_CurrentAcc_X + ", " +
+                    "y = " + phone_CurrentAcc_Y + ", " +
+                    "z = " + phone_CurrentAcc_Z + "]";
+
+            phone_Acceleration_Table.setText(phone_AccelerationTableText);
+
+            // Save smartphone's current acceleration values to text file
+            String accData = " " + Float.toString(phone_CurrentAcc[0]) + ", " +
+                    Float.toString(event.values[1]) + ", " + Float.toString(phone_CurrentAcc[2]);
             dex.Phone_writeAccToFile(accData);
-
         }
 
+
         if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE_UNCALIBRATED) {
-            Log.d(TAG, "onSensorChanged: gyroX: " + event.values[0] + "gyroY: " + event.values[1] + "gyroZ: " + event.values[2]);
+            Log.d(TAG_PHONE, "onSensorChanged: gyroX: " + event.values[0] + "gyroY: " +
+                    event.values[1] + "gyroZ: " + event.values[2]);
+
+            // Get smartphone's current gyroscope (angular velocity) values
+            float[] phone_currentGyro = new float[3];
+            phone_currentGyro[0] = event.values[0];
+            phone_currentGyro[1] = event.values[1];
+            phone_currentGyro[2] = event.values[2];
 
 
-            float[] currentGyro = new float[3];
-            currentGyro[0] = event.values[0];
-            currentGyro[1] = event.values[1];
-            currentGyro[2] = event.values[2];
+            // Update smartphone's current gyroscope (angular velocity) values to XML element
+            //String phone_CurrentGyro_X = String.format("%.4f", phone_currentGyro[0]);
+            //String phone_CurrentGyro_Y = String.format("%.4f", phone_currentGyro[1]);
+            //String phone_CurrentGyro_Z = String.format("%.4f", phone_currentGyro[2]);
 
-            xGyroValue.setText("xValue: " + currentGyro[0]);
-            yGyroValue.setText("yValue: " + currentGyro[1]);
-            zGyroValue.setText("zValue: " + currentGyro[2]);
+            String phone_CurrentGyro_X = Float.toString(phone_currentGyro[0]);
+            String phone_CurrentGyro_Y = Float.toString(phone_currentGyro[1]);
+            String phone_CurrentGyro_Z = Float.toString(phone_currentGyro[2]);
+
+            String phone_GyroscopeTableText = "Phone angular velocities:\n" + "[" +
+                    "x = " + phone_CurrentGyro_X + ", " +
+                    "y = " + phone_CurrentGyro_Y + ", " +
+                    "z = " + phone_CurrentGyro_Z + "]";
+
+            phone_Gyroscope_Table.setText(phone_GyroscopeTableText);
 
 
-            String gyroData = " " + Float.toString(currentGyro[0]) + ", " +
-                    Float.toString(currentGyro[1]) + ", " +Float.toString(currentGyro[2]);
-
-            dex.Phone_writeAccToFile(gyroData);
+            // Save smartphone's current gyroscope (angular velocity) to text file
+            String gyroData = " " + Float.toString(phone_currentGyro[0]) + ", " +
+                    Float.toString(phone_currentGyro[1]) + ", " +Float.toString(phone_currentGyro[2]);
+            dex.Phone_writeGyroToFile(gyroData);
         }
     }
 
+    // --- onAccuracyChanged ---
+    // Function to handle senor accuracy changes from the phone
+    // From SensorListener
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
+
+    // --- step ---
+    // Function to
     @Override
     public void step(long timeNs) {
         numSteps++;
-        stepsview.setText(String.valueOf(numSteps));
+        pedometer_StepValue.setText(String.valueOf(numSteps));
     }
 
 
+    /*
     private void register(){
-        if(sensorManager == null) {
-            sensorManager = (SensorManager)
+        if(phone_SensorManager == null) {
+            phone_SensorManager = (SensorManager)
                     getSystemService(Context.SENSOR_SERVICE);
         }
-        sensorManager.registerListener(PeriodicVerifyActivity.this, accel, SensorManager.SENSOR_DELAY_GAME);
+        phone_SensorManager.registerListener(PeriodicVerifyActivity.this, phone_Accelerometer, SensorManager.SENSOR_DELAY_GAME);
     }
 
     private void unregister(){
-        if (sensorManager != null) {
-            sensorManager.unregisterListener(PeriodicVerifyActivity.this);
+        if (phone_SensorManager != null) {
+            phone_SensorManager.unregisterListener(PeriodicVerifyActivity.this);
         }
     }
+    */
 
     private void reset(){
-        if (sensorManager != null) {
-            sensorManager.unregisterListener(this);
+        /*
+        if (phone_SensorManager != null) {
+            phone_SensorManager.unregisterListener(this);
         }
+        */
         numSteps=0;
-        sensorManager =null;
-        stepsview.setText("0");
+        // phone_SensorManager =null;
+        pedometer_StepValue.setText("0");
+    }
+    /** End of Pedometer Items **/
+
+
+    //returns a string containing today's date
+    public static String getDateString(){
+        Date time = Calendar.getInstance().getTime();
+        SimpleDateFormat outputFmt = new SimpleDateFormat("MM-dd-yyyy");
+        return outputFmt.format(time);
+    }
+
+    //returns a string containing a timestamp in format (HH-mm-ss)
+    public static String getTimeString(){
+        Date time = Calendar.getInstance().getTime();
+        SimpleDateFormat outputFmt = new SimpleDateFormat("HH-mm-ss");
+        return outputFmt.format(time);
+    }
+
+    //returns a string containing a timestamp in format (HH:mm:ss)
+    public static String getTimeStringWithColons() {
+        Date time = Calendar.getInstance().getTime();
+        SimpleDateFormat outputFmt = new SimpleDateFormat("HH:mm:ss");
+        return outputFmt.format(time);
     }
 
 
+
+
+    // --- openInitAuthActivity ---
+    // Function to transit back to Initial Authentication Activity
     public void openInitAuthActivity(){
         Intent intent = new Intent(this, InitAuthActivity.class);
         startActivity(intent);

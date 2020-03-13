@@ -48,6 +48,10 @@ public class SensorFilter {
         return retval;
     }
 
+
+    /* ---  normalize ---
+     * Normalization operation for an array
+     */
     public static float[] normalize(float[] a) {
         float[] retval = new float[a.length];
         float norm = norm(a);

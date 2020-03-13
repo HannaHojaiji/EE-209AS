@@ -15,19 +15,22 @@ import java.util.Date;
 /* --- Class --- */
 public class DataExportActivity {
 
-    final String TAG = "DBG-DATAEXPORTER:";
+    /* --- Fields --- */
+    // --- Activity Objects ---
+    //LOG ID
+    private static final String TAG_DATAEXPORT = "data exporter";
 
-    File mExportRoot;
-    File mExportDir;
-    int currentSession = 0;
+    private File mExportRoot;
+    private File mExportDir;
+    private int currentSession = 0;
 
-    //String mCurrentDateString = "";
-
+    /* --- Methods --- */
     public DataExportActivity() {
 
+        // --- Request Permissions ---
         String state = Environment.getExternalStorageState();
         if (!Environment.MEDIA_MOUNTED.equals(state)) {
-            Log.d(TAG, "No SD card, can't export Data");
+            Log.d(TAG_DATAEXPORT, "No SD card, can't export Data");
         } else {
             //We use the Download directory for saving our .csv file.
             mExportRoot = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
@@ -53,10 +56,10 @@ public class DataExportActivity {
 
 
             printWriter.println(packet); //write the record to the mood textfile
-            Log.d(TAG, "Successfully wrote String of length" + Long.toString(packet.length()));
+            Log.d(TAG_DATAEXPORT, "Successfully wrote String of length" + Long.toString(packet.length()));
         } catch (Exception exc) {
             //if there are any exceptions, return false
-            Log.d(TAG, exc.getMessage());
+            Log.d(TAG_DATAEXPORT, exc.getMessage());
         } finally {
             if (printWriter != null) printWriter.close();
         }
@@ -74,10 +77,10 @@ public class DataExportActivity {
 
 
             printWriter.println(packet); //write the record to the mood textfile
-            Log.d(TAG, "Successfully wrote String of length" + Long.toString(packet.length()));
+            Log.d(TAG_DATAEXPORT, "Successfully wrote String of length" + Long.toString(packet.length()));
         } catch (Exception exc) {
             //if there are any exceptions, return false
-            Log.d(TAG, exc.getMessage());
+            Log.d(TAG_DATAEXPORT, exc.getMessage());
         } finally {
             if (printWriter != null) printWriter.close();
         }
@@ -104,11 +107,11 @@ public class DataExportActivity {
 
             printWriter.println(dataToWrite); // write the current phone acc values into the text file
 
-            Log.d(TAG, "Successfully wrote String of length" + Long.toString(accData.length()));
+            Log.d(TAG_DATAEXPORT, "Successfully wrote String of length" + Long.toString(accData.length()));
 
         } catch (Exception exc) {
             //if there are any exceptions, return false
-            Log.d(TAG, exc.getMessage());
+            Log.d(TAG_DATAEXPORT, exc.getMessage());
 
         } finally {
             if (printWriter != null) printWriter.close();
@@ -134,11 +137,11 @@ public class DataExportActivity {
             printWriter = new PrintWriter(new FileWriter(file, true));
             printWriter.println(dataToWrite); // write the current phone gyro values into the text file
 
-            Log.d(TAG, "Successfully wrote String of length" + Long.toString(gyroData.length()));
+            Log.d(TAG_DATAEXPORT, "Successfully wrote String of length" + Long.toString(gyroData.length()));
 
         } catch (Exception exc) {
             //if there are any exceptions, return false
-            Log.d(TAG, exc.getMessage());
+            Log.d(TAG_DATAEXPORT, exc.getMessage());
 
         } finally {
             if (printWriter != null) printWriter.close();
@@ -148,7 +151,7 @@ public class DataExportActivity {
 
     private int findCurrentSession() {
         File[] files = mExportDir.listFiles();
-        Log.d(TAG,  "Size: "+ files.length);
+        Log.d(TAG_DATAEXPORT,  "Size: "+ files.length);
         return files.length;
     }
 

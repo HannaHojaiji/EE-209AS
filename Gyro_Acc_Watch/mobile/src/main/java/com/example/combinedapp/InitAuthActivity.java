@@ -20,17 +20,17 @@ public class InitAuthActivity extends AppCompatActivity {
 
     /* --- Fields --- */
     // --- XML Elements ---
-    Button button_GeneratePin, button_VerifyPin;
-    EditText text_TypePin;
-    TextView text_TypedPin;
+    private Button button_GeneratePin, button_VerifyPin;
+    private EditText text_TypePin;
+    private TextView text_TypedPin;
 
     // --- Activity Objects ---
-    TextToSpeech TextToSpeech_InitAuth;
-    Random PinGenerator;
-    int minValidPin, maxValidPin, randomPin;
-    String typedPin, randomPinToSpeak, randomPinString;
-    String pinAuthMessage_Success = "Authentication Success";
-    String pinAuthMessage_Failed = "Authentication Failed";
+    private TextToSpeech TextToSpeech_InitAuth;
+    private Random PinGenerator;
+    private int minValidPin, maxValidPin, randomPin;
+    private String typedPin, randomPinToSpeak, randomPinString;
+    private String pinAuthMessage_Success = "Authentication Success";
+    private String pinAuthMessage_Failed = "Authentication Failed";
 
 
 
@@ -123,6 +123,9 @@ public class InitAuthActivity extends AppCompatActivity {
         super.onPause();
     }
 
+
+    // --- openPeriodicVerifyActivity ---
+    // Function to transit to Periodic Verify Activity
     public void openPeriodicVerifyActivity(){
         Intent intent = new Intent(this, PeriodicVerifyActivity.class);
         startActivity(intent);

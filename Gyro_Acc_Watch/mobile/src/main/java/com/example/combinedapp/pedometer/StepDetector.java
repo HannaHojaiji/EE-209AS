@@ -9,12 +9,12 @@ public class StepDetector {
     private static final int VEL_RING_SIZE = 10;
 
     // change this threshold according to your sensitivity preferences
-    public static float STEP_THRESHOLD = 12f;
-
-    private static final int STEP_DELAY_NS = 250000000;
+    public static float ESENSE_STEP_THRESHOLD = 12f;
+    public static float PHONE_STEP_THRESHOLD = 12f;
 
 
     private StepListener listener;
+
     private int accelRingCounter = 0;
     private int velRingCounter = 0;
     private float[] accelRingX = new float[ACCEL_RING_SIZE];
@@ -22,6 +22,7 @@ public class StepDetector {
     private float[] accelRingZ = new float[ACCEL_RING_SIZE];
     private float[] velRing = new float[VEL_RING_SIZE];
 
+    private static final int STEP_DELAY_NS = 250000000;
     private long lastStepTimeNs = 0;
     private float oldVelocityEstimate = 0;
 
@@ -33,7 +34,7 @@ public class StepDetector {
     }
 
 
-    public void updateAccel(long timeNs, float x, float y, float z) {
+    public void updateAcceleration(long timeNs, float x, float y, float z) {
         float[] currentAccel = new float[3];
         currentAccel[0] = x;
         currentAccel[1] = y;
@@ -62,7 +63,7 @@ public class StepDetector {
 
         float velocityEstimate = SensorFilter.sum(velRing);
 
-        if (velocityEstimate > STEP_THRESHOLD && oldVelocityEstimate <= STEP_THRESHOLD
+        if (velocityEstimate > PHONE_STEP_THRESHOLD && oldVelocityEstimate <= PHONE_STEP_THRESHOLD
                 && (timeNs - lastStepTimeNs > STEP_DELAY_NS)) {
             listener.step(timeNs);
             lastStepTimeNs = timeNs;
