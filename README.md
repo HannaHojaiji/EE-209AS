@@ -204,7 +204,7 @@ Keyboard for integration: https://github.com/idoideas/Wear-Keyboard
 Procedure to integrate communication of the watch and the phone: https://forum.xda-developers.com/android/software/android-data-transferring-tutorial-t3182153
 https://medium.com/@manuelvicnt/android-wear-accessing-the-data-layer-api-d64fd55982e3
 
-
+Continuous data syncing with watch: https://developer.android.com/training/wearables/data-layer/accessing.html#java
 
 
 
