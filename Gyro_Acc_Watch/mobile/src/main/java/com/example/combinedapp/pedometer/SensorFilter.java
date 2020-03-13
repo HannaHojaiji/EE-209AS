@@ -1,6 +1,6 @@
 package com.example.combinedapp.pedometer;
 
-/* --- class ---*/
+/* --- Class ---*/
 public class SensorFilter {
 
     /* --- Methods --- */

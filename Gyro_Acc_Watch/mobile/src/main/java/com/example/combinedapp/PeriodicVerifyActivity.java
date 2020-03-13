@@ -68,7 +68,7 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     TextView statusBox;
     TextView acc_table;
     TextView gyro_table;
-    TextView xValue, yValue, zValue, xAccValue, yAccValue, zAccValue;
+    TextView xGyroValue, yGyroValue, zGyroValue, xAccValue, yAccValue, zAccValue;
 
     private TextView stepsview,seekbartext;
     private Button register,unregister,reset;
@@ -141,6 +141,18 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
 
 
+
+    /* ---------- New Stuffs 03-12-2020 ---------- */
+    private static final int ACCELERATION_BUFFER_SIZE = 50;
+    private float[] buffer_accelerationX = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] buffer_accelerationY = new float[ACCELERATION_BUFFER_SIZE];
+    private float[] buffer_accelerationZ = new float[ACCELERATION_BUFFER_SIZE];
+
+
+
+
+
+
     /* --- Methods --- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,9 +179,9 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         //String content = content_one;
 
         // Gyroscope variables initialized
-        xValue = (TextView) findViewById(R.id.xValue);
-        yValue = (TextView) findViewById(R.id.yValue);
-        zValue = (TextView) findViewById(R.id.zValue);
+        xGyroValue = (TextView) findViewById(R.id.xValue);
+        yGyroValue = (TextView) findViewById(R.id.yValue);
+        zGyroValue = (TextView) findViewById(R.id.zValue);
 
         // Accelerometer variables initialized
         xAccValue = (TextView) findViewById(R.id.xAccValue);
@@ -185,17 +197,17 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             sensorManager.registerListener((SensorEventListener) PeriodicVerifyActivity.this, mGyro, SensorManager.SENSOR_DELAY_NORMAL);
             Log.d(TAG, "onCreate: Registered gyroscope listener");
         } else {
-            xValue.setText("Gyroscope not supported");
-            yValue.setText("Gyroscope not supported");
-            zValue.setText("Gyroscope not supported");
+            xGyroValue.setText("Gyroscope not supported");
+            yGyroValue.setText("Gyroscope not supported");
+            zGyroValue.setText("Gyroscope not supported");
         }
 
 
         // *** Pedometer Items
-        stepsview=(TextView)findViewById(R.id.stepstextview);
-        register=(Button)findViewById(R.id.pedometer_register);
-        unregister=(Button)findViewById(R.id.pedometer_unregister);
-        reset=(Button)findViewById(R.id.pedometer_reset);
+        stepsview = (TextView)findViewById(R.id.stepstextview);
+        register = (Button)findViewById(R.id.pedometer_register);
+        unregister = (Button)findViewById(R.id.pedometer_unregister);
+        reset = (Button)findViewById(R.id.pedometer_reset);
 
         sensorManager = (SensorManager)
                 getSystemService(Context.SENSOR_SERVICE);
@@ -635,6 +647,11 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             //short[] gyro = evt.getGyro(); //Rotation values
             double[] acc = evt.convertAccToG(esg);  //Acceleration in g
             double[] gyro = evt.convertGyroToDegPerSecond(esg); // Rotation in degrees/sec
+
+
+
+
+
             long timestamp = evt.getTimestamp();  //Get timestamp in system milliseconds.
 
             num_acc_samples += 1;
@@ -735,25 +752,54 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     }
 
 
+
+
+
+
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-        {
 
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            Log.d(TAG, "onSensorChanged: accX: " + event.values[0] + "accY: " + event.values[1] + "accZ: " + event.values[2]);
+
+            float[] currentAcc = new float[3];
+            currentAcc[0] = event.values[0];
+            currentAcc[1] = event.values[1];
+            currentAcc[2] = event.values[2];
 
             simpleStepDetector.updateAccel(
-                    event.timestamp, event.values[0], event.values[1], event.values[2]);
-                    xAccValue.setText(Float.toString(event.values[0]));
-                    yAccValue.setText(Float.toString(event.values[1]));
-                    zAccValue.setText(Float.toString(event.values[2]));
+                    event.timestamp, currentAcc[0], currentAcc[1], currentAcc[2]);
+
+            xAccValue.setText(Float.toString(currentAcc[0]));
+            yAccValue.setText(Float.toString(currentAcc[1]));
+            zAccValue.setText(Float.toString(currentAcc[2]));
+
+
+            String accData = " " + Float.toString(currentAcc[0]) + ", " +
+                    Float.toString(event.values[1]) + ", " + Float.toString(currentAcc[2]);
+
+            dex.Phone_writeAccToFile(accData);
+
         }
 
         if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE_UNCALIBRATED) {
-            Log.d(TAG, "onSensorChanged: X: " + event.values[0] + "Y: " + event.values[1] + "Z: " + event.values[2]);
+            Log.d(TAG, "onSensorChanged: gyroX: " + event.values[0] + "gyroY: " + event.values[1] + "gyroZ: " + event.values[2]);
 
-            xValue.setText("xValue: " + event.values[0]);
-            yValue.setText("yValue: " + event.values[1]);
-            zValue.setText("zValue: " + event.values[2]);
+
+            float[] currentGyro = new float[3];
+            currentGyro[0] = event.values[0];
+            currentGyro[1] = event.values[1];
+            currentGyro[2] = event.values[2];
+
+            xGyroValue.setText("xValue: " + currentGyro[0]);
+            yGyroValue.setText("yValue: " + currentGyro[1]);
+            zGyroValue.setText("zValue: " + currentGyro[2]);
+
+
+            String gyroData = " " + Float.toString(currentGyro[0]) + ", " +
+                    Float.toString(currentGyro[1]) + ", " +Float.toString(currentGyro[2]);
+
+            dex.Phone_writeAccToFile(gyroData);
         }
     }
 

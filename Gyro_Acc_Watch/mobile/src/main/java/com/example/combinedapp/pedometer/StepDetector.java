@@ -1,6 +1,10 @@
 package com.example.combinedapp.pedometer;
 
+/* --- Class ---*/
 public class StepDetector {
+
+    /* --- Fields --- */
+    // Buffer size for recorded accelerations and their estimated velocities
     private static final int ACCEL_RING_SIZE = 50;
     private static final int VEL_RING_SIZE = 10;
 
@@ -9,17 +13,21 @@ public class StepDetector {
 
     private static final int STEP_DELAY_NS = 250000000;
 
+
+    private StepListener listener;
     private int accelRingCounter = 0;
+    private int velRingCounter = 0;
     private float[] accelRingX = new float[ACCEL_RING_SIZE];
     private float[] accelRingY = new float[ACCEL_RING_SIZE];
     private float[] accelRingZ = new float[ACCEL_RING_SIZE];
-    private int velRingCounter = 0;
     private float[] velRing = new float[VEL_RING_SIZE];
+
     private long lastStepTimeNs = 0;
     private float oldVelocityEstimate = 0;
 
-    private StepListener listener;
 
+
+    /* --- Methods --- */
     public void registerListener(StepListener listener) {
         this.listener = listener;
     }
