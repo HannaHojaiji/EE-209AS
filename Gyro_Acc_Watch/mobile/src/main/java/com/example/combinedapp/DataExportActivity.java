@@ -34,7 +34,7 @@ public class DataExportActivity {
         } else {
             //We use the Download directory for saving our .csv file.
             mExportRoot = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-            mExportDir = new File(mExportRoot, "ESENSE_DATA");
+            mExportDir = new File(mExportRoot, "209AS_DATA");
             if (!mExportDir.exists()) {
                 mExportDir.mkdirs();
             }
@@ -96,7 +96,7 @@ public class DataExportActivity {
         // --- Write data into Text File ---
         printWriter = null;
 
-        String timeDate = "[" + getDateString() + " " + getTimeString() + "]";
+        String timeDate = getDateString() + "," + getTimeStringWithColons();
         String dataToWrite = timeDate + "," + accData;
 
         try {
@@ -127,7 +127,7 @@ public class DataExportActivity {
         // --- Write data into Text File ---
         printWriter = null;
 
-        String timeDate = "[" + getDateString() + " " + getTimeString() + "]";
+        String timeDate = getDateString() + "," + getTimeStringWithColons();
         String dataToWrite = timeDate + "," + gyroData;
 
         try {

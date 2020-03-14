@@ -74,13 +74,20 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     /** End of eSense Items **/
 
     /** Start of Pedometer Items **/
-    private Button register, unregister, pedometer_ResetStep;
-    private SeekBar pedometer_SensitivitySeekBar;
     private TextView phone_Acceleration_Table;
     private TextView phone_Gyroscope_Table;
-    private TextView pedometer_StepValue;
-    private TextView pedometer_SensitivityValue;
+
+    private TextView phone_StepValue;
+    private SeekBar phone_StepSensitivitySeekBar;
+    private TextView phone_StepSensitivityValue;
+    private TextView eSense_StepValue;
+    private SeekBar eSense_StepSensitivitySeekBar;
+    private TextView eSense_StepSensitivityValue;
+
+    private Button register, unregister, pedometer_ResetStep;
     /** End of Pedometer Items **/
+
+
 
     // --- Activity Objects ---
     //LOG ID
@@ -89,8 +96,6 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
     //Location permissions
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 999;
-
-
 
     /** Start of eSense Items **/
     //Bluetooth manager
@@ -139,18 +144,19 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     /** End of eSense Items **/
 
 
-
     /** Start of Pedometer Items **/
     private SensorManager phone_SensorManager;
     private Sensor phone_Accelerometer;
     private Sensor phone_Gyroscope;
 
     private StepDetector pedometer_StepDetector;
-    private int numSteps = 0;
+    private int phone_numSteps = 0;
+    private int eSense_numSteps = 0;
     /** End of Pedometer Items **/
 
-    /** ---------- New Stuffs 03-12-2020 ---------- **/
-    private static final int ACCELERATION_BUFFER_SIZE = 50;
+
+    /** Start of Data Analysis Items **/
+    private static final int ACCELERATION_BUFFER_SIZE = 100;
     private float[] eSense_buffer_acc_x = new float[ACCELERATION_BUFFER_SIZE];
     private float[] eSense_buffer_acc_y = new float[ACCELERATION_BUFFER_SIZE];
     private float[] eSense_buffer_acc_z = new float[ACCELERATION_BUFFER_SIZE];
@@ -159,9 +165,13 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     private float[] phone_buffer_acc_y = new float[ACCELERATION_BUFFER_SIZE];
     private float[] phone_buffer_acc_z = new float[ACCELERATION_BUFFER_SIZE];
 
-
     private int eSense_buffer_acc_counter = 0;
     private int phone_buffer_acc_counter = 0;
+
+    private static final int STEP_BUFFER_SIZE = 50;
+    private float[] eSense_buffer_step = new float[STEP_BUFFER_SIZE];
+    private float[] phone_buffer_step = new float[STEP_BUFFER_SIZE];
+    /** End of Data Analysis Items **/
 
 
     /* --- Methods --- */
@@ -232,14 +242,20 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         phone_Acceleration_Table = (TextView) findViewById(R.id.phone_acc_table);
         phone_Gyroscope_Table = (TextView) findViewById(R.id.phone_gyro_table);
 
-        pedometer_StepValue = (TextView) findViewById(R.id.pedometer_stepValue);
-        pedometer_SensitivityValue = (TextView) findViewById(R.id.pedometer_sensitivityValue);
+
+        phone_StepValue = (TextView) findViewById(R.id.pedometer_phoneStepValue);
+        eSense_StepValue = (TextView) findViewById(R.id.pedometer_eSenseStepValue);
+
+        phone_StepSensitivitySeekBar = (SeekBar) findViewById(R.id.pedometer_phoneSensitivityBar);
+        eSense_StepSensitivitySeekBar = (SeekBar) findViewById(R.id.pedometer_eSenseSensitivityBar);
+        phone_StepSensitivityValue = (TextView) findViewById(R.id.pedometer_phoneSensitivityValue);
+        eSense_StepSensitivityValue = (TextView) findViewById(R.id.pedometer_eSenseSensitivityValue);
+
 
         //register = (Button)findViewById(R.id.pedometer_register);
         //unregister = (Button)findViewById(R.id.pedometer_unregister);
         pedometer_ResetStep = (Button)findViewById(R.id.pedometer_reset);
 
-        pedometer_SensitivitySeekBar = (SeekBar) findViewById(R.id.pedometer_sensitivityBar);
 
 
         // --- Initialize Objects and Event Handlers ---
@@ -255,11 +271,16 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             phone_SensorManager.registerListener(PeriodicVerifyActivity.this, phone_Gyroscope,
                     10); // Sampling rate: 100 Hz
 
+
+
         pedometer_StepDetector = new StepDetector();
         pedometer_StepDetector.PHONE_STEP_THRESHOLD = 12;
+        pedometer_StepDetector.ESENSE_STEP_THRESHOLD = 12;
         pedometer_StepDetector.registerListener(this);
 
-        pedometer_SensitivitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+
+        phone_StepSensitivitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
@@ -271,7 +292,23 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 pedometer_StepDetector.PHONE_STEP_THRESHOLD = seekBar.getProgress();
-                pedometer_SensitivityValue.setText(String.valueOf(StepDetector.PHONE_STEP_THRESHOLD));
+                phone_StepSensitivityValue.setText("Phone: " + String.valueOf(StepDetector.PHONE_STEP_THRESHOLD));
+            }
+        });
+
+        eSense_StepSensitivitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                pedometer_StepDetector.ESENSE_STEP_THRESHOLD = seekBar.getProgress();
+                eSense_StepSensitivityValue.setText("eSense: " + String.valueOf(StepDetector.ESENSE_STEP_THRESHOLD));
             }
         });
 
@@ -300,6 +337,10 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
         /** End of Pedometer Items **/
     }
+
+
+
+
 
     //Function to save Text File
     private void saveTextAsFile(String filename, String content)
@@ -677,21 +718,21 @@ public class PeriodicVerifyActivity extends AppCompatActivity
                     Double.toString(gyro[2]);
             */
 
+            // Check for update in step count from eSense
+            pedometer_StepDetector.eSense_UpdateAcceleration(
+                    timestamp, (float) acc[0], (float) acc[1], (float) acc[2]);
 
-            String timeDate_acc = "[" + getDateString() + " " + getTimeString() + "]";
 
+            String timeDate_acc = getDateString() + "," + getTimeStringWithColons();
             String messageToWrite_1 = Double.toString(acc[0]) + "," + Double.toString(acc[1]) +
                     "," + Double.toString(acc[2]);
+            messageToWrite +=  timeDate_acc + "," + messageToWrite_1 + "," + "\n";
 
-            messageToWrite += "\n" + timeDate_acc + messageToWrite_1;
 
-
-            String timeDate_gyro = "[" + getDateString() + " " + getTimeString() + "]";
-
+            String timeDate_gyro = getDateString() + "," + getTimeStringWithColons();
             String messageToWrite_gyro_1 = Double.toString(gyro[0]) + "," + Double.toString(gyro[1]) + "," +
                     Double.toString(gyro[2]);
-
-            messageToWrite_gyro += "\n" + timeDate_gyro + messageToWrite_gyro_1;
+            messageToWrite_gyro += timeDate_gyro + "," + messageToWrite_gyro_1 + "," + "\n";
 
 
             /*
@@ -808,9 +849,9 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             phone_CurrentAcc[1] = event.values[1];
             phone_CurrentAcc[2] = event.values[2];
 
-            pedometer_StepDetector.updateAcceleration(
+            // Check for update in step count from phone
+            pedometer_StepDetector.phone_UpdateAcceleration(
                     event.timestamp, phone_CurrentAcc[0], phone_CurrentAcc[1], phone_CurrentAcc[2]);
-
 
             // Update smartphone's current acceleration values to XML element
             //String phone_CurrentAcc_X = String.format(Locale.US,"%.4f", phone_CurrentAcc[0]);
@@ -829,8 +870,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             phone_Acceleration_Table.setText(phone_AccelerationTableText);
 
             // Save smartphone's current acceleration values to text file
-            String accData = " " + Float.toString(phone_CurrentAcc[0]) + ", " +
-                    Float.toString(event.values[1]) + ", " + Float.toString(phone_CurrentAcc[2]);
+            String accData = Float.toString(phone_CurrentAcc[0]) + "," +
+                    Float.toString(event.values[1]) + "," + Float.toString(phone_CurrentAcc[2]);
             dex.Phone_writeAccToFile(accData);
         }
 
@@ -864,8 +905,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
 
 
             // Save smartphone's current gyroscope (angular velocity) to text file
-            String gyroData = " " + Float.toString(phone_currentGyro[0]) + ", " +
-                    Float.toString(phone_currentGyro[1]) + ", " +Float.toString(phone_currentGyro[2]);
+            String gyroData = Float.toString(phone_currentGyro[0]) + "," +
+                    Float.toString(phone_currentGyro[1]) + "," +Float.toString(phone_currentGyro[2]);
             dex.Phone_writeGyroToFile(gyroData);
         }
     }
@@ -877,16 +918,6 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
-
-
-    // --- step ---
-    // Function to
-    @Override
-    public void step(long timeNs) {
-        numSteps++;
-        pedometer_StepValue.setText(String.valueOf(numSteps));
-    }
-
 
     /*
     private void register(){
@@ -910,13 +941,34 @@ public class PeriodicVerifyActivity extends AppCompatActivity
             phone_SensorManager.unregisterListener(this);
         }
         */
-        numSteps=0;
+        phone_numSteps = 0;
+        eSense_numSteps = 0;
         // phone_SensorManager =null;
-        pedometer_StepValue.setText("0");
+        phone_StepValue.setText("Phone: 0");
+        eSense_StepValue.setText("eSense: 0");
+    }
+
+    // --- eSense_UpdateStep ---
+    // Function to update counted steps from eSense
+    // From StepListener
+    @Override
+    public void eSense_UpdateStep(long timeNs) {
+        eSense_numSteps++;
+        eSense_StepValue.setText("eSense: " + String.valueOf(eSense_numSteps));
+    }
+
+    // --- phone_UpdateStep ---
+    // Function to update counted steps from phone
+    // From StepListener
+    @Override
+    public void phone_UpdateStep(long timeNs) {
+        phone_numSteps++;
+        phone_StepValue.setText("Phone: " + String.valueOf(phone_numSteps));
     }
     /** End of Pedometer Items **/
 
 
+    /** Start of Utility Items **/
     //returns a string containing today's date
     public static String getDateString(){
         Date time = Calendar.getInstance().getTime();
@@ -938,15 +990,14 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         return outputFmt.format(time);
     }
 
-
-
-
     // --- openInitAuthActivity ---
     // Function to transit back to Initial Authentication Activity
     public void openInitAuthActivity(){
         Intent intent = new Intent(this, InitAuthActivity.class);
         startActivity(intent);
     }
+    /** End of Utility Items **/
+
 }
 
 
