@@ -104,7 +104,10 @@ The phone acts like a hub to collect and analyze the data and configure if one o
 ###### [16] pedometer (Step Counter App for Android) - https://github.com/singhrahuldps/Pedometern
 ###### [17] Go to new activity - https://www.youtube.com/watch?v=bgIUdb-7Rqo
 ###### [18] Phone Gyroscope data - https://www.youtube.com/watch?v=n6cMao3vVRE
+###### [19] Resolve issues of Local Broadcast Manager: https://github.com/invertase/react-native-firebase/issues/2406
 
+
+## NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO
 
 
 ## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
