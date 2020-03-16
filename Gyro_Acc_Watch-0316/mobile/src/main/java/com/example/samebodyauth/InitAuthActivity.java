@@ -119,6 +119,7 @@ public class InitAuthActivity extends AppCompatActivity {
     }
 
 
+
     // --- openPeriodicVerifyActivity ---
     // Function to transit to Periodic Verify Activity
     public void openPeriodicVerifyActivity(){

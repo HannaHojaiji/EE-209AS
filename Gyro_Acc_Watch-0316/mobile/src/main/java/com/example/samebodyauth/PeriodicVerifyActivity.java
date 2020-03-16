@@ -364,8 +364,8 @@ public class PeriodicVerifyActivity extends AppCompatActivity
         phone_numSteps = 0;
         eSense_numSteps = 0;
         // phone_SensorManager =null;
-        phone_StepValue.setText("Phone: 0");
-        eSense_StepValue.setText("eSense: 0");
+        phone_StepValue.setText("Phone Step: 0");
+        eSense_StepValue.setText("eSense Step: 0");
     }
 
 
@@ -762,14 +762,14 @@ public class PeriodicVerifyActivity extends AppCompatActivity
     @Override
     public void eSense_UpdateStep(long timeNs) {
         eSense_numSteps++;
-        eSense_StepValue.setText("eSense: " + String.valueOf(eSense_numSteps));
+        eSense_StepValue.setText("eSense Step: " + String.valueOf(eSense_numSteps));
     }
 
     // Function to update counted steps from phone
     @Override
     public void phone_UpdateStep(long timeNs) {
         phone_numSteps++;
-        phone_StepValue.setText("Phone: " + String.valueOf(phone_numSteps));
+        phone_StepValue.setText("Phone Step: " + String.valueOf(phone_numSteps));
     }
 
 
