@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WearActivity"
+    tools:deviceIds="wear"
+    android:verticalScrollbarPosition="left">
+
+    <EditText
+        android:id="@+id/watch_TypePin"
+        android:background="@android:color/background_light"
+        android:textColor="@android:color/black"
+        android:textColorHint="#55000000"
+        android:hint="Type pin"
+        android:inputType="numberPassword"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/watch_TalkButton"
+        android:text="Sent to Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/watch_TypePin" />
+
+
+    <TextView
+        android:id="@+id/watch_MessageStatus"
+        android:text="Message Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/watch_TypePin" />
+
+</RelativeLayout>

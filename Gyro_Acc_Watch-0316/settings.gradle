@@ -1,0 +1,3 @@
+rootProject.name='Combined App'
+include ':mobile'
+include ':wear'
