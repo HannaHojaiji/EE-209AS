@@ -44,7 +44,7 @@ In other words, the data collection follows the same-body authentication protoco
 
 The initial authentication is done as follows:
 
-Upon request, a pin would be generated which would be a 4-digit random number but it would not be visible. It would be "spoken out" by the app on the earable. Upon hearing the pin, the user must type that out and verify. If the two pins are same then authentication would be successfull. This would be possible only when the earable and phone are with the same person.
+Upon request, a pin would be generated which would be a 4-digit random number but it would not be visible. It would be "spoken out" by the app on the earable. Upon hearing the pin, the user must type that out using the keyboard implemented on the watch interface and then verification would take place. If the two pins are same then authentication would be successfull. This would be possible only when the earable and phone are with the same person.
 
 After this authentication is successful, a new activity is generated which would ask for the name of the earables. Once the correct name is typed out and the device (earable) is found, the app displays the values of the accelerometer and gyroscope of the IMU sensor of the earable. These values are also recorded as text files in the phone. Text files are separate for accelerometer as well as gyroscope values.
 
