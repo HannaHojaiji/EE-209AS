@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='Ran_Gen_Plus_Text_To_Speech'
