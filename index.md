@@ -52,20 +52,13 @@ For evaluating the presented threat model, we first ensure proper device placeme
 
 
 ### Prior Work
-There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presnts BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices. On the other hand, Shi, Liu and Chen’s work talks about extracting Channel State Information (CSI) from the WiFi signals of IoT devices and use a deep learning based algorithm to identify individual users [6].
+There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel State Information (CSI) measurements of IoT devices' WI-FI signals to identify human physiological and behavioral characteristics and applying a deep learning algorithm on these characterisitcs to identify individual users [6].
 
-Given these enlightments of leveraging human body effects and the fact the smartphone and wearaables have many sensor types, we decide to apply feature/signature extraction and analysis on  
+Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on intertial measurment unit (IMU) sensing.  
 
 Accelerometer data is a reliable sensor for extracting signatures for this purpose. Cornelius and Kotz’s[7]  research talks about the reliability and economical cost of accelerometer. 
 
 We built upon these methods choosing the best approaches utilizing the array of sensor signatures introduced. We also devised the initial authentication mechanism through random number generation.
-
-
-
-
-
-
-
 
 
 
@@ -84,5 +77,7 @@ We built upon these methods choosing the best approaches utilizing the array of 
 
 [7] Cornelius, C. T., & Kotz, D. F. (2012). Recognizing whether sensors are on the same body. Pervasive and Mobile Computing, 8(6), 822-836. 
 
-[8] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
+[8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
+
+[9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
 
