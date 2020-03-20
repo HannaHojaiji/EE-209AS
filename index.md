@@ -48,18 +48,28 @@ In this three-device body sensor network, we implement two same-body checking me
 For evaluating the presented threat model, we first ensure proper device placements and pairings on a selected user before he or she initiating the cyclic authentication activity of the SameBodyAuth app. Once the user sucessfully passed the cyclic authentication, the app transits into the periodic verifying activity and starts collecting sensor data from all paired devices. If any of the above two same-body checking mechanisms senses an abonormality in the derived signatures of the collected sensor data, then the app will terminate data acquisition from the affected wearable and notify the user the associated attack scenario. This resulting notification/warning from will pop up on the phone screen in a timely fashion so that the user can recover the stolen/lost wearable before the bluetooth connection is lost.    
 
 
+#### Initial User Authentication
+The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch.
+
+- User generates a pin on the phone (NO visual display)
+- The eSense speaks out the pin to user via text-to-speech
+- The user receives the pin from eSense
+- The user then types the pin on watch then send it to the phone
+- The phone enables sensor data collection upon confirming the received typed pin is the same as the one that generated earlier. 
+
+This cyclic authentication through all devices ensures that the same person is using the sensor array
+
+
+
 
 
 
 ### Prior Work
 There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel State Information (CSI) measurements of IoT devices' WI-FI signals to identify human physiological and behavioral characteristics and applying a deep learning algorithm on these characterisitcs to identify individual users [6].
 
-Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on intertial measurment unit (IMU) sensing.  
+Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s[7] research talks about the reliability and economical cost of accelerometer. 
 
-Accelerometer data is a reliable sensor for extracting signatures for this purpose. Cornelius and Kotz’s[7]  research talks about the reliability and economical cost of accelerometer. 
-
-We built upon these methods choosing the best approaches utilizing the array of sensor signatures introduced. We also devised the initial authentication mechanism through random number generation.
-
+To summarizze, we built our systems upon these methods and ideas and choosing the best approaches utilizing the array of sensor signatures introduced. Yet, we also devised and presented an cyclic authentication method that utilize wireless data transfer among the three devices to see if the same user is operating them at the same time.
 
 
 ### References
