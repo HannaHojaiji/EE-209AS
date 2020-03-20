@@ -2,14 +2,24 @@
 title: Same-body Sensor Network Security
 --- 
 
-## <a name="table">Table of Contents</a>
+<a name="table"></a>
+### Table of Contents
 * [Introduction](#introduction)
+* [Objectives](#objectives)
+
 * [Prior Work](#prior-work)
 * [References](#references)
 
 ### Introduction
+The seamlessing pairings of off-the-shelf wearable sensors may lead to inaccurate sensor data collection and loss of devices due to the lack of user attentions.
+<br></br>
 
-<a href="#table">Back to Table of Conetents</a>
+<a href="#table">Back to Table of Contents</a>
+
+### Objectives
+Our authentication system aims to secure and associate sensor readings of a user’s body sensor network to that particular user.In addition, the system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection.
+
+<a href="#table">Back to Table of Contents</a>
 
 
 ### Prior Work
