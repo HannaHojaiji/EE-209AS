@@ -8,6 +8,7 @@ title: Same-body Sensor Network Security
 * [Objectives](#objectives)
 * [Deliverables](#deliverables)
 * [Threat Model](#threat-model)
+* [Technical Approach](#technical-approach)
 * [Prior Work](#prior-work)
 * [References](#references)
 
@@ -23,22 +24,31 @@ Our authentication system aims to secure and associate sensor readings of a user
 <a href="#table">Back to Table of Contents</a>
 
 ### Deliverables
-- An Android app that authenticate and periodically verifies whether a three-device sensor network (phone, moto 360 watch, and eSense  earable) is on the same body  
-- Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes 
-- Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data
+- An Android app, named SameBodyAuth, that authenticate and periodically verifies whether a three-device sensor network (smartphone, Motorola moto 360 watch, and Nokia eSense earable) is on the same body.  
+- Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes. 
+- Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 <a href="#table">Back to Table of Contents</a>
 
 
 ### Threat Model
-- A user pairs up and wears the two wearables (eSense and watch) to perform personal sensor data collection
+- A user pairs up and wears the two wearables (eSense and watch) to perform personal sensor data collection.
 
-- Collected data can be messed up and/or the wearables can be stolen by the following two scenarios:
+- Collected data can be messed up and/or the wearables can be stolen by the following two attack scenarios:
   1. The user forget one of the wearables on an stationary object such as table. An adversary can then take away the wearable in the absence of the user. 
   2. The adversary directly grabs one of the wearables from the user. This attacker can also apply man-in-the-middle attack (MITM) to steal the device in stealth.
 
 <a href="#table">Back to Table of Contents</a>
+
+
+### Technical Approach
+In this three-device body sensor network, we implement two same-body checking mechanisms. The first same-body checking mechannism works on correlating accelerometer and gyroscope readings and is applied on the eSense earable. The second same-body checking mechanism works on detecting gaps in the heart rate sensing of watch and is applied on the moto 360 watch. Moreover, we devise a cyclic authentication method that operates across all the paired devices. This cyclic authentication method ensures that the same user is indeed using the three devices at the same time.
+
+For evaluating the presented threat model, we first ensure proper device placements and pairings on a selected user before he or she initiating the cyclic authentication activity of the SameBodyAuth app. Once the user sucessfully passed the cyclic authentication, the app transits into the periodic verifying activity and starts collecting sensor data from all paired devices. If any of the above two same-body checking mechanisms senses an abonormality in the derived signatures of the collected sensor data, then the app will terminate data acquisition from the affected wearable and notify the user the associated attack scenario. This resulting notification/warning from will pop up on the phone screen in a timely fashion so that the user can recover the stolen/lost wearable before the bluetooth connection is lost.    
+
+
+
 
 
 ### Prior Work
