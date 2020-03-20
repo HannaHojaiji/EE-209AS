@@ -7,6 +7,7 @@ title: Same-body Sensor Network Security
 * [Introduction](#introduction)
 * [Objectives](#objectives)
 * [Deliverables](#deliverables)
+* [Threat Model](#threat-model)
 * [Prior Work](#prior-work)
 * [References](#references)
 
@@ -21,13 +22,24 @@ Our authentication system aims to secure and associate sensor readings of a user
 
 <a href="#table">Back to Table of Contents</a>
 
-# Deliverables
+### Deliverables
 - An Android app that authenticate and periodically verifies whether a three-device sensor network (phone, moto 360 watch, and eSense  earable) is on the same body  
 - Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes 
 - Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 <a href="#table">Back to Table of Contents</a>
+
+
+### Threat Model
+- A user pairs up and wears the two wearables (eSense and watch) to perform personal sensor data collection
+
+- Collected data can be messed up and/or the wearables can be stolen by the following two scenarios:
+  1. The user forget one of the wearables on an stationary object such as table. An adversary can then take away the wearable in the absence of the user. 
+  2. The adversary directly grabs one of the wearables from the user. This attacker can also apply man-in-the-middle attack (MITM) to steal the device in stealth.
+
+<a href="#table">Back to Table of Contents</a>
+
 
 ### Prior Work
 
