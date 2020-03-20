@@ -1,5 +1,6 @@
 ---
 title: Same-body Sensor Network Security
+layout: template
 --- 
 
 ## Table of Contents
