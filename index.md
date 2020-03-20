@@ -52,22 +52,37 @@ For evaluating the presented threat model, we first ensure proper device placeme
 
 
 ### Prior Work
+There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presnts BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices. On the other hand, Shi, Liu and Chen’s work talks about extracting Channel State Information (CSI) from the WiFi signals of IoT devices and use a deep learning based algorithm to identify individual users [6].
+
+Given these enlightments of leveraging human body effects and the fact the smartphone and wearaables have many sensor types, we decide to apply feature/signature extraction and analysis on  
+
+Accelerometer data is a reliable sensor for extracting signatures for this purpose. Cornelius and Kotz’s[7]  research talks about the reliability and economical cost of accelerometer. 
+
+We built upon these methods choosing the best approaches utilizing the array of sensor signatures introduced. We also devised the initial authentication mechanism through random number generation.
+
+
+
+
+
+
+
+
+
 
 ### References
+[1] Al Ameen, Moshaddique, Jingwei Liu, and Kyungsup Kwak. "Security and privacy issues in wireless sensor networks for healthcare applications." Journal of medical systems 36.1 (2012): 93-101.
 
+[2] Stajano, Frank, et al., eds. Security and Privacy in Ad-hoc and Sensor Networks: 4th European Workshop, ESAS 2007, Cambridge, UK, July 2-3, 2007, Proceedings. Vol. 4572. Springer Science & Business Media, 2007.
 
+[3] Huang, X., Wang, Q., Bangdao, C., Markham, A., Jäntti, R., & Roscoe, A. W. (2011, October). Body sensor network key distribution using human interactive channels. In Proceedings of the 4th International Symposium on Applied Sciences in Biomedical and Communication Technologies (pp. 1-5).
 
-### Welcome to GitHub Pages.
-This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here [using GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/), select a template crafted by a designer, and publish. After your page is generated, you can check out the new `gh-pages` branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.
+[4] Schürmann, D., Brüsch, A., Sigg, S., & Wolf, L. (2017, March). BANDANA—Body area network device-to-device authentication using natural gAit. In 2017 IEEE International Conference on Pervasive Computing and Communications (PerCom) (pp. 190-196). IEEE.
 
-### Designer Templates
-We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.
+[5] Wang, F., Li, Z., & Han, J. (2019). Continuous user authentication by contactless wireless sensing. IEEE Internet of Things Journal, 6(5), 8323-8331.
 
-### Creating pages manually
-If you prefer to not use the automatic generator, push a branch named `gh-pages` to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
+[6] Shi, C., Liu, J., Liu, H., & Chen, Y. (2017, July). Smart user authentication through actuation of daily activities leveraging WiFi-enabled IoT. In Proceedings of the 18th ACM International Symposium on Mobile Ad Hoc Networking and Computing (pp. 1-10).
 
-### Authors and Contributors
-You can @mention a GitHub username to generate a link to their profile. The resulting `<a>` element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
+[7] Cornelius, C. T., & Kotz, D. F. (2012). Recognizing whether sensors are on the same body. Pervasive and Mobile Computing, 8(6), 822-836. 
 
-### Support or Contact
-Having trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+[8] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
+
