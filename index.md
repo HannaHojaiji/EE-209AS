@@ -1,8 +1,5 @@
 ---
 title: Same-body Sensor Network Security
-layout: template
-theme: jekyll-theme-midnight
-filename: index
 --- 
 
 ## Table of Contents
