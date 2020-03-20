@@ -49,18 +49,17 @@ For evaluating the presented threat model, we first ensure proper device placeme
 
 
 #### Initial User Authentication
-The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch.
-
+The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch. The user will follow the following guidelines to let the app check if he or she is using all the threepaired devices:
 - User generates a pin on the phone (NO visual display)
 - The eSense speaks out the pin to user via text-to-speech
 - The user receives the pin from eSense
 - The user then types the pin on watch then send it to the phone
 - The phone enables sensor data collection upon confirming the received typed pin is the same as the one that generated earlier. 
 
-This cyclic authentication through all devices ensures that the same person is using the sensor array
+This cyclic authentication through all devices ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) when using the SamebodyAuth app on his or phone for sensor data collection.
 
 
-
+#### Perioidc Same-body Verification
 
 
 
