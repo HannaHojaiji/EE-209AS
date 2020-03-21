@@ -19,6 +19,7 @@ Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 * [Limitations](#limitations)
 * [Demonstration](#demonstration)
 * [References](#references)
+* [Online Resources](#online-resources)
 
 
 ## Introduction
@@ -232,29 +233,40 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
 <a href="#table">Back to Table of Contents</a>
 
 
-## Developer Notes
+## Online Resources
+
+### Nokia eSense earable
+- eSense Earables website: <br>
+  https://www.esense.io/
+
+- EarComp 2019 Document: <br>
+  https://www.esense.io/earcomp/EarComp-PreACM.pdf
+  
+- Basic application for eSense earables using Android studio to log IMU data: <br>
+  https://github.com/nesl/eSenseTester
 
 
+### Android smartphone applications
+- Random Number Generator for first time authentication: <br>
+  https://www.youtube.com/watch?v=ID4YJHoXbEw
 
-###### [1] Zhang, Jiansong, et al. "Proximity-based IoT device authentication." IEEE INFOCOM 2017-IEEE Conference on Computer Communications. IEEE, 2017.
-###### [2] Cornelius, Cory T., and David F. Kotz. "Recognizing whether sensors are on the same body." Pervasive and Mobile Computing 8.6 (2012): 822-836.
-###### [3] Han, Jun, et al. "Do you feel what I hear? Enabling autonomous IoT device pairing using different sensor types." 2018 IEEE Symposium on Security and Privacy (SP). IEEE, 2018.
-###### [4] Anand, S. Abhishek, and Nitesh Saxena. "Noisy Vibrational Pairing of IoT Devices." IEEE Transactions on Dependable and Secure Computing 16.3 (2018): 530-545.
-###### [5] Random Number Generator for first time authentication: https://www.youtube.com/watch?v=ID4YJHoXbEw
-###### [6] Saving data(accelerometer, gyroscope) as a Text File: https://www.youtube.com/watch?v=BnYruBLqdmM
-###### [7].3 IMU data received from the IMU sensor of the earable: https://github.com/nesl/eSenseTester
-###### [8] Receiving input from the user which is the random pin for first time authentication: https://javapapers.com/android/get-user-input-in-android/ 
-###### [9] Receiving input from the user which is the random pin for first time authentication: https://github.com/JohnsAndroidStudioTutorials/GetUserInput
-###### [10] eSense Earables - https://www.esense.io/earcomp/EarComp-PreACM.pdf
-###### [11] eSense Earables - https://www.esense.io/
-###### [12] eSense Earables - https://www.esense.io/share/eSense-User-Documentation.pdf
-###### [13] eSense Earables - https://www.esense.io/share/eSense-BLE-Specification.pdf
-###### [14] eSense Earables - https://www.esense.io/share/eSense-Android-Library.pdf
-###### [15] senslog (logging sensor data to phone as txt) - https://github.com/tyrex-team/senslogs
-###### [16] pedometer (Step Counter App for Android) - https://github.com/singhrahuldps/Pedometern
-###### [17] Go to new activity - https://www.youtube.com/watch?v=bgIUdb-7Rqo
-###### [18] Phone Gyroscope data - https://www.youtube.com/watch?v=n6cMao3vVRE
-###### [19] Resolve issues of Local Broadcast Manager: https://github.com/invertase/react-native-firebase/issues/2406
+- Saving data(accelerometer, gyroscope) as a Text File: <br>
+  https://www.youtube.com/watch?v=BnYruBLqdmM
+
+- senslog (logging phone sensor data to phone as text file): <br>
+  https://github.com/tyrex-team/senslogs
+  
+- Simple Pedometer for smartphones: <br>
+  https://github.com/google/simple-pedometer
+  
+- Android phone and watch bidirectional message exchange: <br>
+  https://github.com/jeffreyliu8/Android-Wearable-Send-Message-bi-directional
+  
+- Read heartbeat rate from an Android watch: <br>
+  https://github.com/macsj200/BeatWatch
+  
+  
+### Motorola Moto 360 Watch
 
 
 **NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO**
