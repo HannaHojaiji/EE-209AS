@@ -23,7 +23,7 @@ Solution: Authenticate based on shared context
 
 The initial pairing happens through the random pin spelling through the earables and it activates and establishes connection with the weaarable only if the user has input the same pin on the watch. 
 
-The continues device accessability and data collection happens through the following. Use an array of sensors like acceleromtere, heart rate, background noise analysis, velocity tracking to detect detachment or forgetting one of the wearable pieces from the body senros set. 
+The continues device accessability and data collection happens through the following. Use an array of sensors like acceleromtere, heart rate, velocity tracking, etc. to detect detachment or forgetting one of the wearable pieces from the body senros set. 
 
 ## Introduction
 The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphones. This kind of situation can lead to unwanted sensor data collection by unauthorized users and faulty personal data collection. 
@@ -75,7 +75,7 @@ Week 5-6: Develop periodic local key and inertial sensor checkups to keep acquir
 
 Week 7-8: Implement the key encryption for data communication and physical checks. Modify and amplify the security checks between the devices. 
 
-Week 9: Finalize reliability tests. Create a report, and integrate a website. Take demos. 
+Week 9-10: Finalize reliability tests. Create a report, and integrate a website. Take demos. 
 
 ## Developed application and sensor set
 The watch has a friendly interface for a circular keypad that matched the face of the watch
@@ -110,25 +110,27 @@ The phone acts like a hub to collect and analyze the data and configure if one o
 ## NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO
 
 
-## Steps to program the watch, track the sensor data, record, store and anlyze the data (Hannaneh Hojaiji)
-To program the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
-To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
+## Steps to program the watch, track the sensor data, record, store and anlyze the data 
 
-To get the wear app started, you need to set the following dependencies:
-dependencies {
-  implementation 'androidx.wear:wear:1.0.0'
-  ~~implementation 'com.google.android.support:wearable:2.5.0'~~
-  ~~compileOnly 'com.google.android.wearable:wearable:2.5.0'~~
-}
-Make sure your sdk version is 28 for any font variations, 
-In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
-In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
-Get the latest versions of the gradele and plugins to be able to run this code. 
-###### HH: Implement the ADB debugging over BT on watch (1) https://developer.android.com/studio/releases/platform-tools.html
-###### (2) https://www.youtube.com/watch?v=v6_mtCAOops
-###### (3) https://developer.android.com/training/wearables/apps/debugging
+####### 1. To use/pair the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
+####### 2. To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
 
-Debugging:
+####### 3. To get the wear app started, you need to set the following dependencies:
+                    dependencies {
+                      implementation 'androidx.wear:wear:1.0.0'
+                      ~~implementation 'com.google.android.support:wearable:2.5.0'~~
+                      ~~compileOnly 'com.google.android.wearable:wearable:2.5.0'~~
+                    }
+                    Make sure your sdk version is 28 for any font variations, 
+                    In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
+                    In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
+                    Get the latest versions of the gradele and plugins to be able to run this code. 
+####### 4. Implement the ADB debugging over BT on watch. Download the ADB debugging toolset zipped in this repo and follow these tutorials to program the watch through Android Studio. 
+                    (1) https://developer.android.com/studio/releases/platform-tools.html
+                    (2) https://www.youtube.com/watch?v=v6_mtCAOops
+                    (3) https://developer.android.com/training/wearables/apps/debugging
+
+##### Debugging:
 1.If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
@@ -143,54 +145,51 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
     android.enableJetifier=true
     android.useAndroidX=true
     https://stackoverflow.com/questions/55810694/after-upgrade-android-version-getting-duplicate-class-android-support-v4-app-in
-    
-    
-For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
-![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
-[https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
+    For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
+    ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
+     [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
-***Working version for the Android Sensor Grabber App
 6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
-After updating to 3.3 and Maven repositories. change the following codes in 
-wear dependencies build.gradle
-    compile 'com.google.android.support:wearable:2.5.0'
-    compile 'com.google.android.gms:play-services-wearable:17.0.0'
-shared dependencies build.gradle    
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.google.android.gms:play-services-wearable:17.0.0'
-    compile 'com.google.android.support:wearable:2.5.0'
-mobile dependencies build.gradle        
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    wearApp project(':wear')
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.google.android.gms:play-services:12.0.1'
-    compile project(':shared')
-After upgrade android version Put these flags in your gradle.properties
-    android.enableJetifier=true
-    android.useAndroidX=true
-    
-    After that update the commands (android x, etc.)
-    Update the mimSDK to 14 from 9 by pasting this whole thing
-              android {
-              compileSdkVersion 28
-              buildToolsVersion '28.0.3'
+          After updating to 3.3 and Maven repositories. change the following codes in 
+          wear dependencies build.gradle
+              compile 'com.google.android.support:wearable:2.5.0'
+              compile 'com.google.android.gms:play-services-wearable:17.0.0'
+          shared dependencies build.gradle    
+              compile fileTree(include: ['*.jar'], dir: 'libs')
+              compile 'com.android.support:appcompat-v7:22.2.1'
+              compile 'com.google.android.gms:play-services-wearable:17.0.0'
+              compile 'com.google.android.support:wearable:2.5.0'
+          mobile dependencies build.gradle        
+              compile fileTree(include: ['*.jar'], dir: 'libs')
+              wearApp project(':wear')
+              compile 'com.android.support:appcompat-v7:21.0.3'
+              compile 'com.google.android.gms:play-services:12.0.1'
+              compile project(':shared')
+          After upgrade android version Put these flags in your gradle.properties
+              android.enableJetifier=true
+              android.useAndroidX=true
 
-              defaultConfig {
-                  minSdkVersion 21
-                  targetSdkVersion 28
-                  versionCode 1
-                  versionName "1.0"
-              }
-    Import @ nullable (inputstreamconnection.java) and comment out the android version of Nullable and keep the AndroidX version
-    * Data collector app
-    Then 4 above make sure the plugin (in buildgradle version) and gradle version in properties match the table
-    Then 2
-    change buildToolsVersion '25.0.0'
-    android.useAndroidX=true
-    android.enableJetifier=true
-    Then change the imports as you install
-    if there's no watch face: https://codelabs.developers.google.com/codelabs/watchface/index.html#0
+              After that update the commands (android x, etc.)
+              Update the mimSDK to 14 from 9 by pasting this whole thing
+                        android {
+                        compileSdkVersion 28
+                        buildToolsVersion '28.0.3'
+
+                        defaultConfig {
+                            minSdkVersion 21
+                            targetSdkVersion 28
+                            versionCode 1
+                            versionName "1.0"
+                        }
+              Import @ nullable (inputstreamconnection.java) and comment out the android version of Nullable and keep the AndroidX version
+              * Data collector app
+              Then 4 above make sure the plugin (in buildgradle version) and gradle version in properties match the table
+              Then 2
+              change buildToolsVersion '25.0.0'
+              android.useAndroidX=true
+              android.enableJetifier=true
+              Then change the imports as you install
+              if there's no watch face: https://codelabs.developers.google.com/codelabs/watchface/index.html#0
 7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
 
 8. Small update for wearable depedencies of the gradle of android wear: https://github.com/android/wear-os-samples/blob/master/WearDrawers/Wearable/build.gradle
@@ -198,19 +197,15 @@ After upgrade android version Put these flags in your gradle.properties
 
 9. Migrate Wear apps to GoogleApi: https://developer.android.com/training/wearables/data-layer/migrate-to-googleapi
 
-######Misc for week 9 trials (Hanna Hojaiji): 
-Making watch face circular: https://developer.android.com/training/articles/wear-permissions
-Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
+##### Other resources used to program the watch and utilize permission, data collection services, etc. 
+1. Making watch face circular: https://developer.android.com/training/articles/wear-permissions
+2. Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
 **Note for this project please install the 3.4.1 version of Android from this version as the new beta Android Studio version updates deprecate the previous gradle versions https://developer.android.com/studio/archive
 
-Keyboard for integration: https://github.com/idoideas/Wear-Keyboard
-Procedure to integrate communication of the watch and the phone: https://forum.xda-developers.com/android/software/android-data-transferring-tutorial-t3182153
-https://medium.com/@manuelvicnt/android-wear-accessing-the-data-layer-api-d64fd55982e3
+3. Keyboard for integration: https://github.com/idoideas/Wear-Keyboard
+4. Procedure to integrate communication of the watch and the phone: 
+          https://forum.xda-developers.com/android/software/android-data-transferring-tutorial-t3182153
+          https://medium.com/@manuelvicnt/android-wear-accessing-the-data-layer-api-d64fd55982e3
 
-Continuous data syncing with watch: https://developer.android.com/training/wearables/data-layer/accessing.html#java
-
-
-
-
-
+5. Continuous data syncing with watch: https://developer.android.com/training/wearables/data-layer/accessing.html#java
 
