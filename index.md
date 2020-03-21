@@ -118,11 +118,28 @@ After the user successfully authenticated the three paired devices, the SameBody
 
 
 ### Results and Evaluations
+The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary). The following sections describe how the correlations in sensor data can be used to detect these two attack scnarios.
+
+### Observed Cases of Human Behaviors
+The following table shows the anticipated human behaviors in the proposed threat model. We collect accelerometer, gyroscope, and heart rate senosr data from these cases in hope
+
+## Case#      Description
+
+    0         Sitting
+    1         Walking
+    2         Running
+    3         Put earable in from table
+    4         Take earabale out of ear
+    5         Put earphone on table and get up
+    6         Earphone stolen and adversary walks at the same pace as user
+    7         Earphone stolen and adversary runs away
+    
 
 
 
 
 
+<a href="#table">Back to Table of Contents</a>
 
 
 
@@ -143,17 +160,7 @@ Thus the decision tree was implemented and the app checks the decision tree to c
 
 Keeping in mind the various scenarios that can possibly take place, we have collected and analysed data by keeping the following cases in mind.
 
-## Case#      Description
 
-    0         Sitting
-    1         Walking
-    2         Running
-    3         Put earable in from table
-    4         Take earabale out of ear
-    5         Put earphone on table and get up
-    6         Earphone stolen and adversary walks at the same pace as user
-    7         Earphone stolen and adversary runs away
-    
  
   
  <a href="#table">Back to Table of Contents</a>
@@ -234,8 +241,3 @@ Here's the link to our video
 [8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
 
 [9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
-
-[10] https://poshmark.com/listing/Moto-360-smartwatch-5dcafba0de696a737d6d5708?utm_source=gdm&utm_source=gdm&ad_partner=google&ad_partner=google&l_con=PREOWNED%2FUSED&utm_campaign=1820027890&campaign_id=1820027890&gskid=pla-770271099052&gcid=345143506727&ggid=69215541523&gdid=c&g_network=g&enable_guest_buy_flow=true&gclid=EAIaIQobChMI9Kuis-Wq6AIVltlkCh3GRwDqEAQYASABEgIzAvD_BwE
-
-[11] https://www.sprint.com/en/shop/cell-phones/samsung-galaxy-s9-preowned.html?ensembleId=RCCG960UPRP&duration=18&contractType=lease&isDeepLinked=true&ECID=SEMPLA-SGA-QOE:PRODUCT_GROUP&tfn:7667&gclid=EAIaIQobChMI6661k-aq6AIVBKrsCh0S5QGFEAQYBiABEgJjJPD_BwE&gclsrc=aw.ds
-
