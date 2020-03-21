@@ -10,7 +10,6 @@ Title: Same-body Sensor Network Security
 * [Deliverables](#deliverables)
 * [Threat Model](#threat-model)
 * [Technical Approach](#technical-approach)
-* <a href="#periodic-authentication">Periodic Authentication</a>
 * <a href="#success-metrics">Success Metrics</a>
 * <a href="#limitations">Limitations</a> 
 * <a href="#grounds-for-future-work">Grounds for Future Work</a>
@@ -29,7 +28,7 @@ The goal of this project is to present a same-body authentication system that ai
 
 
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png" width="640" width="480"/>
 	<br/>
 	<strong>System Overview</strong>
 </p>
@@ -55,7 +54,7 @@ Given this enlightment of leveraging human body effects on data and signals and 
 
 
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png" width="640" width="480"/>
 	<br/>
 	<strong>The three-device sensor network and the SameBodyAuth app</strong>
 </p>
@@ -94,15 +93,25 @@ This cyclic authentication through all devices ensures that the same person is u
 
 
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" width="480" width="640"/>
 	<br/>
 	<strong>The three-device sensor network and the SameBodyAuth app</strong>
 </p>
 
 
 ### Periodic Same-body Verification
+After the suser successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
+
+- The phone collect contextual modalities (accelerations, angular velocities, and heart rate) in time series from the two wearables 
+- The app extracts signatures/features (e.g. peak values) from these modalities for same-body verification
+- The app performs data analysis on these obtained features/signatures by windowing the collected sensor data 
+- The app applies decision trees on the results of the feature/signature analysis to check if a wearable is still on the same user’s body (i.e., correlation across multiple modalities and/or detection of data gaps)  
+- Based on the resulting decisions, disable data communication of a wearable if it is said to be detached from user’s body (either left behind or stolen in our threat model).
+- In addition to disabiling data communcation, the app will also notify the user to retrieve the lost/stolen wearable by using android toast notification
 
 
+
+<a href="#table">Back to Table of Contents</a>
 
 
 ### Taking things forward
