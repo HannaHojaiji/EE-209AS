@@ -20,7 +20,7 @@ Title: Same-body Sensor Network Security
 * [References](#references)
 
 ### Introduction
-The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sensors eanble user to read sensor data from multiple devices at once without too much difficulty. However, the lack of user attentions may lead to inaccurate sensor data collection and loss of devices by adversaries. To address this security vulnerabiility in body sensor network while maintaining the conveiences of Internet-of-Things wearable sensors, a same-body authentication and verification system is required.
+The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sensors eanble user to read sensor data from multiple devices at once without too much difficulty. However, the lack of user attentions may lead to inaccurate sensor data collection and loss of devices by adversaries. To address this security vulnerabiility in body sensor network while maintaining the conveiences of IoT wearable sensors, a same-body authentication and verification system is required.
 
 <a href="#table">Back to Table of Contents</a>
 
@@ -47,8 +47,7 @@ Given this enlightment of leveraging human body effects on data and signals and 
 - Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
-
-![System-components](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/system-components.png)
+![Components](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/components.png)
 
 
 <a href="#table">Back to Table of Contents</a>
