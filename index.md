@@ -12,6 +12,7 @@ title: Same-body Sensor Network Security
 * [Prior Work](#prior-work)
 * [Periodic Authentication] (#periodic-authentication)
 * [Success Metrics] (#success-metrics)
+* <a href="#success-metrics">Success Metrics</a>
 * [Limitations]
 * [Grounds for Future Work]
 * [Midterm Presentation]
