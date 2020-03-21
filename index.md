@@ -13,7 +13,7 @@ Title: Same-body Sensor Network Security
 * [Results and Evaluations](#results-and-evaluations)
 * [Limitations](#limitations)
 * [Future Work](#future-work)
-* [Demonstration] (#demonstration)
+* [Demonstration](#demonstration)
 * [References](#references)
 
 ### Introduction
@@ -36,11 +36,11 @@ The goal of this project is to present a same-body authentication system that ai
 
 
 ### Prior Work
-There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. They devised a mechanism where a computer receives a biometric input. It receives this input once in a period of 30 seconds, where the input reception lasts for 4 seconds. These inputs are then added to a cluster and then a  bayes' range is formed. Every incoming input is compared with the cluster to see if there's a mismatch or not. In case of a mismatch the computer denies access.
+There has been research in the domain of context sensing and ensuring that the devices are on the same person [1, 2, 3, 4]. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. They devised a mechanism where a computer receives a biometric input. It receives this input once in a period of 30 seconds, where the input reception lasts for 4 seconds. These inputs are then added to a cluster and then a  bayes' range is formed. Every incoming input is compared with the cluster to see if there's a mismatch or not. In case of a mismatch the computer denies access.
 
 On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel State Information (CSI) measurements of IoT devices' WI-FI signals to identify human physiological and behavioral characteristics and applying a deep learning algorithm on these characterisitcs to identify individual users [6]. They extract the features from the WiFi signals of IoT devices like smart refrigerator to gain an insight about the user movements and then send it through a deep learning classifier.
 
-Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s[7] research, for example is one such that talks about the reliability and economical cost of accelerometer. Their work is primarily for application in medical fields and to counter the problem of one family member picking up the equipment of the other.
+Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s research, for example is one such that talks about the reliability and economical cost of accelerometer [7]. Their work is primarily for application in medical fields and to counter the problem of one family member picking up the equipment of the other. For designing continuous authentication methods around acceleromters and gyroscopes, Shahzad and Singh's paper provides suggestions such as gait analysis and machine-learning-based classifications [8].
 
 
 ### Deliverables
@@ -185,13 +185,10 @@ The SameBodyAuth app provides the ground work for same-body authentication accro
 2. Wearable sensors’ accuracies often dictates the outcomes of adversarial detection.
    - Phone and wearables' accelerometers and gyroscopes are okay, but watch's heart rate sensor is not.
    - Pedometer (step counting) based verification ends up not working due to drifting in eSense earable's readings.
-
 3. Must concatenate all the sensor values collected from the watch in a string to ensure successful data transmission.
    - The current design relies on a single phone-watch communication channel
-
 4. Readings of sensors that are sampling at different rates may not be collected at the same time.
    - Need a way to synchronize these sensors for good timestamps  
-
 5. Updates in Android packages and APIs cause unnecessary overheads when incorporating more sensors for adversarial detection
    - Frequent maintenance on the app’s source code is required to ensure usability
    
@@ -246,7 +243,7 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
 
 [7] Cornelius, C. T., & Kotz, D. F. (2012). Recognizing whether sensors are on the same body. Pervasive and Mobile Computing, 8(6), 822-836. 
 
-[8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
+[8] M. Shahzad and M. P. Singh, "Continuous Authentication and Authorization for the Internet of Things," in IEEE Internet Computing, vol. 21, no. 2, pp. 86-90, Mar.-Apr. 2017.
 
 [9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
 
