@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InitAuthActivity">
+
+
+    <EditText
+        android:id="@+id/phone_TypePin"
+        android:hint="Typed Pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberPassword">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/phone_GeneratePin"
+        android:text="GENERATE PIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_TypePin"/>
+
+    <Button
+        android:id="@+id/phone_VerifyPin"
+        android:text="VERIFY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_GeneratePin"/>
+
+    <TextView
+        android:id="@+id/phone_MessageFromWatch"
+        android:text="Message From Watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_VerifyPin" />
+
+    <TextView
+        android:id="@+id/phone_MessageToWatch"
+        android:text="Message To Watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_MessageFromWatch" />
+
+    <EditText
+        android:id="@+id/phone_TextToWatch"
+        android:hint="Enter some text to send to watch"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_MessageToWatch"/>
+
+    <Button
+        android:id="@+id/phone_TalkButton"
+        android:text="Sent to Watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_TextToWatch" />
+
+</RelativeLayout>
