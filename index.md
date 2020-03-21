@@ -35,6 +35,9 @@ Our authentication system aims to secure and associate sensor readings of a user
 - Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
+
+(https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png)
+
 <a href="#table">Back to Table of Contents</a>
 
 
