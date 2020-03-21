@@ -28,13 +28,13 @@ The continues device accessability and data collection happens through the follo
 ## Introduction
 The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphones. This kind of situation can lead to unwanted sensor data collection by unauthorized users and faulty personal data collection. 
 
-![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/System%20flowchart.png)
+![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/System%20flowchart.png)
 
 
 In this project, we propose the "same-body" authentication for a set of sensor networks (e.g. hearables, wearables). 
 This authentication process will comprise an initial-pairing phase and a periodic-verifying phase. By utilizing the sensor data, correlating body movements and sudden interrupts in the behaviours of the sensor, we define locality (sensors in user's possession or attached to user's body) and control wireless data communication between the nodes (NFC, WiFi and/or Bluetooth). This way, we will ensure reliable connectivity and locality across the desired user's mobile phone and set of sensor networks.  
 
-![same body sensor network](https://github.com/HannaHojaiji/EE-209AS/blob/master/same%20body%20sensor%20network.png)
+![same body sensor network](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/same%20body%20sensor%20network.png)
 
 
 
@@ -48,13 +48,13 @@ Upon request, a pin would be generated which would be a 4-digit random number bu
 
 After this authentication is successful, a new activity is generated which would ask for the name of the earables. Once the correct name is typed out and the device (earable) is found, the app displays the values of the accelerometer and gyroscope of the IMU sensor of the earable. These values are also recorded as text files in the phone. Text files are separate for accelerometer as well as gyroscope values.
 
-![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/watch%20communication.png)
+![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/watch%20communication.png)
 
 Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During a periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receives the event(s), the mobile phone app analyzes the captured user response pattern to see if the sensor network is indeed in the user's possession or is attached to the user's body. 
 
 The data communication between the sensor network and the mobile phone will be disabled if the captured user response pattern is not consistent with the previously collected user response signature. A re-authentication via initial-pairing is needed to re-enable the data communication if the user desire to continue sensor data collection. 
 
-![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/established%20communication.png)
+![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/established%20communication.png)
 
 
 ## Materials needed
