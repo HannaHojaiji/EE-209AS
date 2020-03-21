@@ -264,19 +264,24 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
   
 - Read heartbeat rate from an Android watch: <br>
   https://github.com/macsj200/BeatWatch
+
+- Velocity calculation based on the GPS and IMU: <br>
+  https://github.com/android/wear-os-samples/tree/master/SpeedTracker
+
+- Sample keyboard implementation for android watch:  <br>
+  https://github.com/idoideas/Wear-Keyboard
   
   
 ### Motorola Moto 360 Watch
 
-
-**NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO**
-
-
-## Steps to program the watch, track the sensor data, record, store and anlyze the data 
-
-###### 1. To use/pair the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
-###### 2. To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
-
+- Steps to program the watch, track the sensor data, record, store and anlyze the data 
+######  1. To use/pair the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
+######  2. To program the watch on cmd, go to the platform-tools where you have the adb debugging. The run the following commands:
+  	adb forward tcp:4444 localabstract:/adb-hub 
+	adb connect 127.0.0.1:4444
+###### If the server is diconnected, then run the following command before reinitilaizing it:
+	adb kill-server
+	
 ###### 3. To get the wear app started, you need to set the following dependencies:
                     dependencies {
                       implementation 'androidx.wear:wear:1.0.0'
@@ -291,8 +296,11 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
                     (1) https://developer.android.com/studio/releases/platform-tools.html
                     (2) https://www.youtube.com/watch?v=v6_mtCAOops
                     (3) https://developer.android.com/training/wearables/apps/debugging
+		    
+		    
 
-## Debugging:
+
+### Motorola Moto 360 Watch
 1.If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
@@ -360,15 +368,5 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
 
 9. Migrate Wear apps to GoogleApi: https://developer.android.com/training/wearables/data-layer/migrate-to-googleapi
 
-## Other resources used to program the watch and utilize permission, data collection services, etc. 
-1. Making watch face circular: https://developer.android.com/training/articles/wear-permissions
-2. Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
-**Note for this project please install the 3.4.1 version of Android from this version as the new beta Android Studio version updates deprecate the previous gradle versions https://developer.android.com/studio/archive
 
-3. Keyboard for integration: https://github.com/idoideas/Wear-Keyboard
-4. Procedure to integrate communication of the watch and the phone: 
-          https://forum.xda-developers.com/android/software/android-data-transferring-tutorial-t3182153
-          https://medium.com/@manuelvicnt/android-wear-accessing-the-data-layer-api-d64fd55982e3
-
-5. Continuous data syncing with watch: https://developer.android.com/training/wearables/data-layer/accessing.html#java
 
