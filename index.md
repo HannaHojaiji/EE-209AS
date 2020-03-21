@@ -115,6 +115,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
  
  
  ### Success Metrics
+ #success-metrics
  
  1. Properly collect wearables’ sensor data through wireless transmission 
  2. Implementation of decision trees based on sensor signatures to detect adversarial events 
