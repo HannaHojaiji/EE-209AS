@@ -311,66 +311,18 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
   https://stackoverflow.com/questions/27970210/default-activity-not-found-for-a-wearable-app-created-with-android-studio-temp
 
 - After migrating outdated android projects to Android X, put these flags in gradle.properties to enable Android X: <br>
+  https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
+
 #####
         android.enableJetifier=true
         android.useAndroidX=true
 
-- For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table:
+
+- For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table: <br>
+  https://developer.android.com/studio/releases/gradle-plugin#updating-gradle
 
 <p align="center">
-![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
+	<img src=https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png/>
 </p>
-
-
-
-6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
-          
-               After updating to 3.3 and Maven repositories. change the following codes in 
-                    wear dependencies build.gradle
-                        compile 'com.google.android.support:wearable:2.5.0'
-                        compile 'com.google.android.gms:play-services-wearable:17.0.0'
-               shared dependencies build.gradle    
-                        compile fileTree(include: ['*.jar'], dir: 'libs')
-                        compile 'com.android.support:appcompat-v7:22.2.1'
-                        compile 'com.google.android.gms:play-services-wearable:17.0.0'
-                        compile 'com.google.android.support:wearable:2.5.0'
-                mobile dependencies build.gradle        
-                        compile fileTree(include: ['*.jar'], dir: 'libs')
-                        wearApp project(':wear')
-                        compile 'com.android.support:appcompat-v7:21.0.3'
-                        compile 'com.google.android.gms:play-services:12.0.1'
-                        compile project(':shared')
-                After upgrade android version Put these flags in your gradle.properties
-                        android.enableJetifier=true
-                        android.useAndroidX=true
-
-              After that update the commands (android x, etc.)
-              Update the mimSDK to 14 from 9 by pasting this whole thing
-                        android {
-                        compileSdkVersion 28
-                        buildToolsVersion '28.0.3'
-
-                        defaultConfig {
-                            minSdkVersion 21
-                            targetSdkVersion 28
-                            versionCode 1
-                            versionName "1.0"
-                        }
-              Import @ nullable (inputstreamconnection.java) and comment out the android version of Nullable and keep the AndroidX version
-              * Data collector app
-              Then 4 above make sure the plugin (in buildgradle version) and gradle version in properties match the table
-              Then 2
-              change buildToolsVersion '25.0.0'
-              android.useAndroidX=true
-              android.enableJetifier=true
-              Then change the imports as you install
-              if there's no watch face: https://codelabs.developers.google.com/codelabs/watchface/index.html#0
-7. Setting up AndroidX for wear programming:https://stackoverflow.com/questions/55756647/duplicate-classes-from-androidx-and-com-android-support
-
-8. Small update for wearable depedencies of the gradle of android wear: https://github.com/android/wear-os-samples/blob/master/WearDrawers/Wearable/build.gradle
-
-
-9. Migrate Wear apps to GoogleApi: https://developer.android.com/training/wearables/data-layer/migrate-to-googleapi
-
 
 
