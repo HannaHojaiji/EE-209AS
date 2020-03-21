@@ -11,6 +11,9 @@ title: Same-body Sensor Network Security
 * [Technical Approach](#technical-approach)
 * [Prior Work](#prior-work)
 * [Periodic Authentication]
+* [Success Metrics]
+* [Limitations]
+* [Grounds for Future Work]
 * [References](#references)
 
 ### Introduction
@@ -103,6 +106,10 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
     5         Put earphone on table and get up
     6         Earphone stolen and adversary walks at the same pace as user
     7         Earphone stolen and adversary runs away
+    
+ 
+  
+ <a href="#table">Back to Table of Contents</a>
  
  
  ## Success Metrics
@@ -110,6 +117,10 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
  1. Properly collect wearables’ sensor data through wireless transmission 
  2. Implementation of decision trees based on sensor signatures to detect adversarial events 
  3. Quick notification/toast to user about the detachment of a wearable 
+ 
+ <a href="#table">Back to Table of Contents</a>
+ 
+ 
  
  ## Limitations
  
@@ -121,6 +132,9 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
 4. Updates in Android packages and APIs cause unnecessary overheads when incorporating more sensors for adversarial detection
    - Frequent maintenance on the app’s source code is required to ensure usability
    
+   <a href="#table">Back to Table of Contents</a>
+   
+   
 ## Grounds for Future Work
 
 1. Train and use a machine learning algorithm/model that is resilient 
@@ -128,6 +142,8 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
 3. Add more sensor types and proper authentication/verification configurations to the system for enabling personalization on same-body sensor network.
 4. Search or develop more accurate sensing devices to improve the reliability of the system  
 5. Apply this methods to healthcare platforms as was mentioned in Lin et al. paper[9]
+
+<a href="#table">Back to Table of Contents</a>
 
 
 
