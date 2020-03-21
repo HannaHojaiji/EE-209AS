@@ -52,7 +52,13 @@ Given this enlightment of leveraging human body effects on data and signals and 
 - Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
-![components](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/components.png)
+
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png"/>
+	<br/>
+	<strong>The three-device sensor network and the SameBodyAuth app</strong>
+</p>
 
 
 <a href="#table">Back to Table of Contents</a>
