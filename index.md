@@ -55,7 +55,8 @@ Our authentication system aims to secure and associate sensor readings of a user
 ### Technical Approach
 In this three-device body sensor network, we implement two same-body checking mechanisms. The first same-body checking mechannism works on correlating accelerometer and gyroscope readings and is applied on the eSense earable. The second same-body checking mechanism works on detecting gaps in the heart rate sensing of watch and is applied on the moto 360 watch. Moreover, we devise a cyclic authentication method that operates across all the paired devices. This cyclic authentication method ensures that the same user is indeed using the three devices at the same time.
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Implementation.png" alt="hi" class="inline" width = "500" height = "350"/>
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/implementation_2.png" alt="hi" class="inline" width = "500" height = "350"/>
+
 For evaluating the presented threat model, we first ensure proper device placements and pairings on a selected user before he or she initiating the cyclic authentication activity of the SameBodyAuth app. Once the user sucessfully passed the cyclic authentication, the app transits into the periodic verifying activity and starts collecting sensor data from all paired devices. If any of the above two same-body checking mechanisms senses an abonormality in the derived signatures of the collected sensor data, then the app will terminate data acquisition from the affected wearable and notify the user the associated attack scenario. This resulting notification/warning from will pop up on the phone screen in a timely fashion so that the user can recover the stolen/lost wearable before the bluetooth connection is lost.    
 
 
@@ -101,7 +102,7 @@ We constructed a decision tree by studying this data and implemented it.
 
 Thus the decision tree was implemented and the app checks the decision tree to check whether the device lies on the same person or not and does this periodically. Upon sensing mismatch, the app snaps the bluetooth connection before the devices can get out of range and notifies the user via a "toast". Toast, over here, refers to a shot-term message that appears on the bottom of the phone screen. Please note that our project is based on the underlying assumption that the phone always lie with the user.
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375"/>
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350" align = "centre"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375" align = "center"/>
 
 Keeping in mind the various scenarios that can possibly take place, we have collected and analysed data by keeping the following cases in mind.
 
