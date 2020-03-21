@@ -52,7 +52,6 @@ Given this enlightment of leveraging human body effects on data and signals and 
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 
-
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png" width="480"/>
 	<br/>
@@ -120,23 +119,25 @@ After the user successfully authenticated the three paired devices, the SameBody
 ### Results and Evaluations
 The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary). The following sections describe how the correlations in sensor data can be used to detect these two attack scnarios.
 
-### Observed Cases of Human Behaviors
-The following table shows the anticipated human behaviors in the proposed threat model. We collect accelerometer, gyroscope, and heart rate senosr data from these cases in hope
+### Cases of Human Behaviors
+We conduct observations on some basic human behaviors that are likely to occur in the proposed threat model. Accelerometer, gyroscope, and heart rate sensor data are collected for understanding how acceleration, angular velocity, and heart rate values change in response to these human behaviors.
 
-## Case#      Description
-
+#### Case # and Observed Behaviors
     0         Sitting
     1         Walking
     2         Running
     3         Put earable in from table
     4         Take earabale out of ear
+    
+With the insights on possible value changes in acceleration, angular velocity, and heart rates, we then record sensor data on the two proposed attack scenarios.
+
+#### Case #  and Observed Behaviors
     5         Put earphone on table and get up
     6         Earphone stolen and adversary walks at the same pace as user
     7         Earphone stolen and adversary runs away
-    
 
 
-
+### 
 
 
 <a href="#table">Back to Table of Contents</a>
@@ -158,7 +159,6 @@ Thus the decision tree was implemented and the app checks the decision tree to c
 
 <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375"/>
 
-Keeping in mind the various scenarios that can possibly take place, we have collected and analysed data by keeping the following cases in mind.
 
 
  
