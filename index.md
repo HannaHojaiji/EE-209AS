@@ -178,7 +178,7 @@ https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-C
 
 Here's the link to our video
 
-<a href="https://youtu.be/Vbj39Gpa_f0" target="_blank"> Demo </a> 
+<a href="https://youtu.be/Vbj39Gpa_f0" target="_blank" rel="noopener noreferrer"> Demo </a> 
 
 ### References
 [1] Al Ameen, Moshaddique, Jingwei Liu, and Kyungsup Kwak. "Security and privacy issues in wireless sensor networks for healthcare applications." Journal of medical systems 36.1 (2012): 93-101.
