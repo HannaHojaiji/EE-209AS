@@ -1,5 +1,5 @@
 ---
-title: Same-body Sensor Network Security
+Title: Same-body Sensor Network Security
 --- 
 
 <a name="table"></a>
@@ -37,6 +37,8 @@ Our authentication system aims to secure and associate sensor readings of a user
 
 
 <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png" alt="hi" class="inline" width = "350" height = "200"/>
+
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Moto_G_watch.jpg" alt="hi" class="inline" width = "250" height = "250"/>
 
 <a href="#table">Back to Table of Contents</a>
 
