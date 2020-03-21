@@ -27,7 +27,12 @@ The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sens
 ### Objectives
 The goal of this project is to present a same-body authentication system that aims to secure and associate sensor readings of a user’s body sensor network to that particular user. In addition, this system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection due to being out-of-range. With this condition met, a user will have greater chance to halt inaccurate sensor readings from the body sensor network and/or to recover his or her lost/stolen wearables before the adversary is gone.
 
-![system-overview](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/system-overview.png)
+
+<p align="center">
+	<img src="https://HannaHojaiji.github.io/EE-209AS/blob/gh-pages/Media/system-overview.png"/>
+	<br/>
+	<strong>System Overview</strong>
+</p>
 
 
 <a href="#table">Back to Table of Contents</a>
