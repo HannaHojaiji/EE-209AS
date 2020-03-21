@@ -14,6 +14,8 @@ title: Same-body Sensor Network Security
 * [Success Metrics]
 * [Limitations]
 * [Grounds for Future Work]
+* [Midterm Presentation]
+* [Final Presentation]
 * [References](#references)
 
 ### Introduction
@@ -142,6 +144,23 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
 3. Add more sensor types and proper authentication/verification configurations to the system for enabling personalization on same-body sensor network.
 4. Search or develop more accurate sensing devices to improve the reliability of the system  
 5. Apply this methods to healthcare platforms as was mentioned in Lin et al. paper[9]
+
+<a href="#table">Back to Table of Contents</a>
+
+## Midterm Presentation
+
+Here's a presentation detailing our work and progress upto the midterm
+
+https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Midterm-Hojaiji%20Chen%20Iyer.pdf
+
+<a href="#table">Back to Table of Contents</a>
+
+
+## Final Presentation
+
+Here's our final presentation
+
+https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Final-Hojaiji%20Chen%20Iyer.pdf
 
 <a href="#table">Back to Table of Contents</a>
 
