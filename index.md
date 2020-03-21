@@ -11,12 +11,11 @@ title: Same-body Sensor Network Security
 * [Technical Approach](#technical-approach)
 * [Prior Work](#prior-work)
 * [Periodic Authentication] (#periodic-authentication)
-* [Success Metrics] (#success-metrics)
 * <a href="#success-metrics">Success Metrics</a>
-* [Limitations]
-* [Grounds for Future Work]
-* [Midterm Presentation]
-* [Final Presentation]
+* <a href="#limitations">Limitations</a> 
+* <a href="#grounds-for-future-work">Grounds for Future Work</a>
+* <a href="#midterm-presentation">Midterm Presentation</a>
+* <a href="#final-presentation">Final Presentation</a>
 * [References](#references)
 
 ### Introduction
