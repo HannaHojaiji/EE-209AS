@@ -36,7 +36,7 @@ Our authentication system aims to secure and associate sensor readings of a user
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png" alt="hi" class="inline" width = "350" height = "200"/>  <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Moto_G_watch.jpg" alt="hi" class="inline" width = "250" height = "250"/>
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png" alt="hi" class="inline" width = "350" height = "200"/>  <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Moto_G_watch.jpg" alt="hi" class="inline" width = "250" height = "250"/>  <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/phone.png" alt="hi" class="inline" width = "250" height = "500"/>
 
 
 <a href="#table">Back to Table of Contents</a>
@@ -189,4 +189,8 @@ https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-C
 [8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
 
 [9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
+
+[10]
+
+[11] https://www.sprint.com/en/shop/cell-phones/samsung-galaxy-s9-preowned.html?ensembleId=RCCG960UPRP&duration=18&contractType=lease&isDeepLinked=true&ECID=SEMPLA-SGA-QOE:PRODUCT_GROUP&tfn:7667&gclid=EAIaIQobChMI6661k-aq6AIVBKrsCh0S5QGFEAQYBiABEgJjJPD_BwE&gclsrc=aw.ds
 
