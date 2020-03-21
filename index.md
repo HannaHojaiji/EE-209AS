@@ -28,7 +28,7 @@ The goal of this project is to present a same-body authentication system that ai
 
 
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png" width="640" width="480"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png" width="480"/>
 	<br/>
 	<strong>System Overview</strong>
 </p>
@@ -54,7 +54,7 @@ Given this enlightment of leveraging human body effects on data and signals and 
 
 
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png" width="640" width="480"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png" width="480"/>
 	<br/>
 	<strong>The three-device sensor network and the SameBodyAuth app</strong>
 </p>
@@ -91,9 +91,8 @@ The SameBodyAuth app has an initial authentication module applied across the pai
 This cyclic authentication through all devices ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) when using the SamebodyAuth app on his or phone for sensor data collection.
 
 
-
 <p align="center">
-	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" width="480" width="640"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" height="640"/>
 	<br/>
 	<strong>The three-device sensor network and the SameBodyAuth app</strong>
 </p>
