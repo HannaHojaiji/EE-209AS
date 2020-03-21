@@ -12,7 +12,7 @@ Title: Same-body Sensor Network Security
 * [Technical Approach](#technical-approach)
 * [Results and Evaluations](#results-and-evaluations)
 * [Limitations](#limitations)
-* <a href="#grounds-for-future-work">Grounds for Future Work</a>
+* [Future Work](#future-work)
 * <a href="#midterm-presentation">Midterm Presentation</a>
 * <a href="#final-presentation">Final Presentation</a>
 * <a href="#video">Video</a>
@@ -137,7 +137,6 @@ With the insights on possible value changes in acceleration, angular velocity, a
     7         Earphone stolen and adversary runs away
 
 
-### 
 
 ### Collected Sensor Profiles
 
@@ -157,10 +156,26 @@ With the insights on possible value changes in acceleration, angular velocity, a
 	<br/>
 	<strong>Angular velocity profile from smartphone and eSense earable via SameBodyAuth app</strong>
 	<br/>
-	(Left: Grabbed by running adversary, Middle:grabbed by same-pace adversary, Right: left by the user)
+	(Left: Grabbed by running adversary, Middle: Grabbed by same-pace adversary, Right: Left by the user)
 	<br/>
 	(Blue: smartphone, Orange: eSense earable)
 </p>
+
+
+### Key Findings
+- Peak detection on collected sensor data gives good insights on user' actions/motions
+- Correlating multiple modalities (e.g., acceleration and angular velocities) provides better
+decisions on whether a wearable is detached from the user’s body
+- Fine control on sesnosr data collection can be done through registering/unregistering sensor listeners
+and connect/disconnect bluetooth devices inside the app
+
+
+### Metrics of Success
+- The app can properly collect desired sensor data on the smartphone, Moto 360 watch, and eSense Earable✔
+- Implementation of decision trees based on sensor features/signatures to detect adversarial events ✔
+- Quick notification/toast for user to recognize detachment of a wearable beore bluetooth connection is lost due to out-of-range ✔
+
+
 
 
 
@@ -213,7 +228,7 @@ Thus the decision tree was implemented and the app checks the decision tree to c
    <a href="#table">Back to Table of Contents</a>
    
    
-### Grounds for Future Work
+### Future Work
 
 1. Train and use a machine learning algorithm/model that is resilient 
 2. User-specific behavioural signatures.
