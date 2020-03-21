@@ -107,15 +107,15 @@ The phone acts like a hub to collect and analyze the data and configure if one o
 ###### [19] Resolve issues of Local Broadcast Manager: https://github.com/invertase/react-native-firebase/issues/2406
 
 
-## NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO
+**NOTE: RESOURCE LINKING FAILS WHEN COMPILE SDK VERSIONS OF MOBILE AND WEAR DO NOT MATCH SO MAKE SURE THEY DO**
 
 
 ## Steps to program the watch, track the sensor data, record, store and anlyze the data 
 
-####### 1. To use/pair the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
-####### 2. To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
+###### 1. To use/pair the watch first you need to reset the watch, pair with your phone using the "Wear OS" app from Google play. 
+###### 2. To program the watch on CMD go to the platform-tools where you have the adb debugging. The run the following two commands
 
-####### 3. To get the wear app started, you need to set the following dependencies:
+###### 3. To get the wear app started, you need to set the following dependencies:
                     dependencies {
                       implementation 'androidx.wear:wear:1.0.0'
                       ~~implementation 'com.google.android.support:wearable:2.5.0'~~
@@ -125,12 +125,12 @@ The phone acts like a hub to collect and analyze the data and configure if one o
                     In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
                     In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
                     Get the latest versions of the gradele and plugins to be able to run this code. 
-####### 4. Implement the ADB debugging over BT on watch. Download the ADB debugging toolset zipped in this repo and follow these tutorials to program the watch through Android Studio. 
+###### 4. Implement the ADB debugging over BT on watch. Download the ADB debugging toolset zipped in this repo and follow these tutorials to program the watch through Android Studio. 
                     (1) https://developer.android.com/studio/releases/platform-tools.html
                     (2) https://www.youtube.com/watch?v=v6_mtCAOops
                     (3) https://developer.android.com/training/wearables/apps/debugging
 
-##### Debugging:
+## Debugging:
 1.If you are not able toconnect to watch trough the server try the following:
 To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
@@ -142,32 +142,33 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
 4.Error: resource android:attr/fontVariationSettings not found: compileSdkVersion 28
 
 5. After upgrade android version getting “Duplicate class android.support.v4.app.INotificationSideChannel”: Put these flags in your gradle.properties
-    android.enableJetifier=true
-    android.useAndroidX=true
+                        android.enableJetifier=true
+                        android.useAndroidX=true
     https://stackoverflow.com/questions/55810694/after-upgrade-android-version-getting-duplicate-class-android-support-v4-app-in
     For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
-    ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
-     [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
+![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
+        [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
 
 6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
-          After updating to 3.3 and Maven repositories. change the following codes in 
-          wear dependencies build.gradle
-              compile 'com.google.android.support:wearable:2.5.0'
-              compile 'com.google.android.gms:play-services-wearable:17.0.0'
-          shared dependencies build.gradle    
-              compile fileTree(include: ['*.jar'], dir: 'libs')
-              compile 'com.android.support:appcompat-v7:22.2.1'
-              compile 'com.google.android.gms:play-services-wearable:17.0.0'
-              compile 'com.google.android.support:wearable:2.5.0'
-          mobile dependencies build.gradle        
-              compile fileTree(include: ['*.jar'], dir: 'libs')
-              wearApp project(':wear')
-              compile 'com.android.support:appcompat-v7:21.0.3'
-              compile 'com.google.android.gms:play-services:12.0.1'
-              compile project(':shared')
-          After upgrade android version Put these flags in your gradle.properties
-              android.enableJetifier=true
-              android.useAndroidX=true
+          
+               After updating to 3.3 and Maven repositories. change the following codes in 
+                    wear dependencies build.gradle
+                        compile 'com.google.android.support:wearable:2.5.0'
+                        compile 'com.google.android.gms:play-services-wearable:17.0.0'
+               shared dependencies build.gradle    
+                        compile fileTree(include: ['*.jar'], dir: 'libs')
+                        compile 'com.android.support:appcompat-v7:22.2.1'
+                        compile 'com.google.android.gms:play-services-wearable:17.0.0'
+                        compile 'com.google.android.support:wearable:2.5.0'
+                mobile dependencies build.gradle        
+                        compile fileTree(include: ['*.jar'], dir: 'libs')
+                        wearApp project(':wear')
+                        compile 'com.android.support:appcompat-v7:21.0.3'
+                        compile 'com.google.android.gms:play-services:12.0.1'
+                        compile project(':shared')
+                After upgrade android version Put these flags in your gradle.properties
+                        android.enableJetifier=true
+                        android.useAndroidX=true
 
               After that update the commands (android x, etc.)
               Update the mimSDK to 14 from 9 by pasting this whole thing
@@ -197,7 +198,7 @@ https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runprog
 
 9. Migrate Wear apps to GoogleApi: https://developer.android.com/training/wearables/data-layer/migrate-to-googleapi
 
-##### Other resources used to program the watch and utilize permission, data collection services, etc. 
+## Other resources used to program the watch and utilize permission, data collection services, etc. 
 1. Making watch face circular: https://developer.android.com/training/articles/wear-permissions
 2. Velocity calcualtion based on the GPS and IMU: https://github.com/android/wear-os-samples/tree/master/SpeedTracker
 **Note for this project please install the 3.4.1 version of Android from this version as the new beta Android Studio version updates deprecate the previous gradle versions https://developer.android.com/studio/archive
