@@ -117,7 +117,7 @@ After the user successfully authenticated the three paired devices, the SameBody
 
 
 ### Results and Evaluations
-The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary). The following sections describe how the correlations in sensor data can be used to detect these two attack scnarios.
+The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary).
 
 ### Cases of Human Behaviors
 We conduct observations on some basic human behaviors that are likely to occur in the proposed threat model. Accelerometer, gyroscope, and heart rate sensor data are collected for understanding how acceleration, angular velocity, and heart rate values change in response to these human behaviors.
@@ -176,54 +176,17 @@ and connect/disconnect bluetooth devices inside the app
 - Quick notification/toast for user to recognize detachment of a wearable beore bluetooth connection is lost due to out-of-range ✔
 
 
-
-
-
 <a href="#table">Back to Table of Contents</a>
 
 
-
-
-
-
-### Periodic Authentication
-
-The periodic authentication works this way:
-
-It collects the accelerometer data, gyroscope from the three devices and heart rate sensing from the phone as well as the watch. Velocity and displacement potential are derived from the accelerometer values.
-In implementing our approach, we collected data and did a data analysis using Python to extract correlation between the data from different devices. 
-We constructed a decision tree by studying this data and implemented it.
-
-Thus the decision tree was implemented and the app checks the decision tree to check whether the device lies on the same person or not and does this periodically. Upon sensing mismatch, the app snaps the bluetooth connection before the devices can get out of range and notifies the user via a "toast". Toast, over here, refers to a shot-term message that appears on the bottom of the phone screen. Please note that our project is based on the underlying assumption that the phone always lie with the user.
-
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375"/>
-
-
-
  
-  
- <a href="#table">Back to Table of Contents</a>
- 
- 
- ### Success Metrics
+### Limitations
+The SameBodyAuth app provides the ground work for same-body authentication accross mutliple paired devices. Given that a major proportion of time is spent on establishing authentication and verfication mechanisms, the app ends up with the following weaknesses:
+1. Need to collect more sensor data from different individuals to make the same-baody checking mechanism (i.e., the decision trees) mroe robust.
+2. Wearable sensors’ accuracies often dictates the outcomes of adversarial detection.
+   - Phone and wearables' accelerometers and gyroscopes are okay, but watch's heart rate sensor is not.
+   - Pedometer (step counting) based verification ends up not working due to drifting in eSense earable's readings.
 
- 1. Properly collect wearables’ sensor data through wireless transmission 
- 2. Implementation of decision trees based on sensor signatures to detect adversarial events 
- 3. Quick notification/toast to user about the detachment of a wearable 
- 
- <a href="#table">Back to Table of Contents</a>
- 
- 
- 
- ### Limitations
- 
-1. Need to collect more data samples from more individuals to refine the decision trees.
-2. Wearable sensors’ sensing accuracies affect the outcome of adversarial detection.
-   a. Accelerometer and gyroscope are okay, but heart rate sensor is not
-   b. Pedometer (step counting) ends up not working due to drifting in eSense.
-3. Must concatenate the sensor values collected from the watch in a package to synchronize better and more smoothly.
-4. Updates in Android packages and APIs cause unnecessary overheads when incorporating more sensors for adversarial detection
-   - Frequent maintenance on the app’s source code is required to ensure usability
    
    <a href="#table">Back to Table of Contents</a>
    
