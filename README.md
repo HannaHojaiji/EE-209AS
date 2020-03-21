@@ -17,7 +17,6 @@ Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 * [Timeline for the Project](#timeline-for-the-project)
 * [Results and Evaluations](#results-and-evaluations)
 * [Limitations](#limitations)
-* [Future Work](#future-work)
 * [Demonstration](#demonstration)
 * [References](#references)
 
@@ -30,6 +29,7 @@ The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sens
 ## Project Proposal
 The goal of this project is to present a same-body authentication system that aims to secure and associate sensor readings of a user’s body sensor network to that particular user. In addition, this system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection due to being out-of-range. With this condition met, a user will have greater chance to halt inaccurate sensor readings from the body sensor network and/or to recover his or her lost/stolen wearables before the adversary is gone.
 
+<a href="#table">Back to Table of Contents</a>
 
 ## Deliverables
 - An Android app, named SameBodyAuth, that authenticate and periodically verifies whether a three-device sensor network (smartphone, Motorola moto 360 watch, and Nokia eSense earable) is on the same body.  
@@ -53,7 +53,9 @@ The goal of this project is to present a same-body authentication system that ai
 - Collected data can be messed up and/or the wearables can be stolen by the following two attack scenarios:
   1. The user forget one of the wearables on an stationary object such as table. An adversary can then take away the wearable in the absence of the user. 
   2. The adversary directly grabs one of the wearables from the user. This attacker can also apply man-in-the-middle attack (MITM) to steal the device in stealth.
-  
+
+<a href="#table">Back to Table of Contents</a>
+
 ## Technical Approach
 ### Initial User Authentication
 The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch. The user will follow the following guidelines to let the app check if he or she is using all the threepaired devices:
@@ -102,15 +104,138 @@ Week 7-8: Integrate these two modules, ensure data communication, and analyze cl
 
 Week 9-10: Finalize reliability tests. Create a report, and integrate a website. Take demos. 
 
-## Developed application and sensor set
-The watch has a friendly interface for a circular keypad that matched the face of the watch
-The velocity analysis, accelerometer and gyro data were collected from the wearables. 
-The PPG data was associated with pairing state of the watch and the phone app. 
-The earable provide the text to speech conversion for the random pins generated on the application. 
-The phone acts like a hub to collect and analyze the data and configure if one of the pieces is lost. 
+<a href="#table">Back to Table of Contents</a>
+
+
+## Results and Evaluations
+The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary).
+
+### Cases of Human Behaviors
+We conduct observations on some basic human behaviors that are likely to occur in the proposed threat model. Accelerometer, gyroscope, and heart rate sensor data are collected for understanding how acceleration, angular velocity, and heart rate values change in response to these human behaviors.
+
+#### Case # and Observed Behaviors
+    0         Sitting
+    1         Walking
+    2         Running
+    3         Put earable in from table
+    4         Take earabale out of ear
+    
+With the insights on possible value changes in acceleration, angular velocity, and heart rates, we then record sensor data on the two proposed attack scenarios.
+
+#### Case #  and Observed Behaviors
+    5         Put earphone on table and get up
+    6         Earphone stolen and adversary walks at the same pace as user
+    7         Earphone stolen and adversary runs away
+
+
+
+### Collected Sensor Profiles
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/acc-profile.png" width="860"/>
+	<br/>
+	<strong>Acceleration profile from smartphone and eSense earable via SameBodyAuth app</strong> 
+	<br/>
+	(Left: sitting, Middle: running, Right: Walking)
+	<br/>
+	(Blue: smartphone, Orange: eSense earable)
+</p>
+
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/gyro-profile.png" width="860"/>
+	<br/>
+	<strong>Angular velocity profile from smartphone and eSense earable via SameBodyAuth app</strong>
+	<br/>
+	(Left: Grabbed by running adversary, Middle: Grabbed by same-pace adversary, Right: Left by the user)
+	<br/>
+	(Blue: smartphone, Orange: eSense earable)
+</p>
+
+
+### Key Findings
+- Peak detection on collected sensor data gives good insights on user' actions/motions
+- Correlating multiple modalities (e.g., acceleration and angular velocities) provides better
+decisions on whether a wearable is detached from the user’s body
+- Fine control on sesnosr data collection can be done through registering/unregistering sensor listeners
+and connect/disconnect bluetooth devices inside the app
+
+
+### Metrics of Success
+- The app can properly collect desired sensor data on the smartphone, Moto 360 watch, and eSense Earable✔
+- Implementation of decision trees based on sensor features/signatures to detect adversarial events ✔
+- Quick notification/toast for user to recognize detachment of a wearable beore bluetooth connection is lost due to out-of-range ✔
+
+<a href="#table">Back to Table of Contents</a>
+
+ 
+## Limitations
+The SameBodyAuth app provides the ground work for same-body authentication accross mutliple paired devices. Given that a major proportion of time is spent on establishing authentication and verfication mechanisms, the app ends up with the following weaknesses:
+
+1. Need to collect more sensor data from different individuals to make the same-baody checking mechanism (i.e., the decision trees) mroe robust.
+2. Wearable sensors’ accuracies often dictates the outcomes of adversarial detection.
+   - Phone and wearables' accelerometers and gyroscopes are okay, but watch's heart rate sensor is not.
+   - Pedometer (step counting) based verification ends up not working due to drifting in eSense earable's readings.
+3. Must concatenate all the sensor values collected from the watch in a string to ensure successful data transmission.
+   - The current design relies on a single phone-watch communication channel
+4. Readings of sensors that are sampling at different rates may not be collected at the same time.
+   - Need a way to synchronize these sensors for good timestamps  
+5. Updates in Android packages and APIs cause unnecessary overheads when incorporating more sensors for adversarial detection
+   - Frequent maintenance on the app’s source code is required to ensure usability
+   
+<a href="#table">Back to Table of Contents</a>
+
+
+## Demonstration
+
+The following link is a presentation detailing our threat model exploration, brainstroming, and intial implementation of the SameBodyAuth app
+
+<a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Midterm-Hojaiji%20Chen%20Iyer.pdf</a>
+
+
+### Final Presentation
+
+The following link is a presentation detailing our final implementation of the SameBodyAuth app and data analysis from collected sensor readings
+
+<a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">
+https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Final-Hojaiji%20Chen%20Iyer.pdf</a>
+	
+### Video Demo
+
+Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
+
+<a href="https://youtu.be/Vbj39Gpa_f0" target="_blank" rel="noopener noreferrer"> Demo </a> 
+
+<a href="#table">Back to Table of Contents</a>
 
 
 ## References
+[1] Al Ameen, Moshaddique, Jingwei Liu, and Kyungsup Kwak. "Security and privacy issues in wireless sensor networks for healthcare applications." Journal of medical systems 36.1 (2012): 93-101.
+
+[2] Stajano, Frank, et al., eds. Security and Privacy in Ad-hoc and Sensor Networks: 4th European Workshop, ESAS 2007, Cambridge, UK, July 2-3, 2007, Proceedings. Vol. 4572. Springer Science & Business Media, 2007.
+
+[3] Huang, X., Wang, Q., Bangdao, C., Markham, A., Jäntti, R., & Roscoe, A. W. (2011, October). Body sensor network key distribution using human interactive channels. In Proceedings of the 4th International Symposium on Applied Sciences in Biomedical and Communication Technologies (pp. 1-5).
+
+[4] Schürmann, D., Brüsch, A., Sigg, S., & Wolf, L. (2017, March). BANDANA—Body area network device-to-device authentication using natural gAit. In 2017 IEEE International Conference on Pervasive Computing and Communications (PerCom) (pp. 190-196). IEEE.
+
+[5] Wang, F., Li, Z., & Han, J. (2019). Continuous user authentication by contactless wireless sensing. IEEE Internet of Things Journal, 6(5), 8323-8331.
+
+[6] Shi, C., Liu, J., Liu, H., & Chen, Y. (2017, July). Smart user authentication through actuation of daily activities leveraging WiFi-enabled IoT. In Proceedings of the 18th ACM International Symposium on Mobile Ad Hoc Networking and Computing (pp. 1-10).
+
+[7] Cornelius, C. T., & Kotz, D. F. (2012). Recognizing whether sensors are on the same body. Pervasive and Mobile Computing, 8(6), 822-836. 
+
+[8] M. Shahzad and M. P. Singh, "Continuous Authentication and Authorization for the Internet of Things," in IEEE Internet Computing, vol. 21, no. 2, pp. 86-90, Mar.-Apr. 2017.
+
+[9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
+
+
+<a href="#table">Back to Table of Contents</a>
+
+
+## Developer Notes
+
+
+
 ###### [1] Zhang, Jiansong, et al. "Proximity-based IoT device authentication." IEEE INFOCOM 2017-IEEE Conference on Computer Communications. IEEE, 2017.
 ###### [2] Cornelius, Cory T., and David F. Kotz. "Recognizing whether sensors are on the same body." Pervasive and Mobile Computing 8.6 (2012): 822-836.
 ###### [3] Han, Jun, et al. "Do you feel what I hear? Enabling autonomous IoT device pairing using different sensor types." 2018 IEEE Symposium on Security and Privacy (SP). IEEE, 2018.
