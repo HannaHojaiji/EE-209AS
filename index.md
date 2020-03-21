@@ -10,8 +10,8 @@ Title: Same-body Sensor Network Security
 * [Deliverables](#deliverables)
 * [Threat Model](#threat-model)
 * [Technical Approach](#technical-approach)
-* <a href="#success-metrics">Success Metrics</a>
-* <a href="#limitations">Limitations</a> 
+* [Results and Evaluations](#results-and-evaluations)
+* [Limitations](#limitations)
 * <a href="#grounds-for-future-work">Grounds for Future Work</a>
 * <a href="#midterm-presentation">Midterm Presentation</a>
 * <a href="#final-presentation">Final Presentation</a>
@@ -30,7 +30,7 @@ The goal of this project is to present a same-body authentication system that ai
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png" width="480"/>
 	<br/>
-	<strong>System Overview</strong>
+	<strong>Overview of same-body authentication system</strong>
 </p>
 
 
@@ -88,18 +88,17 @@ The SameBodyAuth app has an initial authentication module applied across the pai
 - The phone verfifies whether  the received typed pin is the same as the one that generated earlier. 
 - Once the verification is successful and the two pins turn out to be the same, app branches to the next activity where data collection takes place
 
-This cyclic authentication through all devices ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) when using the SamebodyAuth app on his or phone for sensor data collection.
-
+This cyclic authentication ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) before using the SamebodyAuth app on his or her phone ot collect sensor data.
 
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" height="640"/>
 	<br/>
-	<strong>The three-device sensor network and the SameBodyAuth app</strong>
+	<strong>Components of the SameBodyAuth app's cyclic authentication activity</strong>
 </p>
 
 
 ### Periodic Same-body Verification
-After the suser successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
+After the user successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
 
 - The phone collect contextual modalities (accelerations, angular velocities, and heart rate) in time series from the two wearables 
 - The app extracts signatures/features (e.g. peak values) from these modalities for same-body verification
@@ -108,19 +107,27 @@ After the suser successfully authenticated the three paired devices, the SameBod
 - Based on the resulting decisions, disable data communication of a wearable if it is said to be detached from user’s body (either left behind or stolen in our threat model).
 - In addition to disabiling data communcation, the app will also notify the user to retrieve the lost/stolen wearable by using android toast notification
 
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Decision_Tree.png" width="480"/>
+	<br/>
+	<strong>High-level diagram of the same-body checking mechanism on the SameBodyAuth app</strong>
+</p>
 
 
 <a href="#table">Back to Table of Contents</a>
 
 
-### Taking things forward
+### Results and Evaluations
 
-To summarize, we built our systems upon these methods and ideas and choosing the best approaches utilizing the array of sensor signatures introduced. Accelerometer data, being a reliable one, is one thing that we picked up. In addition to this, we added many other modalities like gyroscopic data, velocity, displacement and heart rate sensing.
 
-Furthermore, we also devised and presented an cyclic authentication method that utilize wireless data transfer among the three devices to see if the same user is operating them at the same time. 
 
-### Initial authentication
-We setup the initial authentication mechanism that takes place before any data collection. The way it's implemented(pin heard on the earable, pin typed through the watch and verified at the phone) ensures that the authentication would succeed only when all three devices are with the same person. It's only when this authentication succeeds that data collection takes place. Our application coding ensures this.
+
+
+
+
+
+
+
 
 ### Periodic Authentication
 
