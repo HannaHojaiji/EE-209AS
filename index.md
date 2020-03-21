@@ -29,7 +29,7 @@ The goal of this project is to present a same-body authentication system that ai
 
 
 <p align="center">
-	<img src="https://HannaHojaiji.github.io/EE-209AS/blob/gh-pages/Media/system-overview.png"/>
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/blob/gh-pages/Media/system-overview.png"/>
 	<br/>
 	<strong>System Overview</strong>
 </p>
