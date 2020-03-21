@@ -27,6 +27,9 @@ The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sens
 ### Objectives
 The goal of this project is to present a same-body authentication system that aims to secure and associate sensor readings of a user’s body sensor network to that particular user. In addition, this system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection due to being out-of-range. With this condition met, a user will have greater chance to halt inaccurate sensor readings from the body sensor network and/or to recover his or her lost/stolen wearables before the adversary is gone.
 
+![System Overview](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/system-overview.png)
+
+
 <a href="#table">Back to Table of Contents</a>
 
 
@@ -38,12 +41,6 @@ On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel
 Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s[7] research, for example is one such that talks about the reliability and economical cost of accelerometer. Their work is primarily for application in medical fields and to counter the problem of one family member picking up the equipment of the other.
 
 
-
-
-
-
-
-
 ### Deliverables
 - An Android app, named SameBodyAuth, that authenticate and periodically verifies whether a three-device sensor network (smartphone, Motorola moto 360 watch, and Nokia eSense earable) is on the same body.  
 - Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes. 
@@ -51,7 +48,7 @@ Given this enlightment of leveraging human body effects on data and signals and 
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png" alt="hi" class="inline" width = "350" height = "200"/>  <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Moto_G_watch.jpg" alt="hi" class="inline" width = "250" height = "250"/>  <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/phone.png" alt="hi" class="inline" width = "250" height = "350"/>
+![System Components](https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/system-components.png)
 
 
 <a href="#table">Back to Table of Contents</a>
