@@ -1,4 +1,4 @@
-# ECE 209AS Project Repository 
+# ECE 209AS Project - Same-body Sensor Network Security
 UCLA ECE 209AS "Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things" Project, Winter 2020
 
 Project Website: https://hannahojaiji.github.io/HannaHojaiji209.github.io/
