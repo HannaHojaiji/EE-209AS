@@ -6,10 +6,10 @@ Title: Same-body Sensor Network Security
 ### Table of Contents
 * [Introduction](#introduction)
 * [Objectives](#objectives)
+* [Prior Work](#prior-work)
 * [Deliverables](#deliverables)
 * [Threat Model](#threat-model)
 * [Technical Approach](#technical-approach)
-* [Prior Work](#prior-work)
 * <a href="#periodic-authentication">Periodic Authentication</a>
 * <a href="#success-metrics">Success Metrics</a>
 * <a href="#limitations">Limitations</a> 
@@ -20,15 +20,29 @@ Title: Same-body Sensor Network Security
 * [References](#references)
 
 ### Introduction
-The seamlessing pairings of off-the-shelf wearable sensors may lead to inaccurate sensor data collection and loss of devices due to the lack of user attentions.
-<br></br>
+The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sensors eanble user to read sensor data from multiple devices at once without too much difficulty. However, the lack of user attentions may lead to inaccurate sensor data collection and loss of devices by adversaries. To address this security vulnerabiility in body sensor network while maintaining the conveiences of Internet-of-Things wearable sensors, a same-body authentication and verification system is required.
 
 <a href="#table">Back to Table of Contents</a>
 
 ### Objectives
-Our authentication system aims to secure and associate sensor readings of a user’s body sensor network to that particular user.In addition, the system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection.
+The goal of this project is to present a same-body authentication system that aims to secure and associate sensor readings of a user’s body sensor network to that particular user. In addition, this system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection due to being out-of-range. With this condition met, a user will have greater chance to halt inaccurate sensor readings from the body sensor network and/or to recover his or her lost/stolen wearables before the adversary is gone.
 
 <a href="#table">Back to Table of Contents</a>
+
+
+### Prior Work
+There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. They devised a mechanism where a computer receives a biometric input. It receives this input once in a period of 30 seconds, where the input reception lasts for 4 seconds. These inputs are then added to a cluster and then a  bayes' range is formed. Every incoming input is compared with the cluster to see if there's a mismatch or not. In case of a mismatch the computer denies access.
+
+On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel State Information (CSI) measurements of IoT devices' WI-FI signals to identify human physiological and behavioral characteristics and applying a deep learning algorithm on these characterisitcs to identify individual users [6]. They extract the features from the WiFi signals of IoT devices like smart refrigerator to gain an insight about the user movements and then send it through a deep learning classifier.
+
+Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s[7] research, for example is one such that talks about the reliability and economical cost of accelerometer. Their work is primarily for application in medical fields and to counter the problem of one family member picking up the equipment of the other.
+
+
+
+
+
+
+
 
 ### Deliverables
 - An Android app, named SameBodyAuth, that authenticate and periodically verifies whether a three-device sensor network (smartphone, Motorola moto 360 watch, and Nokia eSense earable) is on the same body.  
@@ -77,12 +91,6 @@ This cyclic authentication through all devices ensures that the same person is u
 
 
 
-### Prior Work
-There has been research in the domain of context sensing and ensuring that the devices are on the same person. WiFi-enabled authentication is an area of the research work in this domain. For example, Wang, Li, and Han’s publication presents BodyPIN, a light-weight and robust technique that performs user authentication through quantifying human body effects on bypassing Wi-Fi signals from commodity Wi-Fi devices [5]. They devised a mechanism where a computer receives a biometric input. It receives this input once in a period of 30 seconds, where the input reception lasts for 4 seconds. These inputs are then added to a cluster and then a  bayes' range is formed. Every incoming input is compared with the cluster to see if there's a mismatch or not. In case of a mismatch the computer denies access.
-
-On the other hand, Shi, Liu and Chen’s work discusses about extracting Channel State Information (CSI) measurements of IoT devices' WI-FI signals to identify human physiological and behavioral characteristics and applying a deep learning algorithm on these characterisitcs to identify individual users [6]. They extract the features from the WiFi signals of IoT devices like smart refrigerator to gain an insight about the user movements and then send it through a deep learning classifier.
-
-Given this enlightment of leveraging human body effects on data and signals and the fact of several sensor types existed among smartphones and wearables, we decide to apply feature/signature extraction and analysis on the avaialble sensor types across the three devices (smartphone, Moto 360 watch, and eSense earable). Among all these devices, inertial measurement unit (IMU) sensors are mostly available. In particular, accelerometer and gyroscope sensors can provide steady readings that enable feature/signature extraction for this project. Cornelius and Kotz’s[7] research, for example is one such that talks about the reliability and economical cost of accelerometer. Their work is primarily for application in medical fields and to counter the problem of one family member picking up the equipment of the other.
 
 ### Taking things forward
 
