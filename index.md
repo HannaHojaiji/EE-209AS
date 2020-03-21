@@ -14,7 +14,6 @@ title: Same-body Sensor Network Security
 
 ### Introduction
 The seamlessing pairings of off-the-shelf wearable sensors may lead to inaccurate sensor data collection and loss of devices due to the lack of user attentions.
-<br></br>
 
 
 ### Objectives
@@ -42,7 +41,7 @@ In this three-device body sensor network, we implement two same-body checking me
 For evaluating the presented threat model, we first ensure proper device placements and pairings on a selected user before he or she initiating the cyclic authentication activity of the SameBodyAuth app. Once the user sucessfully passed the cyclic authentication, the app transits into the periodic verifying activity and starts collecting sensor data from all paired devices. If any of the above two same-body checking mechanisms senses an abonormality in the derived signatures of the collected sensor data, then the app will terminate data acquisition from the affected wearable and notify the user the associated attack scenario. This resulting notification/warning from will pop up on the phone screen in a timely fashion so that the user can recover the stolen/lost wearable before the bluetooth connection is lost.    
 
 
-#### Initial User Authentication
+### Initial User Authentication
 The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch. The user will adhere to the following guidelines to let the app check if he or she is using all the threepaired devices:
 - User generates a pin on the phone (NO visual display)
 - The eSense speaks out the pin to user via text-to-speech
@@ -53,7 +52,7 @@ The SameBodyAuth app has an initial authentication module applied across the pai
 This cyclic authentication through all devices ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) when using the SamebodyAuth app on his or phone for sensor data collection.
 
 
-#### Periodic Same-body Verification
+### Periodic Same-body Verification
 After the suser successfully authenticated the three paired devices, the SmaBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
 
 - The phone collect contextual modalities (accelerations, angular velocities, and heart rate) in time series from the two wearables 
