@@ -283,41 +283,45 @@ Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
 	adb kill-server
 	
 ###### 3. To get the wear app started, you need to set the following dependencies:
-                    dependencies {
-                      implementation 'androidx.wear:wear:1.0.0'
-                      ~~implementation 'com.google.android.support:wearable:2.5.0'~~
-                      ~~compileOnly 'com.google.android.wearable:wearable:2.5.0'~~
-                    }
-                    Make sure your sdk version is 28 for any font variations, 
-                    In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
-                    In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
-                    Get the latest versions of the gradele and plugins to be able to run this code. 
+	dependencies {
+	  implementation 'androidx.wear:wear:1.0.0'
+	  implementation 'com.google.android.support:wearable:2.5.0'~~
+	  compileOnly 'com.google.android.wearable:wearable:2.5.0'~~
+	}
+	
+	Make sure your sdk version is 28 for any font variations, 
+	In main gradle: classpath 'com.android.tools.build:gradle:3.5.3'
+	In gradle wrapper: distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
+	Get the latest versions of the gradele and plugins to be able to run this code. 
+
 ###### 4. Implement the ADB debugging over BT on watch. Download the ADB debugging toolset zipped in this repo and follow these tutorials to program the watch through Android Studio. 
-                    (1) https://developer.android.com/studio/releases/platform-tools.html
-                    (2) https://www.youtube.com/watch?v=v6_mtCAOops
-                    (3) https://developer.android.com/training/wearables/apps/debugging
+        (1) https://developer.android.com/studio/releases/platform-tools.html
+        (2) https://www.youtube.com/watch?v=v6_mtCAOops
+        (3) https://developer.android.com/training/wearables/apps/debugging
+
 		    
-		    
+### Miscellaneous Debugging Issues
+- If you are not able to connect to watch, try the following to debug the adb server: <br>
+  https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
 
+- The gradle run issues for runproguard: <br>
+   https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runproguard
 
-### Motorola Moto 360 Watch
-1.If you are not able toconnect to watch trough the server try the following:
-To debug the adb server https://androidforums.com/threads/adb-shell-error-more-than-one-device-and-emulator.48572/
+- “Default activity not found”: <br>
+  https://stackoverflow.com/questions/27970210/default-activity-not-found-for-a-wearable-app-created-with-android-studio-temp
 
-2. The gradle run issues for runproguard:
-https://stackoverflow.com/questions/27078075/gradle-dsl-method-not-found-runproguard
+- After migrating outdated android projects to Android X, put these flags in gradle.properties to enable Android X: <br>
+#####
+        android.enableJetifier=true
+        android.useAndroidX=true
 
-3. “Default activity not found”: https://stackoverflow.com/questions/27970210/default-activity-not-found-for-a-wearable-app-created-with-android-studio-temp
+- For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table:
 
-4.Error: resource android:attr/fontVariationSettings not found: compileSdkVersion 28
-
-5. After upgrade android version getting “Duplicate class android.support.v4.app.INotificationSideChannel”: Put these flags in your gradle.properties
-                        android.enableJetifier=true
-                        android.useAndroidX=true
-    https://stackoverflow.com/questions/55810694/after-upgrade-android-version-getting-duplicate-class-android-support-v4-app-in
-    For gradle version compatibility in your own set up, make sure you adjust the parameters according to this table
+<p align="center">
 ![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/Compatibility%20Chart.png)
-        [https://developer.android.com/studio/releases/gradle-plugin#updating-gradle]
+</p>
+
+
 
 6. Solving gradle problems and versions: https://stackoverflow.com/questions/44546849/unsupported-method-baseconfig-getapplicationidsuffix
           
