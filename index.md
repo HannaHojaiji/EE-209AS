@@ -151,7 +151,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
 
 Here's a presentation detailing our work and progress upto the midterm
 
-https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Midterm-Hojaiji%20Chen%20Iyer.pdf
+<a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Midterm-Hojaiji%20Chen%20Iyer.pdf</a>
 
 <a href="#table">Back to Table of Contents</a>
 
