@@ -1,79 +1,104 @@
 # ECE 209AS Project Repository 
 UCLA ECE 209AS "Security and Privacy for Embedded Systems, Cyber-Physical Systems, and Internet of Things" Project, Winter 2020
 
+Project Website: https://hannahojaiji.github.io/HannaHojaiji209.github.io/
 
 ## Team members
 Mark Chen, Hannaneh Hojaiji, Riyya Hari Iyer
 
 
-## Project proposal
+<a name="table"></a>
+## Table of Contents
+* [Introduction](#introduction)
+* [Project Proposal](#project-proposal)
+* [Deliverables](#deliverables)
+* [Threat Model](#threat-model)
+* [Technical Approach](#technical-approach)
+* [Timeline for the Project](#timeline-for-the-project)
+* [Results and Evaluations](#results-and-evaluations)
+* [Limitations](#limitations)
+* [Future Work](#future-work)
+* [Demonstration](#demonstration)
+* [References](#references)
 
-Problem statement: autonomous/automatic authentication of a sensor array for same-body sensor applications
-
-Assumptions: The watch is already paired with the phone and the phone is always in user's possession
-
-## Adversary model (adverserial attack)
-Impersonation attack: adversary eavesdrops a wireless node
-Solution: Authenticate based on shared context
-          Use time series to implicitly authenticate/communicate a secure channel 
-          Or use anonymous key agreement like Diffie-Hellman
-
-1. First pairing for initiation "same-body" sensor network
-2. Periodic time series sensor data to detect one node loosing contact with the body (i.e. being stolen, left behind, or simply fall of the body)
-
-The initial pairing happens through the random pin spelling through the earables and it activates and establishes connection with the weaarable only if the user has input the same pin on the watch. 
-
-The continues device accessability and data collection happens through the following. Use an array of sensors like acceleromtere, heart rate, velocity tracking, etc. to detect detachment or forgetting one of the wearable pieces from the body senros set. 
 
 ## Introduction
-The ubiquity of IoT sensors and wearable devices can potentially cause users to accidentally wear sensors that are not paired with their own cellphones. This kind of situation can lead to unwanted sensor data collection by unauthorized users and faulty personal data collection. 
+The seamlessing pairings of off-the-shelf Internet-of-Things (IoT) wearable sensors eanble user to read sensor data from multiple devices at once without too much difficulty. However, the lack of user attentions may lead to inaccurate sensor data collection and loss of devices by adversaries. To address this security vulnerabiility in body sensor network while maintaining the conveiences of IoT wearable sensors, a same-body authentication and verification system is required.
 
-![System flowchart](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/System%20flowchart.png)
+<a href="#table">Back to Table of Contents</a>
 
-
-In this project, we propose the "same-body" authentication for a set of sensor networks (e.g. hearables, wearables). 
-This authentication process will comprise an initial-pairing phase and a periodic-verifying phase. By utilizing the sensor data, correlating body movements and sudden interrupts in the behaviours of the sensor, we define locality (sensors in user's possession or attached to user's body) and control wireless data communication between the nodes (NFC, WiFi and/or Bluetooth). This way, we will ensure reliable connectivity and locality across the desired user's mobile phone and set of sensor networks.  
-
-![same body sensor network](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/same%20body%20sensor%20network.png)
+## Project Proposal
+The goal of this project is to present a same-body authentication system that aims to secure and associate sensor readings of a user’s body sensor network to that particular user. In addition, this system provides actionable feedback and on-board abnormality detection when verifying the integrity of a body sensor network. It notifies the user about the lost/stolen node in the body sensor network before that node loses its bluetooth connection due to being out-of-range. With this condition met, a user will have greater chance to halt inaccurate sensor readings from the body sensor network and/or to recover his or her lost/stolen wearables before the adversary is gone.
 
 
-
-The initial-pairing phase can be done through daily-based first-time authentication of the sensor network and the mobile device. This may be done by close-proximity authentication techniques such as inertial sensor, audio or NFC pairing. Once the mobile phone recognized the targeted sensors on the user, we will closely monitor the status of the physical signatures on these sensors to match the user's body motion and use the mobile app to record and timestamp the sensor data.
-
-In other words, the data collection follows the same-body authentication protocol and will perform data collection only upon approval from the main protocol.
-
-The initial authentication is done as follows:
-
-Upon request, a pin would be generated which would be a 4-digit random number but it would not be visible. It would be "spoken out" by the app on the earable. Upon hearing the pin, the user must type that out using the keyboard implemented on the watch interface and then verification would take place. If the two pins are same then authentication would be successfull. This would be possible only when the earable and phone are with the same person.
-
-After this authentication is successful, a new activity is generated which would ask for the name of the earables. Once the correct name is typed out and the device (earable) is found, the app displays the values of the accelerometer and gyroscope of the IMU sensor of the earable. These values are also recorded as text files in the phone. Text files are separate for accelerometer as well as gyroscope values.
-
-![established communication setup with smartwatch](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/watch%20communication.png)
-
-Then, throughout the day, periodic authentication for reliable localized connection is needed. To accomplish this, we will register unique user response signatures for the sensors in the sensor network. During a periodic authentication instance, we will first enable the sensor network to introduce human-recognizable event(s) (e.g., a short sound, a vibration, etc.) to the user. Once the user receives the event(s), the mobile phone app analyzes the captured user response pattern to see if the sensor network is indeed in the user's possession or is attached to the user's body. 
-
-The data communication between the sensor network and the mobile phone will be disabled if the captured user response pattern is not consistent with the previously collected user response signature. A re-authentication via initial-pairing is needed to re-enable the data communication if the user desire to continue sensor data collection. 
-
-![established communication with the watch](https://github.com/HannaHojaiji/EE-209AS/blob/master/Media/established%20communication.png)
+## Deliverables
+- An Android app, named SameBodyAuth, that authenticate and periodically verifies whether a three-device sensor network (smartphone, Motorola moto 360 watch, and Nokia eSense earable) is on the same body.  
+- Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes. 
+- Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
+- Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 
-## Materials needed
-1) For the first stage: Collect an Android phone and a collection of sensors that includes a smartwatch and an earable. We will then set up a stable wireless connection between the Android phone and these sensors so that authentication and data communication can be achieved.
-
-2) After setting up this connection, we will implement the initial-pairing process with an Android app. For example, we can utilize a passive NFC tag as a local (and physical) key identifier and an Android app that help establish NFC authentication and WiFi/Bluetooth connection.
-
-3) For the periodic-verifying process, we will leverage the actuators inside the smartwatch and the earable to create a human-recognizable event(s). Then, the android app will be updated to analyze the user response pattern.
-
-4) Optional: We will define a universal body signature algorithm to detect the user-specific behavior intended for customization of smart home appliances (If a custom sensor module is needed, we will implement it accordingly). 
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-components.png" width="480"/>
+	<br/>
+	<strong>The three-device sensor network and the SameBodyAuth app</strong>
+</p>
 
 
+<a href="#table">Back to Table of Contents</a>
 
-## Timeline for the project
-Week 3-4: Develop the android application to generate the authentication code and physical sensor pairing. Program phone/watch and hearables to collect sensor data and establish a connection. 
 
-Week 5-6: Develop periodic local key and inertial sensor checkups to keep acquiring the data. Present the midterm results. Check the power efficiency profile and improve the results.
+## Threat Model
+- A user pairs up and wears the two wearables (eSense and watch) to perform personal sensor data collection.
+- Collected data can be messed up and/or the wearables can be stolen by the following two attack scenarios:
+  1. The user forget one of the wearables on an stationary object such as table. An adversary can then take away the wearable in the absence of the user. 
+  2. The adversary directly grabs one of the wearables from the user. This attacker can also apply man-in-the-middle attack (MITM) to steal the device in stealth.
+  
+## Technical Approach
+### Initial User Authentication
+The SameBodyAuth app has an initial authentication module applied across the paired smartphone, eSense earable, and Moto 360 watch. The user will follow the following guidelines to let the app check if he or she is using all the threepaired devices:
+- User generates a pin on the phone (NO visual display)
+- The eSense speaks out the pin to user on the earable via text-to-speech
+- The user receives the pin from eSense
+- The user then types the pin on watch then send it to the phone. The user is able to do this throught the keyboard implemented at the    watch interface
+- The phone verfifies whether  the received typed pin is the same as the one that generated earlier. 
+- Once the verification is successful and the two pins turn out to be the same, app branches to the next activity where data collection takes place
 
-Week 7-8: Implement the key encryption for data communication and physical checks. Modify and amplify the security checks between the devices. 
+This cyclic authentication ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) before using the SamebodyAuth app on his or her phone ot collect sensor data.
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" height="640"/>
+	<br/>
+	<strong>Components of the SameBodyAuth app's cyclic authentication activity</strong>
+</p>
+
+
+### Periodic Same-body Verification
+After the user successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
+
+- The phone collect contextual modalities (accelerations, angular velocities, and heart rate) in time series from the two wearables 
+- The app extracts signatures/features (e.g. peak values) from these modalities for same-body verification
+- The app performs data analysis on these obtained features/signatures by windowing the collected sensor data 
+- The app applies decision trees on the results of the feature/signature analysis to check if a wearable is still on the same user’s body (i.e., correlation across multiple modalities and/or detection of data gaps)  
+- Based on the resulting decisions, disable data communication of a wearable if it is said to be detached from user’s body (either left behind or stolen in our threat model).
+- In addition to disabiling data communcation, the app will also notify the user to retrieve the lost/stolen wearable by using android toast notification
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Decision_Tree.png" width="480"/>
+	<br/>
+	<strong>High-level diagram of the same-body checking mechanism on the SameBodyAuth app</strong>
+</p>
+
+
+<a href="#table">Back to Table of Contents</a>
+ 
+
+## Timeline for the Project
+Week 3-4: Develop an android application module to generate initial authentication code that ensure the same user is using the paired smartphone and wearables (watch and earable). Program these phone, watch and earable to collect sensor data and establish a connection. 
+
+Week 5-6: Develop an android application  module to periodically verify whether paired devices are on the same user's body. Present the midterm results. Check timing efficiency and improve the design of the perioidic verififcation module.
+
+Week 7-8: Integrate these two modules, ensure data communication, and analyze cllected sensor data. In addition, modify and amplify the security checks between the devices. 
 
 Week 9-10: Finalize reliability tests. Create a report, and integrate a website. Take demos. 
 
