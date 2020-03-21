@@ -13,9 +13,7 @@ Title: Same-body Sensor Network Security
 * [Results and Evaluations](#results-and-evaluations)
 * [Limitations](#limitations)
 * [Future Work](#future-work)
-* <a href="#midterm-presentation">Midterm Presentation</a>
-* <a href="#final-presentation">Final Presentation</a>
-* <a href="#video">Video</a>
+* [Demonstration] (#demonstration)
 * [References](#references)
 
 ### Introduction
@@ -182,40 +180,48 @@ and connect/disconnect bluetooth devices inside the app
  
 ### Limitations
 The SameBodyAuth app provides the ground work for same-body authentication accross mutliple paired devices. Given that a major proportion of time is spent on establishing authentication and verfication mechanisms, the app ends up with the following weaknesses:
+
 1. Need to collect more sensor data from different individuals to make the same-baody checking mechanism (i.e., the decision trees) mroe robust.
 2. Wearable sensors’ accuracies often dictates the outcomes of adversarial detection.
    - Phone and wearables' accelerometers and gyroscopes are okay, but watch's heart rate sensor is not.
    - Pedometer (step counting) based verification ends up not working due to drifting in eSense earable's readings.
 
+3. Must concatenate all the sensor values collected from the watch in a string to ensure successful data transmission.
+   - The current design relies on a single phone-watch communication channel
+
+4. Readings of sensors that are sampling at different rates may not be collected at the same time.
+   - Need a way to synchronize these sensors for good timestamps  
+
+5. Updates in Android packages and APIs cause unnecessary overheads when incorporating more sensors for adversarial detection
+   - Frequent maintenance on the app’s source code is required to ensure usability
    
-   <a href="#table">Back to Table of Contents</a>
+<a href="#table">Back to Table of Contents</a>
    
    
 ### Future Work
-
-1. Train and use a machine learning algorithm/model that is resilient 
-2. User-specific behavioural signatures.
-3. Add more sensor types and proper authentication/verification configurations to the system for enabling personalization on same-body sensor network.
-4. Search or develop more accurate sensing devices to improve the reliability of the system  
-5. Apply this methods to healthcare platforms as was mentioned in Lin et al. paper[9]
+To imporve the design and usability of the SameBodyAuth app, we recommend the future team(s) to explore the following directions:
+1. Train and use a machine learning algorithm/model that is resilient user-specific behavioural signatures.
+3. Add more sensor types and proper authentication/verification configurations to the system for enabling personalization on the same-body sensor network.
+4. Search or develop more accurate sensing devices to improve the reliability of the same-body checking mechanisms.
+5. Apply the proposed same-body checking mechanism on biometrics such as the ones mentioned in Lin et al. [9]
 
 <a href="#table">Back to Table of Contents</a>
 
-### Midterm Presentation
+### Demonstration
 
-Here's a presentation detailing our work and progress upto the midterm
+The following link is a presentation detailing our threat model exploration, brainstroming, and intial implementation of the SameBodyAuth app
 
 <a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Midterm-Hojaiji%20Chen%20Iyer.pdf</a>
-
-<a href="#table">Back to Table of Contents</a>
 
 
 ### Final Presentation
 
-Here's our final presentation
+The following link is a presentation detailing our final implementation of the SameBodyAuth app and data analysis from collected sensor readings
 
-https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Final-Hojaiji%20Chen%20Iyer.pdf
-
+<a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">
+https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Final-Hojaiji%20Chen%20Iyer.pdf</a>
+	
+	
 <a href="#table">Back to Table of Contents</a>
 
 
