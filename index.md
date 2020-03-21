@@ -36,7 +36,7 @@ Our authentication system aims to secure and associate sensor readings of a user
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
 
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png = 20 x 20" alt="hi" class="inline"/>
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/esense.png" alt="hi" class="inline" width = "200" height = "200"/>
 
 <a href="#table">Back to Table of Contents</a>
 
