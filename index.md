@@ -11,7 +11,7 @@ title: Same-body Sensor Network Security
 * [Technical Approach](#technical-approach)
 * [Prior Work](#prior-work)
 * [Periodic Authentication] (#periodic-authentication)
-* [Success Metrics]
+* [Success Metrics] (#success-metrics)
 * [Limitations]
 * [Grounds for Future Work]
 * [Midterm Presentation]
@@ -83,10 +83,10 @@ To summarize, we built our systems upon these methods and ideas and choosing the
 
 Furthermore, we also devised and presented an cyclic authentication method that utilize wireless data transfer among the three devices to see if the same user is operating them at the same time. 
 
-## Initial authentication
+### Initial authentication
 We setup the initial authentication mechanism that takes place before any data collection. The way it's implemented(pin heard on the earable, pin typed through the watch and verified at the phone) ensures that the authentication would succeed only when all three devices are with the same person. It's only when this authentication succeeds that data collection takes place. Our application coding ensures this.
 
-## Periodic Authentication
+### Periodic Authentication
 
 The periodic authentication works this way:
 
@@ -114,7 +114,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
  <a href="#table">Back to Table of Contents</a>
  
  
- ## Success Metrics
+ ### Success Metrics
  
  1. Properly collect wearables’ sensor data through wireless transmission 
  2. Implementation of decision trees based on sensor signatures to detect adversarial events 
@@ -124,7 +124,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
  
  
  
- ## Limitations
+ ### Limitations
  
 1. Need to collect more data samples from more individuals to refine the decision trees.
 2. Wearable sensors’ sensing accuracies affect the outcome of adversarial detection.
@@ -137,7 +137,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
    <a href="#table">Back to Table of Contents</a>
    
    
-## Grounds for Future Work
+### Grounds for Future Work
 
 1. Train and use a machine learning algorithm/model that is resilient 
 2. User-specific behavioural signatures.
@@ -147,7 +147,7 @@ Keeping in mind the various scenarios that can possibly take place, we have coll
 
 <a href="#table">Back to Table of Contents</a>
 
-## Midterm Presentation
+### Midterm Presentation
 
 Here's a presentation detailing our work and progress upto the midterm
 
@@ -156,7 +156,7 @@ Here's a presentation detailing our work and progress upto the midterm
 <a href="#table">Back to Table of Contents</a>
 
 
-## Final Presentation
+### Final Presentation
 
 Here's our final presentation
 
