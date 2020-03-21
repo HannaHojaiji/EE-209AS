@@ -221,15 +221,15 @@ The following link is a presentation detailing our final implementation of the S
 <a href="https://www.thesitewizard.com/" rel="noopener noreferrer" target="_blank">
 https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-CPS_IoT%20Final-Hojaiji%20Chen%20Iyer.pdf</a>
 	
-	
-<a href="#table">Back to Table of Contents</a>
+### Video Demo
 
-
-### Video
-
-Here's the link to our video
+Here's the link to our video that demonstrates the uses of the SameBodyAuth app.
 
 <a href="https://youtu.be/Vbj39Gpa_f0" target="_blank" rel="noopener noreferrer"> Demo </a> 
+
+
+<a href="#table">Back to Table of Contents</a>
+
 
 ### References
 [1] Al Ameen, Moshaddique, Jingwei Liu, and Kyungsup Kwak. "Security and privacy issues in wireless sensor networks for healthcare applications." Journal of medical systems 36.1 (2012): 93-101.
@@ -249,3 +249,7 @@ Here's the link to our video
 [8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
 
 [9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
+
+
+<a href="#table">Back to Table of Contents</a>
+
