@@ -10,7 +10,7 @@ title: Same-body Sensor Network Security
 * [Threat Model](#threat-model)
 * [Technical Approach](#technical-approach)
 * [Prior Work](#prior-work)
-* [Periodic Authentication]
+* [Periodic Authentication] (#periodic-authentication)
 * [Success Metrics]
 * [Limitations]
 * [Grounds for Future Work]
