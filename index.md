@@ -102,7 +102,7 @@ We constructed a decision tree by studying this data and implemented it.
 
 Thus the decision tree was implemented and the app checks the decision tree to check whether the device lies on the same person or not and does this periodically. Upon sensing mismatch, the app snaps the bluetooth connection before the devices can get out of range and notifies the user via a "toast". Toast, over here, refers to a shot-term message that appears on the bottom of the phone screen. Please note that our project is based on the underlying assumption that the phone always lie with the user.
 
-<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350" align = "centre"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375" align = "center"/>
+<img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375"/>
 
 Keeping in mind the various scenarios that can possibly take place, we have collected and analysed data by keeping the following cases in mind.
 
