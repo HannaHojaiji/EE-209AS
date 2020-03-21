@@ -16,6 +16,7 @@ Title: Same-body Sensor Network Security
 * <a href="#grounds-for-future-work">Grounds for Future Work</a>
 * <a href="#midterm-presentation">Midterm Presentation</a>
 * <a href="#final-presentation">Final Presentation</a>
+* <a href="#video">Video</a>
 * [References](#references)
 
 ### Introduction
@@ -173,7 +174,11 @@ https://github.com/HannaHojaiji/HannaHojaiji209.github.io/blob/master/ECE209AS-C
 <a href="#table">Back to Table of Contents</a>
 
 
+### Video
 
+Here's the link to our video
+
+https://youtu.be/Vbj39Gpa_f0
 
 ### References
 [1] Al Ameen, Moshaddique, Jingwei Liu, and Kyungsup Kwak. "Security and privacy issues in wireless sensor networks for healthcare applications." Journal of medical systems 36.1 (2012): 93-101.
