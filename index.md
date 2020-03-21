@@ -10,8 +10,8 @@ Title: Same-body Sensor Network Security
 * [Deliverables](#deliverables)
 * [Threat Model](#threat-model)
 * [Technical Approach](#technical-approach)
-* <a href="#success-metrics">Success Metrics</a>
-* <a href="#limitations">Limitations</a> 
+* [Results and Evaluations](#results-and-evaluations)
+* [Limitations](#limitations)
 * <a href="#grounds-for-future-work">Grounds for Future Work</a>
 * <a href="#midterm-presentation">Midterm Presentation</a>
 * <a href="#final-presentation">Final Presentation</a>
@@ -30,7 +30,7 @@ The goal of this project is to present a same-body authentication system that ai
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/system-overview.png" width="480"/>
 	<br/>
-	<strong>System Overview</strong>
+	<strong>Overview of same-body authentication system</strong>
 </p>
 
 
@@ -50,7 +50,6 @@ Given this enlightment of leveraging human body effects on data and signals and 
 - Data analysis plots of collected sensor data from some of these  devices’  accelerometers and gyroscopes. 
 - Codes and scripts that authenticate phone and wearables, periodically check body sensor network integrity, record the sensor data,  and analyze the correlations among the sensor data.
 - Video demo that illustrates the uses of our Android app in recognizing lost/stolen devices and notifying user to recover them.
-
 
 
 <p align="center">
@@ -88,18 +87,17 @@ The SameBodyAuth app has an initial authentication module applied across the pai
 - The phone verfifies whether  the received typed pin is the same as the one that generated earlier. 
 - Once the verification is successful and the two pins turn out to be the same, app branches to the next activity where data collection takes place
 
-This cyclic authentication through all devices ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) when using the SamebodyAuth app on his or phone for sensor data collection.
-
+This cyclic authentication ensures that the same person is using the sensor arrays from the three paired devices. In other words, the user will know if he or she wear the correct wearable(s) before using the SamebodyAuth app on his or her phone ot collect sensor data.
 
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Initial-User-Authentication.png" height="640"/>
 	<br/>
-	<strong>The three-device sensor network and the SameBodyAuth app</strong>
+	<strong>Components of the SameBodyAuth app's cyclic authentication activity</strong>
 </p>
 
 
 ### Periodic Same-body Verification
-After the suser successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
+After the user successfully authenticated the three paired devices, the SameBodyAuth app then starts its periodic verifying module. The system will perform the following steps to tell whether any of the paired wearables on the user's body is lost or stolen:
 
 - The phone collect contextual modalities (accelerations, angular velocities, and heart rate) in time series from the two wearables 
 - The app extracts signatures/features (e.g. peak values) from these modalities for same-body verification
@@ -108,19 +106,46 @@ After the suser successfully authenticated the three paired devices, the SameBod
 - Based on the resulting decisions, disable data communication of a wearable if it is said to be detached from user’s body (either left behind or stolen in our threat model).
 - In addition to disabiling data communcation, the app will also notify the user to retrieve the lost/stolen wearable by using android toast notification
 
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Decision_Tree.png" width="480"/>
+	<br/>
+	<strong>High-level diagram of the same-body checking mechanism on the SameBodyAuth app</strong>
+</p>
 
 
 <a href="#table">Back to Table of Contents</a>
 
 
-### Taking things forward
+### Results and Evaluations
+The SameBodyAuth app has been used to collect sensor data from serveral cases of human behaviors that are likely involved in the two mentioned attack scenarios (i.e., left on table and grab by adversary). The following sections describe how the correlations in sensor data can be used to detect these two attack scnarios.
 
-To summarize, we built our systems upon these methods and ideas and choosing the best approaches utilizing the array of sensor signatures introduced. Accelerometer data, being a reliable one, is one thing that we picked up. In addition to this, we added many other modalities like gyroscopic data, velocity, displacement and heart rate sensing.
+### Cases of Human Behaviors
+We conduct observations on some basic human behaviors that are likely to occur in the proposed threat model. Accelerometer, gyroscope, and heart rate sensor data are collected for understanding how acceleration, angular velocity, and heart rate values change in response to these human behaviors.
 
-Furthermore, we also devised and presented an cyclic authentication method that utilize wireless data transfer among the three devices to see if the same user is operating them at the same time. 
+#### Case # and Observed Behaviors
+    0         Sitting
+    1         Walking
+    2         Running
+    3         Put earable in from table
+    4         Take earabale out of ear
+    
+With the insights on possible value changes in acceleration, angular velocity, and heart rates, we then record sensor data on the two proposed attack scenarios.
 
-### Initial authentication
-We setup the initial authentication mechanism that takes place before any data collection. The way it's implemented(pin heard on the earable, pin typed through the watch and verified at the phone) ensures that the authentication would succeed only when all three devices are with the same person. It's only when this authentication succeeds that data collection takes place. Our application coding ensures this.
+#### Case #  and Observed Behaviors
+    5         Put earphone on table and get up
+    6         Earphone stolen and adversary walks at the same pace as user
+    7         Earphone stolen and adversary runs away
+
+
+### 
+
+
+<a href="#table">Back to Table of Contents</a>
+
+
+
+
+
 
 ### Periodic Authentication
 
@@ -134,19 +159,8 @@ Thus the decision tree was implemented and the app checks the decision tree to c
 
 <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Decision_Tree.png" alt="hi" class="inline" width = "350" height = "350"/> <img src="https://github.com/HannaHojaiji/EE-209AS/blob/gh-pages/Media/Toast_message.png" alt="hi" class="inline" width = "475" height = "375"/>
 
-Keeping in mind the various scenarios that can possibly take place, we have collected and analysed data by keeping the following cases in mind.
 
-## Case#      Description
 
-    0         Sitting
-    1         Walking
-    2         Running
-    3         Put earable in from table
-    4         Take earabale out of ear
-    5         Put earphone on table and get up
-    6         Earphone stolen and adversary walks at the same pace as user
-    7         Earphone stolen and adversary runs away
-    
  
   
  <a href="#table">Back to Table of Contents</a>
@@ -227,8 +241,3 @@ Here's the link to our video
 [8] https://www.csc2.ncsu.edu/faculty/mpsingh/papers/columns/IC-21-02-Auth-NWI-17.pdf
 
 [9] Lin, S., et al. (2019). Natural Perspiration Sampling and in Situ Electrochemical Analysis with Hydrogel Micropatches for User-Identifiable and Wireless Chemo/Biosensing. ACS sensors.
-
-[10] https://poshmark.com/listing/Moto-360-smartwatch-5dcafba0de696a737d6d5708?utm_source=gdm&utm_source=gdm&ad_partner=google&ad_partner=google&l_con=PREOWNED%2FUSED&utm_campaign=1820027890&campaign_id=1820027890&gskid=pla-770271099052&gcid=345143506727&ggid=69215541523&gdid=c&g_network=g&enable_guest_buy_flow=true&gclid=EAIaIQobChMI9Kuis-Wq6AIVltlkCh3GRwDqEAQYASABEgIzAvD_BwE
-
-[11] https://www.sprint.com/en/shop/cell-phones/samsung-galaxy-s9-preowned.html?ensembleId=RCCG960UPRP&duration=18&contractType=lease&isDeepLinked=true&ECID=SEMPLA-SGA-QOE:PRODUCT_GROUP&tfn:7667&gclid=EAIaIQobChMI6661k-aq6AIVBKrsCh0S5QGFEAQYBiABEgJjJPD_BwE&gclsrc=aw.ds
-
