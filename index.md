@@ -139,6 +139,30 @@ With the insights on possible value changes in acceleration, angular velocity, a
 
 ### 
 
+### Collected Sensor Profiles
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/acc-profile.png" width="860"/>
+	<br/>
+	<strong>Acceleration profile from smartphone and eSense earable via SameBodyAuth app</strong> 
+	<br/>
+	(Left: sitting, Middle: running, Right: Walking)
+	<br/>
+	(Blue: smartphone, Orange: eSense earable)
+</p>
+
+
+<p align="center">
+	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/gyro-profile.png" width="860"/>
+	<br/>
+	<strong>Angular velocity profile from smartphone and eSense earable via SameBodyAuth app</strong>
+	<br/>
+	(Left: Grabbed by running adversary, Middle:grabbed by same-pace adversary, Right: left by the user)
+	<br/>
+	(Blue: smartphone, Orange: eSense earable)
+</p>
+
+
 
 <a href="#table">Back to Table of Contents</a>
 
