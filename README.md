@@ -85,7 +85,7 @@ After the user successfully authenticated the three paired devices, the SameBody
 - The app applies decision trees on the results of the feature/signature analysis to check if a wearable is still on the same user’s body (i.e., correlation across multiple modalities and/or detection of data gaps)  
 - Based on the resulting decisions, disable data communication of a wearable if it is said to be detached from user’s body (either left behind or stolen in our threat model).
 - In addition to disabiling data communcation, the app will also notify the user to retrieve the lost/stolen wearable by using android toast notification
-
+ 
 <p align="center">
 	<img src="https://hannahojaiji.github.io/HannaHojaiji209.github.io/Media/Decision_Tree.png" width="480"/>
 	<br/>
